@@ -8,12 +8,14 @@ using System.Web.Mvc;
 namespace ATAarhitektonskiStudio.Areas.Admin.Controllers
 {
     [Authorization(isAdmin: true)]
-    public class DashboardController : Controller
+    public class ProjectsManagerController : BaseAdminController
     {
-        // GET: Admin/Dashboard
+        // GET: Admin/Projects
         public ActionResult Index()
         {
-            return View();
+            var model = ctx.Project.ToList();
+
+            return View(model);
         }
     }
 }

@@ -40,8 +40,8 @@ namespace ATAarhitektonskiStudio
                       "~/Areas/Admin/Content/css/bootstrap.css",
                       "~/Areas/Admin/Content/css/style.css",
                       "~/Areas/Admin/Content/css/font-awesome.css",
-                      "~/Areas/Admin/Content/css/jquery.filer-dragdropbox-theme.css",
-                      "~/Scripts/summernote/summernote.css"));
+                      "~/Content/summernote.css",
+                      "~/Areas/Admin/Content/css/jquery.filer-dragdropbox-theme.css"));
 
             bundles.Add(new ScriptBundle("~/bundles/adminScripts").Include(
                         "~/Areas/Admin/Content/js/popper.min.js",
@@ -55,7 +55,7 @@ namespace ATAarhitektonskiStudio
                         "~/Areas/Admin/Content/js/jquery.nicescroll.js",
                         "~/Areas/Admin/Content/js/switchery.min.js",
                         "~/Scripts/summernote/summernote.js",
-                        "~/Scripts/summernote-ext-specialchars.js",
+                        "~/Scripts/summernote/summernote-ext-specialchars.js",
                         "~/Scripts/jquery-ui-1.12.1.js"));
         }
     }

@@ -33,7 +33,7 @@ namespace ATAarhitektonskiStudio.Areas.Admin.Controllers
                 file.SaveAs(imgPath);
             }
 
-            return @"~/DynamicContent/BlogImages/" + file.FileName;
+            return @"/DynamicContent/BlogImages/" + file.FileName;
         }
 
         public ActionResult NewBlog()
@@ -154,6 +154,18 @@ namespace ATAarhitektonskiStudio.Areas.Admin.Controllers
             ctx.SaveChanges();
 
             return RedirectToAction("Index", "BlogManager");
+        }
+
+        [ValidateAntiForgeryToken]
+        [HttpPost]
+        public ActionResult DeleteBlog(int id)
+        {
+            var blog = ctx.Blog.Find(id);
+
+            ctx.Blog.Remove(blog);
+            ctx.SaveChanges();
+
+            return RedirectToAction("Index");
         }
     }
 }

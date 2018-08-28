@@ -24,5 +24,7 @@ namespace ATAarhitektonskiStudio.DAL
         public DbSet<Contact> Contact { get; set; }
         public DbSet<Blog> Blog { get; set; }
         public DbSet<Global> Global { get; set; }
+        public DbSet<Project> Project { get; set; }
+        public DbSet<ProjectImages> ProjectImages { get; set; }
     }
 }
