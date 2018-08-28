@@ -1,0 +1,46 @@
+﻿
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@section styles{
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.theme.default.min.css" />
+}
+
+<div class="owl-carousel projects-carousel">
+    <div class="banner-project">
+        <img src="http://www.thepriorgroup.com/Themes/Responsive/images/sl1.jpg">
+        <div class="project-name text-uppercase">Project 1</div>
+    </div>
+    <div class="banner-project">
+        <img src="http://www.thepriorgroup.com/Themes/Responsive/images/sl2.jpg">
+        <div class="project-name text-uppercase">Project 2</div>
+    </div>
+    <div class="banner-project">
+        <img src="http://www.thepriorgroup.com/Themes/Responsive/images/sl3.jpg">
+        <div class="project-name text-uppercase">Project 3</div>
+    </div>
+</div>
+
+<div class="banner-text">
+    <h1>Mi smo <img src="~/Content/images/logo.png" /> arhitektonski studio</h1>
+    <h2>koji projektuje lijepe i logične zgrade</h2>
+    <p>
+        Naš pristup prioritira procese stvaranja, a ne određeni stil, kako bi razvili  arhitekturu prikladnu datom mjestu, ljudima/klijentu. Koristimo naše napore kako bi nastali objekti voljeni od strane
+        svojih vlasnika, jednostavni za korištenje, ekonomični za održavanje.
+    </p>
+</div>
+
+<div class="loader-container">
+    <div class="loader-content">
+        <img class="animate-flicker" src="~/Content/images/logo-white.png" />
+        <h1 id="loader-text" class="text-center text-uppercase text-white mt-3"><b>ATA</b> Arhitektonski studio</h1>
+    </div>
+</div>
+
+@section scripts{
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/typeit/5.10.6/typeit.min.js"></script>
+}

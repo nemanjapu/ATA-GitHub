@@ -1,0 +1,37 @@
+﻿@model IEnumerable<ATAarhitektonskiStudio.Models.Blog>
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
+}
+
+<h2>Svi blogovi</h2>
+
+<table id="Messages" class="table table-striped table-bordered" style="width:100%">
+    <thead>
+        <tr>
+            <th>Postavljeno</th>
+            <th>Naziv</th>
+            <th>Aktivan</th>
+            <th>Uredi</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var b in Model)
+        {
+            <tr>
+                <td>@b.DatePublished.ToString("dd/MM/yyyy HH:mm")</td>
+                <td>@b.Caption</td>
+                <td>@b.isActive</td>
+                <td><a class="table-anchor" href="@Url.Action("EditBlog", "BlogManager", new { @id = b.Id })">Uredi</a></td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+@section scripts{
+    <script>
+		$(document).ready(function () {
+			$('#Messages').DataTable();
+		});
+    </script>
+}

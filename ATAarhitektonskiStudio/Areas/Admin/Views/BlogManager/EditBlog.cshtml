@@ -1,0 +1,84 @@
+﻿@model ATAarhitektonskiStudio.Areas.Admin.Models.BlogFormViewModel
+@{
+    ViewBag.Title = "EditBlog";
+    Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
+}
+
+<h2>Uredi blog</h2>
+
+@using (Html.BeginForm("Save", "BlogManager", FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+    <div class="form-group">
+        <label for="Caption">Naslov:</label>
+        @Html.TextBoxFor(m => m.Caption, new { @class = "form-control" })
+        @Html.ValidationMessageFor(m => m.Caption)
+    </div>
+    <div class="checkbox icheck">
+        <label>
+            @Html.CheckBoxFor(m => m.Active, new { @class = "activeBlogCheeckbox" }) Active
+        </label>
+    </div>
+    <div class="form-group">
+        <label for="Text">Sadržaj:</label>
+        @Html.TextAreaFor(m => m.Text, new { @class = "form-control", id = "BlogText" })
+        @Html.ValidationMessageFor(m => m.Text)
+    </div>
+
+    <div class="form-group">
+        <label>Glavna slika:</label>
+        <div>
+            @Html.TextBoxFor(m => m.File, new { @class = "form-control inputfile", type = "file", id = "BlogImageInput", data_multiple_caption = "" })
+            <label class="image-input-label" for="BlogImageInput">
+                <figure>
+                    <img id="preview-image-blog" src="@Model.imageName" alt="Preview Image" />
+                </figure>
+                <span>Choose a file…</span>
+            </label>
+        </div>
+    </div>
+    @Html.HiddenFor(m => m.Id)
+    @Html.AntiForgeryToken()
+    <button type="submit" class="btn btn-success">Save</button>
+}
+
+@section scripts{
+    <script>
+		$(document).ready(function () {
+            $('#BlogText').summernote({
+				height: 300, minHeight: null,
+				onImageUpload: function (files, editor, welEditable) {
+					sendFile(files[0], editor, welEditable);
+				}
+			});
+			function sendFile(file, editor, welEditable) {
+				console.log(file);
+				var data = new FormData();
+				data.append("file", files[0]);
+				$.ajax({
+					data: data,
+					type: "POST",
+					url: "@Url.Action("UploadImage", "BlogManager", new { area = "Admin" })",
+					cache: false,
+					contentType: false,
+					processData: false,
+					success: function (url) {
+						editor.insertImage(welEditable, url);
+					}
+				});
+			}
+		});
+    </script>
+    <script>
+        document.getElementById("BlogImageInput").onchange = function () {
+            var reader = new FileReader();
+
+            reader.onload = function (e) {
+                // get loaded data and render thumbnail.
+                document.getElementById("preview-image-blog").src = e.target.result;
+            };
+
+            // read the image file as a data URL.
+            reader.readAsDataURL(this.files[0]);
+        };
+    </script>
+}
