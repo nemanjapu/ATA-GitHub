@@ -1,5 +1,75 @@
-﻿
+﻿@model ATAarhitektonskiStudio.ViewModels.ContactViewModel
 @{
     ViewBag.Title = "Index";
     Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<div class="container-fluid">
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-xl-6 pr-xl-0">
+                <div class="contact-info px-3">
+                    <div class="ci-content">
+                        <h1 class="mb-3">@RGlobal.ContactInfo</h1>
+                        <p><i class="far fa-envelope"></i> @Model.Email</p>
+                        <p><i class="fas fa-mobile-alt"></i> @Model.CellPhone</p>
+                        <p><i class="fas fa-phone"></i> @Model.OfficePhone</p>
+                        <p><i class="fas fa-fax"></i> @Model.Fax</p>
+                        <p class="mb-4"><i class="fas fa-map-pin"></i> @Model.Location</p>
+                        <div class="top-bar-items">
+                            @if (!string.IsNullOrEmpty(Model.FacebookLink))
+                            {
+                                <a class="social" target="_blank" href="@Model.FacebookLink">
+                                    <i class="fab fa-facebook-f"></i>
+                                </a>
+                            }
+                            @if (!string.IsNullOrEmpty(Model.TwitterLink))
+                            {
+                                <a class="social" target="_blank" href="@Model.TwitterLink">
+                                    <i class="fab fa-twitter"></i>
+                                </a>
+                            }
+                            @if (!string.IsNullOrEmpty(Model.InstagramLink))
+                            {
+                                <a class="social" target="_blank" href="@Model.InstagramLink">
+                                    <i class="fab fa-instagram"></i>
+                                </a>
+                            }
+                            @if (!string.IsNullOrEmpty(Model.YoutubeLink))
+                            {
+                                <a class="social" target="_blank" href="@Model.YoutubeLink">
+                                    <i class="fab fa-youtube"></i>
+                                </a>
+                            }
+                            @if (!string.IsNullOrEmpty(Model.PinterestLink))
+                            {
+                                <a class="social" target="_blank" href="@Model.PinterestLink">
+                                    <i class="fab fa-pinterest-p"></i>
+                                </a>
+                            }
+                            @if (!string.IsNullOrEmpty(Model.LinkedinLink))
+                            {
+                                <a class="social" target="_blank" href="@Model.LinkedinLink">
+                                    <i class="fab fa-linkedin"></i>
+                                </a>
+                            }
+                            @if (!string.IsNullOrEmpty(Model.GooglePlusLink))
+                            {
+                                <a class="social" target="_blank" href="@Model.GooglePlusLink">
+                                    <i class="fab fa-google-plus"></i>
+                                </a>
+                            }
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-xl-6 pl-xl-0">
+                <div id="map"></div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section scripts{
+    <script async defer src="http://maps.googleapis.com/maps/api/js?key=AIzaSyCZ9ITEowmHPfUzKt0uM8eMCJi4sqKVozs&callback=initMap"></script>
+    @Scripts.Render("~/bundles/contactScript")
 }

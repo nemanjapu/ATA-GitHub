@@ -70,6 +70,15 @@ namespace ATAarhitektonskiStudio.Content.Texts {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Kontakt informacije.
+        /// </summary>
+        public static string ContactInfo {
+            get {
+                return ResourceManager.GetString("ContactInfo", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Profil.
         /// </summary>
         public static string Profile {

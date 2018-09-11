@@ -8,48 +8,89 @@
           crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.0/animate.min.css" />
     @RenderSection("styles", required: false)
+    <link href="~/Content/bootstrap.min.css" rel="stylesheet" />
     @Styles.Render("~/Content/userCss")
-    @Scripts.Render("~/bundles/modernizr")
 </head>
 <body>
     <div class="container-fluid menu-container fixed-top">
         <div class="top-bar clearfix">
             <div class="top-bar-items float-right">
-                <a class="social" target="_blank" href="https://www.facebook.com/struixTeam/"><i class="fab fa-facebook-f"></i></a>
-                <a class="social" target="_blank" href="https://www.instagram.com/_struix_/"><i class="fab fa-instagram"></i></a>
-                <a class="social" target="_blank" href="https://twitter.com/NemanjaPu/"><i class="fab fa-twitter"></i></a>
-                <a href="" class="setLang" data-lang="bs"><img src="~/Content/images/bosnia-and-herzegovina.png"/></a>
-                <a href="" class="setLang" data-lang="en-US"><img src="~/Content/images/united-kingdom.png"/></a>
+                @if (!string.IsNullOrEmpty(ATAarhitektonskiStudio.Helpers.GlobalHelper.GetFacebook()))
+                {
+                    <a class="social" target="_blank" href="@ATAarhitektonskiStudio.Helpers.GlobalHelper.GetFacebook()">
+                        <i class="fab fa-facebook-f"></i>
+                    </a>
+                }
+                @if (!string.IsNullOrEmpty(ATAarhitektonskiStudio.Helpers.GlobalHelper.GetTwitter()))
+                {
+                    <a class="social" target="_blank" href="@ATAarhitektonskiStudio.Helpers.GlobalHelper.GetTwitter()">
+                        <i class="fab fa-twitter"></i>
+                    </a>
+                }
+                @if (!string.IsNullOrEmpty(ATAarhitektonskiStudio.Helpers.GlobalHelper.GetInstagram()))
+                {
+                    <a class="social" target="_blank" href="@ATAarhitektonskiStudio.Helpers.GlobalHelper.GetInstagram()">
+                        <i class="fab fa-instagram"></i>
+                    </a>
+                }
+                @if (!string.IsNullOrEmpty(ATAarhitektonskiStudio.Helpers.GlobalHelper.GetYoutube()))
+                {
+                    <a class="social" target="_blank" href="@ATAarhitektonskiStudio.Helpers.GlobalHelper.GetYoutube()">
+                        <i class="fab fa-youtube"></i>
+                    </a>
+                }
+                @if (!string.IsNullOrEmpty(ATAarhitektonskiStudio.Helpers.GlobalHelper.GetPinterest()))
+                {
+                    <a class="social" target="_blank" href="@ATAarhitektonskiStudio.Helpers.GlobalHelper.GetPinterest()">
+                        <i class="fab fa-pinterest-p"></i>
+                    </a>
+                }
+                @if (!string.IsNullOrEmpty(ATAarhitektonskiStudio.Helpers.GlobalHelper.GetLinkedin()))
+                {
+                    <a class="social" target="_blank" href="@ATAarhitektonskiStudio.Helpers.GlobalHelper.GetLinkedin()">
+                        <i class="fab fa-linkedin"></i>
+                    </a>
+                }
+                @if (!string.IsNullOrEmpty(ATAarhitektonskiStudio.Helpers.GlobalHelper.GetGooglePlus()))
+                {
+                    <a class="social" target="_blank" href="@ATAarhitektonskiStudio.Helpers.GlobalHelper.GetGooglePlus()">
+                        <i class="fab fa-google-plus"></i>
+                    </a>
+                }
+                <a href="" class="setLang" data-lang="bs"><img src="~/Content/images/bosnia-and-herzegovina.png" /></a>
+                <a href="" class="setLang" data-lang="en-US"><img src="~/Content/images/united-kingdom.png" /></a>
             </div>
         </div>
-        <nav class="navbar navbar-expand-lg">
-            <a class="navbar-brand" href="/">
-                <img src="~/Content/images/logo-black.png">
+        <nav class="navbar navbar-expand-md">
+            <a class="navbar-brand" href="@Url.Action("index", "home")">
+                <img src="~/Content/images/logo.png">
             </a>
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup"
-                    aria-expanded="false" aria-label="Toggle navigation">
+            <button class="navbar-toggler" type="button" aria-label="Toggle navigation" id="openMenu">
                 <span class="navbar-toggler-icon">
                     <i class="fas fa-bars"></i>
                 </span>
             </button>
             <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+                <button class="navbar-toggler" type="button" aria-label="Toggle navigation" id="closeMenu">
+                    <span class="navbar-toggler-icon">
+                        <i class="fas fa-times"></i>
+                    </span>
+                </button>
                 <ul class="navbar-nav ml-auto">
-                    <li class="nav-item dropdown">
+                    <li class="nav-item dropdown @(ViewContext.RouteData.Values["Controller"].ToString() == "Projects"  ? "active" : "")">
                         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true"
                            aria-expanded="false">
                             <i class="fas fa-plus mr-1"></i>@RGlobal.Projects
                         </a>
-                        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                            <a class="dropdown-item" href="#">jedan</a>
-                            <a class="dropdown-item" href="#">dva</a>
-                            <a class="dropdown-item" href="#">tri</a>
+                        <div class="dropdown-menu" aria-labelledby="navbarDropdown" id="projectsMenu">
+                            @*<a class="dropdown-item" href="#">jedan</a>*@
                         </div>
                     </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">@RGlobal.Profile</a>
+                    <li class="nav-item @(ViewContext.RouteData.Values["Controller"].ToString() == "Profile"  ? "active" : "")">
+                        <a class="nav-link" href="@Url.Action("index", "profile")">@RGlobal.Profile</a>
                     </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="@Url.HttpRouteUrl(this.Culture==GlobalHelper.DefaultCulture ? "Default" : "LocalizedDefault",new { lang=GlobalHelper.CurrentCulture, action="Index", controller="Contact"})">@RGlobal.Contact</a>
+                    <li class="nav-item @(ViewContext.RouteData.Values["Controller"].ToString() == "Contact"  ? "active" : "")">
+                        <a href="@Url.Action("index", "contact")" class="nav-link">@RGlobal.Contact</a>
                     </li>
                 </ul>
             </div>
@@ -59,7 +100,6 @@
         @RenderBody()
     </div>
     <div class="powered">Powered by <a target="_blank" href="https://www.instagram.com/_struix_/"><img src="~/Content/images/struix.png" alt="Struix" /></a></div>
-
 
     @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/bundles/bootstrap")
@@ -72,10 +112,66 @@
 
             $(".setLang").on("click", function (event) {
                 var lang = $(this).attr("data-lang");
-                MultiLanguageDemo.Cookies.setCookie("LangForMultiLanguageDemo", lang, 30);
+                MultiLanguageDemo.Cookies.setCookie("LangForMultiLanguageDemo", lang, 1);
                 location.reload(true);
             })
         });
     </script>
+    @{
+        string cc = GlobalHelper.CurrentCulture;
+    }
+    @if (cc != "en-US")
+    {
+        <script>
+            $(function () {
+                $(document).ready(function () {
+                    $.ajax({
+                        type: "GET",
+                        url: "/api/ProjectsApi",
+                        dataType: "json",
+                        success: function (data) {
+                            var textOutput = "";
+                            for (var i = 0; i < data.length; i++) {
+                                textOutput += '<a class="dropdown-item" ';
+                                textOutput += 'href="/projects/project/' + data[i].Id + '">';
+                                textOutput += data[i].Name + '</a>';
+                            }
+                            $('#projectsMenu').html(textOutput);
+                        },
+                        failure: function (errMsg) {
+                            alert(errMsg);
+                        }
+                    });
+                })
+            })
+        </script>
+    }
+    else
+    {
+        <script>
+            $(function () {
+                $(document).ready(function () {
+                    $.ajax({
+                        type: "GET",
+                        url: "/api/ProjectsApi",
+                        dataType: "json",
+                        success: function (data) {
+                            var textOutput = "";
+                            for (var i = 0; i < data.length; i++) {
+                                textOutput += '<a class="dropdown-item" ';
+                                textOutput += 'href="/projects/project/' + data[i].Id + '">';
+                                textOutput += data[i].NameEng + '</a>';
+                            }
+                            $('#projectsMenu').html(textOutput);
+                        },
+                        failure: function (errMsg) {
+                            alert(errMsg);
+                        }
+                    });
+                })
+            })
+        </script>
+    }
+
 </body>
 </html>

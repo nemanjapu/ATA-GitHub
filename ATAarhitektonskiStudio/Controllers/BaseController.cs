@@ -1,4 +1,5 @@
-﻿using ATAarhitektonskiStudio.DAL;
+﻿using ATAarhitektonskiStudio.App_code;
+using ATAarhitektonskiStudio.DAL;
 using ATAarhitektonskiStudio.Helpers;
 using System;
 using System.Collections.Generic;
@@ -17,9 +18,23 @@ namespace ATAarhitektonskiStudio.Controllers
             string cultureOnCookie = GetCultureOnCookie(filterContext.HttpContext.Request);
             string cultureOnURL = filterContext.RouteData.Values.ContainsKey("lang") ? filterContext.RouteData.Values["lang"].ToString() : GlobalHelper.DefaultCulture;
             string culture = (cultureOnCookie == string.Empty) ? (filterContext.RouteData.Values["lang"].ToString()) : cultureOnCookie;
+            var idExists = new object();
+            if(!filterContext.ActionParameters.ContainsKey("id"))
+            {
+                idExists = null;
+            }
+            else
+            {
+                idExists = filterContext.ActionParameters["id"];
+            }
             if (cultureOnURL != culture)
             {
-                filterContext.HttpContext.Response.RedirectToRoute("LocalizedDefault", new { lang = culture, controller = filterContext.RouteData.Values["controller"], action = filterContext.RouteData.Values["action"] });
+                filterContext.HttpContext.Response.RedirectToRoute("LocalizedDefault", new {
+                    lang = culture,
+                    controller = filterContext.RouteData.Values["controller"],
+                    action = filterContext.RouteData.Values["action"],
+                    id = idExists 
+                });
                 return;
             }
             SetCurrentCultureOnThread(culture);

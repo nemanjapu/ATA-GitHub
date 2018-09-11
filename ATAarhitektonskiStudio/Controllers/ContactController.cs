@@ -1,4 +1,5 @@
-﻿using System;
+﻿using ATAarhitektonskiStudio.ViewModels;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -11,7 +12,23 @@ namespace ATAarhitektonskiStudio.Controllers
         // GET: Contact
         public ActionResult Index()
         {
-            return View();
+            var model = ctx.Global.Select(g => new ContactViewModel()
+            {
+                CellPhone = g.CellPhone,
+                Email = g.Email,
+                FacebookLink = g.FacebookLink,
+                Fax = g.Fax,
+                GooglePlusLink = g.GooglePlusLink,
+                InstagramLink = g.InstagramLink,
+                LinkedinLink = g.LinkedinLink,
+                Location = g.Location,
+                OfficePhone = g.OfficePhone,
+                PinterestLink = g.PinterestLink,
+                TwitterLink = g.TwitterLink,
+                YoutubeLink = g.YoutubeLink
+            }).FirstOrDefault();
+
+            return View(model);
         }
     }
 }

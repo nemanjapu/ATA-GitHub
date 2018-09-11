@@ -8,6 +8,9 @@ namespace ATAarhitektonskiStudio
         // For more information on bundling, visit https://go.microsoft.com/fwlink/?LinkId=301862
         public static void RegisterBundles(BundleCollection bundles)
         {
+            bundles.Clear();
+            bundles.ResetAll();
+
             bundles.Add(new ScriptBundle("~/bundles/jquery").Include(
                         "~/Scripts/jquery-{version}.js",
                         "~/Scripts/jquery.unobtrusive-ajax.js"));
@@ -25,14 +28,23 @@ namespace ATAarhitektonskiStudio
                       "~/Scripts/bootstrap.js"));
 
             /*USER BUNDLES*/
-
+            bundles.Add(new StyleBundle("~/Content/bootstrapCss").Include(
+                      "~/Content/bootstrap.css"));
             bundles.Add(new StyleBundle("~/Content/userCss").Include(
-                      "~/Content/bootstrap.css",
                       "~/Content/style.css"));
 
             bundles.Add(new ScriptBundle("~/bundles/userScripts").Include(
-                       "~/Scripts/userScripts/homepage.js",
-                       "~/Content/Scripts/multiLanguajeDemo.js"));
+                       "~/Content/Scripts/multiLanguajeDemo.js",
+                       "~/Content/Scripts/globalJS.js"));
+
+            bundles.Add(new ScriptBundle("~/bundles/homeScript").Include(
+                      "~/Scripts/userScripts/homepage.js"));
+
+            bundles.Add(new ScriptBundle("~/bundles/contactScript").Include(
+                      "~/Content/Scripts/contact.js"));
+
+            bundles.Add(new ScriptBundle("~/bundles/projectScript").Include(
+                     "~/Content/Scripts/projects.js"));
 
             /*ADMIN BUNDLES*/
 
@@ -57,6 +69,8 @@ namespace ATAarhitektonskiStudio
                         "~/Scripts/summernote/summernote.js",
                         "~/Scripts/summernote/summernote-ext-specialchars.js",
                         "~/Scripts/jquery-ui-1.12.1.js"));
+
+            BundleTable.EnableOptimizations = true;
         }
     }
 }

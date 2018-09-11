@@ -1,0 +1,152 @@
+﻿@model ATAarhitektonskiStudio.Areas.Admin.Models.AddProjectViewModel
+@{
+    ViewBag.Title = "Novi projekat";
+    Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
+}
+
+<div class="container-fluid">
+    <h2>Dodaj novi projekat</h2>
+
+    @Html.ValidationSummary()
+
+    @using (Html.BeginForm("SaveNewProject", "ProjectsManager", FormMethod.Post, new { enctype = "multipart/form-data" }))
+    {
+        <div class="row">
+            <div class="col-sm-4">
+                <div class="form-group">
+                    <label>Naziv projekta:</label>
+                    @Html.TextBoxFor(m => m.Name, new { @class = "form-control" })
+                    @Html.ValidationMessageFor(m => m.Name)
+                </div>
+                <div class="form-group">
+                    <label>Lokacija:</label>
+                    @Html.TextBoxFor(m => m.Location, new { @class = "form-control" })
+                    @Html.ValidationMessageFor(m => m.Location)
+                </div>
+                <div class="form-group">
+                    <label>Kvadratura:</label>
+                    @Html.TextBoxFor(m => m.SquareMeters, new { @class = "form-control" })
+                    @Html.ValidationMessageFor(m => m.SquareMeters)
+                </div>
+                <div class="form-group">
+                    <label>Godina izgradnje:</label>
+                    @Html.TextBoxFor(m => m.YearBuilt, new { @class = "form-control" })
+                    @Html.ValidationMessageFor(m => m.YearBuilt)
+                </div>
+                <div class="form-group">
+                    <label>Investitor:</label>
+                    @Html.TextBoxFor(m => m.Investor, new { @class = "form-control" })
+                    @Html.ValidationMessageFor(m => m.Investor)
+                </div>
+                <div class="form-group">
+                    <label>Tip:</label>
+                    @Html.TextBoxFor(m => m.Type, new { @class = "form-control" })
+                    @Html.ValidationMessageFor(m => m.Type)
+                </div>
+                <div class="form-group">
+                    <label>Tekst:</label>
+                    @Html.TextAreaFor(m => m.Text, new { @class = "form-control" })
+                    @Html.ValidationMessageFor(m => m.Text)
+                </div>
+            </div>
+            <div class="col-sm-4">
+                <div class="form-group">
+                    <label>Naziv projekta (eng):</label>
+                    @Html.TextBoxFor(m => m.NameEng, new { @class = "form-control" })
+                    @Html.ValidationMessageFor(m => m.NameEng)
+                </div>
+                <div class="form-group">
+                    <label>Lokacija (eng):</label>
+                    @Html.TextBoxFor(m => m.LocationEng, new { @class = "form-control" })
+                    @Html.ValidationMessageFor(m => m.LocationEng)
+                </div>
+                <div class="form-group">
+                    <label>Kvadratura (eng):</label>
+                    @Html.TextBoxFor(m => m.SquareMetersEng, new { @class = "form-control" })
+                    @Html.ValidationMessageFor(m => m.SquareMetersEng)
+                </div>
+                <div class="form-group">
+                    <label>Godina izgradnje (eng):</label>
+                    @Html.TextBoxFor(m => m.YearBuiltEng, new { @class = "form-control" })
+                    @Html.ValidationMessageFor(m => m.YearBuiltEng)
+                </div>
+                <div class="form-group">
+                    <label>Investitor (eng):</label>
+                    @Html.TextBoxFor(m => m.InvestorEng, new { @class = "form-control" })
+                    @Html.ValidationMessageFor(m => m.InvestorEng)
+                </div>
+                <div class="form-group">
+                    <label>Tip (eng):</label>
+                    @Html.TextBoxFor(m => m.TypeEng, new { @class = "form-control" })
+                    @Html.ValidationMessageFor(m => m.TypeEng)
+                </div>
+                <div class="form-group">
+                    <label>Tekst (eng):</label>
+                    @Html.TextAreaFor(m => m.TextEng, new { @class = "form-control" })
+                    @Html.ValidationMessageFor(m => m.TextEng)
+                </div>
+            </div>
+            <div class="col-sm-4">
+                <div class="form-group">
+                    <label>Youtube video link:</label>
+                    @Html.TextBoxFor(m => m.YoutubeVideoLink, new { @class = "form-control" })
+                    @Html.ValidationMessageFor(m => m.YoutubeVideoLink)
+                </div>
+                <div class="form-group">
+                    <label style="color: transparent">Aktivan:</label>
+                    <div class="inputGroup">
+                        @Html.CheckBoxFor(m => m.isActive)
+                        <label for="isActive">Prikaži na stranici</label>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label>Slike:</label>
+                    <input style="padding: 3px;" class="form-control required" type="file" name="file" multiple="multiple" accept="image/*" id="images" required>
+                </div>
+            </div>
+        </div>
+
+        @Html.AntiForgeryToken()
+        <input type="submit" class="btn btn-block btn-primary" value="Spasi" />
+    }
+</div>
+
+@section scripts{
+    @Scripts.Render("~/bundles/jqueryval")
+    <script>
+        $("#images").validate({
+            required: true
+        });
+    </script>
+
+    <script>
+        $('#Text').summernote({
+            height: 350,
+            toolbar: [
+                // [groupName, [list of button]]
+                ['style', ['bold', 'italic', 'underline', 'clear']],
+                //['font', ['strikethrough', 'superscript', 'subscript']],
+                ['fontsize', ['fontsize']],
+                ['color', ['color']],
+                ['para', ['ul', 'ol', 'paragraph']],
+                ['height', ['height']],
+                ['undo', ['undo']],
+                ['redo', ['redo']]
+            ],
+        });
+        $('#TextEng').summernote({
+            height: 350,
+            toolbar: [
+                // [groupName, [list of button]]
+                ['style', ['bold', 'italic', 'underline', 'clear']],
+                //['font', ['strikethrough', 'superscript', 'subscript']],
+                ['fontsize', ['fontsize']],
+                ['color', ['color']],
+                ['para', ['ul', 'ol', 'paragraph']],
+                ['height', ['height']],
+                ['undo', ['undo']],
+                ['redo', ['redo']]
+            ],
+        });
+    </script>
+}

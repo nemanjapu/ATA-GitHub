@@ -20,7 +20,6 @@ namespace ATAarhitektonskiStudio.Areas.Admin.Controllers
 
             return View(model);
         }
-
         [HttpPost]
         public string UploadImage(HttpPostedFileBase file)
         {

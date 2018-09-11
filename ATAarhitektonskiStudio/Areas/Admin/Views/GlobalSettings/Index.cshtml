@@ -1,0 +1,163 @@
+﻿@model ATAarhitektonskiStudio.Areas.Admin.Models.GlobalSettingsViewModel
+@{
+    ViewBag.Title = "Globalne postavke";
+    Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
+}
+
+@using (Html.BeginForm("SaveSettings", "GlobalSettings", FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+    @Html.ValidationSummary()
+    <div class="row">
+        <div class="col-sm-6">
+            @Html.HiddenFor(m => m.Id)
+            <div class="form-group">
+                <label>E-mail adresa:</label>
+                @Html.TextBoxFor(m => m.Email, new { @class = "form-control" })
+                @Html.ValidationMessageFor(m => m.Email)
+            </div>
+            <div class="form-group">
+                <label>Broj mobilnog telefona:</label>
+                @Html.TextBoxFor(m => m.CellPhone, new { @class = "form-control" })
+                @Html.ValidationMessageFor(m => m.CellPhone)
+            </div>
+            <div class="form-group">
+                <label>Broj telefona u kancelariji:</label>
+                @Html.TextBoxFor(m => m.OfficePhone, new { @class = "form-control" })
+                @Html.ValidationMessageFor(m => m.OfficePhone)
+            </div>
+            <div class="form-group">
+                <label>Fax:</label>
+                @Html.TextBoxFor(m => m.Fax, new { @class = "form-control" })
+                @Html.ValidationMessageFor(m => m.Fax)
+            </div>
+            <div class="form-group">
+                <label>Adresa:</label>
+                @Html.TextBoxFor(m => m.Location, new { @class = "form-control" })
+                @Html.ValidationMessageFor(m => m.Location)
+            </div>
+        </div>
+        <div class="col-sm-6">
+            <div class="form-group">
+                <label>Facebook link:</label>
+                @Html.TextBoxFor(m => m.FacebookLink, new { @class = "form-control" })
+                @Html.ValidationMessageFor(m => m.FacebookLink)
+            </div>
+            <div class="form-group">
+                <label>Instagram link:</label>
+                @Html.TextBoxFor(m => m.InstagramLink, new { @class = "form-control" })
+                @Html.ValidationMessageFor(m => m.InstagramLink)
+            </div>
+            <div class="form-group">
+                <label>Twitter link:</label>
+                @Html.TextBoxFor(m => m.TwitterLink, new { @class = "form-control" })
+                @Html.ValidationMessageFor(m => m.TwitterLink)
+            </div>
+            <div class="form-group">
+                <label>Pinterest link:</label>
+                @Html.TextBoxFor(m => m.PinterestLink, new { @class = "form-control" })
+                @Html.ValidationMessageFor(m => m.PinterestLink)
+            </div>
+            <div class="form-group">
+                <label>Google plus link:</label>
+                @Html.TextBoxFor(m => m.GooglePlusLink, new { @class = "form-control" })
+                @Html.ValidationMessageFor(m => m.GooglePlusLink)
+            </div>
+            <div class="form-group">
+                <label>Linkedin link:</label>
+                @Html.TextBoxFor(m => m.LinkedinLink, new { @class = "form-control" })
+                @Html.ValidationMessageFor(m => m.LinkedinLink)
+            </div>
+            <div class="form-group">
+                <label>Youtube link:</label>
+                @Html.TextBoxFor(m => m.YoutubeLink, new { @class = "form-control" })
+                @Html.ValidationMessageFor(m => m.YoutubeLink)
+            </div>
+        </div>
+        <div class="col-12">
+            <div class="row">
+                <div class="col-xl-6">
+                    <div class="form-group">
+                        <label>O firmi:</label>
+                        @Html.TextAreaFor(m => m.About, new { @class = "form-control" })
+                        @Html.ValidationMessageFor(m => m.About)
+                    </div>
+                </div>
+                <div class="col-xl-6">
+                    <div class="form-group">
+                        <label>O firmi engleski:</label>
+                        @Html.TextAreaFor(m => m.AboutEng, new { @class = "form-control" })
+                        @Html.ValidationMessageFor(m => m.AboutEng)
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    @Html.AntiForgeryToken()
+    <button type="submit" class="btn btn-primary btn-block">Spasi</button>
+}
+
+@section scripts{
+    <script>
+        $(document).ready(function () {
+            $("#About").summernote({
+                height: 600,
+                minHeight: null,
+                callbacks: {
+                    onImageUpload: function (files, editor, welEditable) {
+
+                        for (var i = files.length - 1; i >= 0; i--) {
+                            sendFile(files[i], this);
+                        }
+                    }
+                }
+            });
+        });
+        function sendFile(file, el) {
+            var form_data = new FormData();
+            form_data.append('file', file);
+            $.ajax({
+                data: form_data,
+                type: "POST",
+                url: '@Url.Action("UploadImage", "GlobalSettings", new { area = "Admin" })',
+                cache: false,
+                contentType: false,
+                processData: false,
+                success: function (url) {
+                    $(el).summernote('editor.insertImage', url);
+                }
+            });
+        }
+    </script>
+    <script>
+        $(document).ready(function () {
+            $("#AboutEng").summernote({
+                height: 600,
+                minHeight: null,
+                callbacks: {
+                    onImageUpload: function (files, editor, welEditable) {
+
+                        for (var i = files.length - 1; i >= 0; i--) {
+                            sendFile(files[i], this);
+                        }
+                    }
+                }
+            });
+        });
+        function sendFile(file, el) {
+            var form_data = new FormData();
+            form_data.append('file', file);
+            $.ajax({
+                data: form_data,
+                type: "POST",
+                url: '@Url.Action("UploadImage", "GlobalSettings", new { area = "Admin" })',
+                cache: false,
+                contentType: false,
+                processData: false,
+                success: function (url) {
+                    $(el).summernote('editor.insertImage', url);
+                }
+            });
+        }
+    </script>
+}

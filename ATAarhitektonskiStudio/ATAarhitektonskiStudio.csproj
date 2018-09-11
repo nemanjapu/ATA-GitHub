@@ -87,8 +87,8 @@
     <Reference Include="System.Net.Http.Extensions, Version=2.2.29.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
       <HintPath>..\packages\System.Net.Http.Formatting.Extension.5.2.3.0\lib\System.Net.Http.Extensions.dll</HintPath>
     </Reference>
-    <Reference Include="System.Net.Http.Formatting, Version=5.2.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <HintPath>..\packages\System.Net.Http.Formatting.Extension.5.2.3.0\lib\System.Net.Http.Formatting.dll</HintPath>
+    <Reference Include="System.Net.Http.Formatting, Version=5.2.6.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.Client.5.2.6\lib\net45\System.Net.Http.Formatting.dll</HintPath>
     </Reference>
     <Reference Include="System.Net.Http.Primitives, Version=4.2.29.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
       <HintPath>..\packages\System.Net.Http.Formatting.Extension.5.2.3.0\lib\System.Net.Http.Primitives.dll</HintPath>
@@ -103,6 +103,12 @@
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
     <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Web.Http, Version=5.2.6.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.Core.5.2.6\lib\net45\System.Web.Http.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Http.WebHost, Version=5.2.6.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.WebHost.5.2.6\lib\net45\System.Web.Http.WebHost.dll</HintPath>
+    </Reference>
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Web" />
     <Reference Include="System.Web.Extensions" />
@@ -188,15 +194,21 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="App_code\test.cs" />
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Areas\Admin\AdminAreaRegistration.cs" />
     <Compile Include="Areas\Admin\Controllers\BaseAdminController.cs" />
     <Compile Include="Areas\Admin\Controllers\BlogManagerController.cs" />
     <Compile Include="Areas\Admin\Controllers\DashboardController.cs" />
+    <Compile Include="Areas\Admin\Controllers\GlobalSettingsController.cs" />
     <Compile Include="Areas\Admin\Controllers\ProjectsManagerController.cs" />
+    <Compile Include="Areas\Admin\Models\AddProjectViewModel.cs" />
     <Compile Include="Areas\Admin\Models\BlogFormViewModel.cs" />
+    <Compile Include="Areas\Admin\Models\EditProjectViewModel.cs" />
+    <Compile Include="Areas\Admin\Models\GlobalSettingsViewModel.cs" />
     <Compile Include="Content\Texts\RGlobal.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -207,7 +219,10 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>RGlobal.en-US.resx</DependentUpon>
     </Compile>
+    <Compile Include="Controllers\API\ProjectsApiController.cs" />
     <Compile Include="Controllers\ContactController.cs" />
+    <Compile Include="Controllers\ProfileController.cs" />
+    <Compile Include="Controllers\ProjectsController.cs" />
     <Compile Include="Helpers\Authentication.cs" />
     <Compile Include="Controllers\LoginController.cs" />
     <Compile Include="Extensions\UrlHelperExtensions.cs" />
@@ -233,6 +248,22 @@
     <Compile Include="Migrations\201808281951127_ProjectsAdd.Designer.cs">
       <DependentUpon>201808281951127_ProjectsAdd.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201808301330399_engFieldsAdd.cs" />
+    <Compile Include="Migrations\201808301330399_engFieldsAdd.Designer.cs">
+      <DependentUpon>201808301330399_engFieldsAdd.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201809022233537_GlobalUpdate.cs" />
+    <Compile Include="Migrations\201809022233537_GlobalUpdate.Designer.cs">
+      <DependentUpon>201809022233537_GlobalUpdate.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201809081845154_aboutEng.cs" />
+    <Compile Include="Migrations\201809081845154_aboutEng.Designer.cs">
+      <DependentUpon>201809081845154_aboutEng.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201809092041074_projectUpdate.cs" />
+    <Compile Include="Migrations\201809092041074_projectUpdate.Designer.cs">
+      <DependentUpon>201809092041074_projectUpdate.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Blog.cs" />
     <Compile Include="Models\Contact.cs" />
@@ -241,7 +272,12 @@
     <Compile Include="Models\ProjectImages.cs" />
     <Compile Include="Models\User.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ViewModels\ContactViewModel.cs" />
+    <Compile Include="ViewModels\HomepageViewModel.cs" />
     <Compile Include="ViewModels\LoginViewModel.cs" />
+    <Compile Include="ViewModels\ProfileViewModel.cs" />
+    <Compile Include="ViewModels\ProjectListMenuViewModel.cs" />
+    <Compile Include="ViewModels\ProjectViewModel.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Areas\Admin\Content\css\bootstrap-checkbox.css" />
@@ -283,15 +319,20 @@
     <Content Include="Content\font-awesome.css" />
     <Content Include="Content\font-awesome.min.css" />
     <Content Include="Content\images\bosnia-and-herzegovina.png" />
+    <Content Include="Content\images\close-icon.png" />
     <Content Include="Content\images\login-bg.jpg" />
     <Content Include="Content\images\logo-black.png" />
     <Content Include="Content\images\logo-white.png" />
     <Content Include="Content\images\logo.png" />
     <Content Include="Content\images\logo2.png" />
+    <Content Include="Content\images\marker.png" />
     <Content Include="Content\images\struix.png" />
     <Content Include="Content\images\united-kingdom.png" />
     <Content Include="Content\images\upload-icon.png" />
     <Content Include="Content\PagedList.css" />
+    <Content Include="Content\Scripts\contact.js" />
+    <Content Include="Content\Scripts\globalJS.js" />
+    <Content Include="Content\Scripts\projects.js" />
     <Content Include="Content\style.css" />
     <Content Include="Content\themes\base\accordion.css" />
     <Content Include="Content\themes\base\all.css" />
@@ -381,6 +422,10 @@
     <Content Include="Areas\Admin\Views\BlogManager\AddBlog.cshtml" />
     <Content Include="Areas\Admin\Views\BlogManager\EditBlog.cshtml" />
     <Content Include="Areas\Admin\Views\ProjectsManager\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\ProjectsManager\NewProject.cshtml" />
+    <Content Include="Areas\Admin\Views\ProjectsManager\EditProject.cshtml" />
+    <Content Include="Areas\Admin\Views\GlobalSettings\Index.cshtml" />
+    <None Include="Properties\PublishProfiles\CustomProfile.pubxml" />
     <None Include="Scripts\jquery-3.3.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.3.1.js" />
     <Content Include="Scripts\jquery-3.3.1.min.js" />
@@ -437,12 +482,17 @@
     <Content Include="Views\Home\en-US\Index.cshtml" />
     <Content Include="Views\Login\Index.cshtml" />
     <Content Include="Views\Contact\Index.cshtml" />
+    <Content Include="Views\Shared\ProjectsListMenu.cshtml" />
+    <Content Include="Views\Projects\Project.cshtml" />
+    <Content Include="Views\Projects\en-US\Project.cshtml" />
+    <Content Include="Views\Profile\Index.cshtml" />
+    <Content Include="Views\Profile\en-US\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Areas\Admin\Views\BaseAdmin\" />
+    <Folder Include="DynamicContent\AboutImages\" />
     <Folder Include="DynamicContent\BlogImages\" />
-    <Folder Include="Views\Base\" />
+    <Folder Include="DynamicContent\ProjectImages\" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
@@ -472,6 +522,18 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201808281951127_ProjectsAdd.resx">
       <DependentUpon>201808281951127_ProjectsAdd.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201808301330399_engFieldsAdd.resx">
+      <DependentUpon>201808301330399_engFieldsAdd.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201809022233537_GlobalUpdate.resx">
+      <DependentUpon>201809022233537_GlobalUpdate.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201809081845154_aboutEng.resx">
+      <DependentUpon>201809081845154_aboutEng.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201809092041074_projectUpdate.resx">
+      <DependentUpon>201809092041074_projectUpdate.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

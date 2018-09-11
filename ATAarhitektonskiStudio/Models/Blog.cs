@@ -10,11 +10,10 @@ namespace ATAarhitektonskiStudio.Models
     public class Blog
     {
         public int Id { get; set; }
-        [Required]
         public string Caption { get; set; }
-        [Required]
-        [AllowHtml]
+        public string CaptionEng { get; set; }
         public string Text { get; set; }
+        public string TextEng { get; set; }
         public DateTime DatePublished { get; set; }
         public string ImageName { get; set; }
         public string ImagePath { get; set; }
