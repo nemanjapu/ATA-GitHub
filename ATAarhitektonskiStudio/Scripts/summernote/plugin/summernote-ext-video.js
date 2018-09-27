@@ -262,7 +262,7 @@
 
     // define language
     langs: {
-      'en-US': {
+      'en': {
         video: {
           video: 'Video',
           videoLink: 'Video Link',

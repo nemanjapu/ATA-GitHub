@@ -13,13 +13,13 @@ namespace ATAarhitektonskiStudio
         {
             routes.IgnoreRoute("{resource}.axd/{*pathInfo}");
 
-            //routes.LowercaseUrls = true;
+            routes.LowercaseUrls = true;
 
             routes.MapRoute(
                 name: "LocalizedDefault",
                 url: "{lang}/{controller}/{action}/{id}",
                 defaults: new { controller = "Home", action = "Index", id = UrlParameter.Optional },
-                constraints: new { lang = "en-US|bs" }
+                constraints: new { lang = "en|bs" }
             );
 
             routes.MapRoute(

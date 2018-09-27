@@ -1,9 +1,5 @@
 ﻿@model ATAarhitektonskiStudio.ViewModels.HomepageViewModel
 @using ATAarhitektonskiStudio.ViewModels
-@{
-    ViewBag.Title = "Index";
-    Layout = "~/Views/Shared/_Layout.cshtml";
-}
 
 @section styles{
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css" />
@@ -21,26 +17,41 @@
 <div class="owl-carousel projects-carousel">
     @foreach (var item in Model.hpProjects)
     {
-        <div class="banner-project">
-            <img src="~/@item.PreviewImage.FilePath/@item.PreviewImage.FileName">
+    <div class="banner-project">
+        <img src="~/@item.PreviewImage.FilePath/@item.PreviewImage.FileName">
+        @if (GlobalHelper.CurrentCulture == "en")
+        {
+            <div class="project-name text-uppercase">@item.NameEng</div>
+        }
+        else
+        {
             <div class="project-name text-uppercase">@item.Name</div>
-        </div>
+        }
+    </div>
     }
 </div>
 
-<div class="banner-text">
-    <h1>Mi smo <img src="~/Content/images/logo.png" /> arhitektonski studio</h1>
-    <h2>koji projektuje lijepe i logične zgrade</h2>
-    <p>
-        Naš pristup prioritira procese stvaranja, a ne određeni stil, kako bi razvili  arhitekturu prikladnu datom mjestu, ljudima/klijentu. Koristimo naše napore kako bi nastali objekti voljeni od strane
-        svojih vlasnika, jednostavni za korištenje, ekonomični za održavanje.
-    </p>
-</div>
+@if (GlobalHelper.CurrentCulture == "en")
+{
+    <div class="banner-text">
+        <h1>@Html.Raw(Model.Heading1Eng)</h1>
+        <h2>@Html.Raw(Model.Heading2Eng)</h2>
+        <div class="writup">@Html.Raw(Model.TextEng)</div>
+    </div>
+}
+else
+{
+    <div class="banner-text">
+        <h1>@Html.Raw(Model.Heading1)</h1>
+        <h2>@Html.Raw(Model.Heading2)</h2>
+        <div class="writup">@Html.Raw(Model.Text)</div>
+    </div>
+}
 
 <div class="loader-container">
     <div class="loader-content">
         <img class="animate-flicker" src="~/Content/images/logo-white.png" />
-        <h1 id="loader-text" class="text-center text-uppercase text-white mt-3"><b>ATA</b> Arhitektonski studio</h1>
+        <h1 id="loader-text" class="text-center text-uppercase text-white mt-3"><b>ATA</b> @RGlobal.ArchitecturalStudio</h1>
     </div>
 </div>
 

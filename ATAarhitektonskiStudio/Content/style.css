@@ -59,10 +59,13 @@ buton, button:hover, button:focus, button:active {
 
     .loader-container img {
         display: inline-block;
-        margin-left: 30px;
         padding-top: 20px;
         width: 80%;
     }
+
+.loader-content h1 {
+    font-size: 40px;
+}
 
 @keyframes flickerAnimation {
     0% {
@@ -156,20 +159,20 @@ buton, button:hover, button:focus, button:active {
     position: relative;
 }
 
-.navbar-nav .nav-item{
+.navbar-nav .nav-item {
     position: relative;
 }
 
-.navbar-nav .nav-item:after {
-    content: '';
-    position: absolute;
-    height: 1px;
-    background: #010101;
-    right: 100%;
-    left: 7px;
-    bottom: 6px;
-    transition: .3s ease-in-out;
-}
+    .navbar-nav .nav-item:after {
+        content: '';
+        position: absolute;
+        height: 1px;
+        background: #010101;
+        right: 100%;
+        left: 7px;
+        bottom: 6px;
+        transition: .3s ease-in-out;
+    }
 
     .navbar-nav .nav-item.active:after {
         content: '';
@@ -182,7 +185,7 @@ buton, button:hover, button:focus, button:active {
         transition: .3s ease-in-out;
     }
 
-    .navbar-nav .nav-item.dropdown:after{
+    .navbar-nav .nav-item.dropdown:after {
         left: 22px;
     }
 
@@ -191,9 +194,9 @@ buton, button:hover, button:focus, button:active {
         transition: .3s ease-in-out;
     }
 
-    .navbar-nav .nav-item {
-        margin-left: 20px;
-    }
+.navbar-nav .nav-item {
+    margin-left: 20px;
+}
 
     .navbar-nav .nav-item i {
         font-size: 12px;
@@ -337,21 +340,27 @@ buton, button:hover, button:focus, button:active {
         width: 170px;
     }
 
-    .banner-text h1 {
-        font-family: 'futura bold';
-        font-size: 50px;
+    .banner-text h1,
+    .banner-text h1 span,
+    .banner-text h1 p {
+        font-family: 'futura bold' !important;
+        font-size: 50px !important;
         text-shadow: 2px 2px 2px #3e3838;
     }
 
-    .banner-text h2 {
-        font-family: 'futura bold';
-        font-size: 40px;
+    .banner-text h2,
+    .banner-text h2 span,
+    .banner-text h2 p {
+        font-family: 'futura bold' !important;
+        font-size: 40px !important;
         text-shadow: 2px 2px 2px #3e3838;
     }
 
-    .banner-text p {
+    .banner-text .writup,
+    .banner-text .writup p,
+    .banner-text .writup span {
         max-width: 600px;
-        font-size: 20px;
+        font-size: 20px !important;
     }
 
 .top-bar {
@@ -407,8 +416,16 @@ buton, button:hover, button:focus, button:active {
         display: none;
     }
 
-    .banner-text h2 {
-        font-size: 35px;
+    .banner-text h2,
+    .banner-text h2 span,
+    .banner-text h2 p {
+        font-size: 35px !important;
+    }
+
+    .banner-text h1, 
+    .banner-text h1 span, 
+    .banner-text h1 p {
+        font-size: 40px !important;
     }
 
     .navbar-brand {
@@ -417,6 +434,10 @@ buton, button:hover, button:focus, button:active {
 }
 
 @media (max-width: 40em) {
+    .loader-content h1 {
+        font-size: 20px;
+    }
+
     .menu-container {
         padding: 0;
     }
@@ -447,16 +468,24 @@ buton, button:hover, button:focus, button:active {
         transform: none;
     }
 
-        .banner-text h1 {
-            font-size: 28px;
+        .banner-text h1,
+        .banner-text h1 span,
+        .banner-text h1 p {
+            font-size: 30px !important;
+            text-shadow: 1px 1px 3px #3e3838;
         }
 
-        .banner-text h2 {
-            font-size: 18px;
+        .banner-text h2,
+        .banner-text h2 span,
+        .banner-text h2 p {
+            font-size: 18px !important;
+            text-shadow: 1px 1px 3px #3e3838;
         }
 
-        .banner-text p {
-            font-size: 17px;
+        .banner-text .writup,
+        .banner-text .writup p,
+        .banner-text .writup span {
+            font-size: 17px !important;
             max-width: unset;
             margin-bottom: 0;
         }
@@ -481,14 +510,14 @@ buton, button:hover, button:focus, button:active {
     }
 }
 
-    .project-img > img {
-        object-fit: cover;
-    }
+.project-img > img {
+    object-fit: cover;
+}
 
-    .project-img .project-text, .project-img .project-text span, .project-img .project-text p {
-        font-family: 'futura' !important;
-        font-size: 2vh !important;
-    }
+.project-img .project-text, .project-img .project-text span, .project-img .project-text p {
+    font-family: 'futura' !important;
+    font-size: 2vh !important;
+}
 
 .project-imgs-carousel.owl-carousel .owl-nav {
     opacity: 0;
@@ -550,7 +579,8 @@ buton, button:hover, button:focus, button:active {
     .project-img {
         width: 90vh;
     }
-    #mobileProjectText{
+
+    #mobileProjectText {
         display: none;
     }
 }
@@ -560,7 +590,7 @@ buton, button:hover, button:focus, button:active {
     transform: translateY(-50%);
 }
 
-@media(max-width:1199px){
+@media(max-width:1199px) {
     .lb-data .lb-close {
         right: 10px;
     }
@@ -583,16 +613,16 @@ buton, button:hover, button:focus, button:active {
     position: relative;
 }
 
-.ci-content p{
+.ci-content p {
     font-size: 18px;
 }
 
-    .ci-content .top-bar-items .social {
-        width: 40px;
-        height: 40px;
-        line-height: 41px;
-        font-size: 20px;
-    }
+.ci-content .top-bar-items .social {
+    width: 40px;
+    height: 40px;
+    line-height: 41px;
+    font-size: 20px;
+}
 
 #map {
     width: 100%;
@@ -604,13 +634,14 @@ buton, button:hover, button:focus, button:active {
 }
 
 @media(min-width:1200px) {
-    #map{
+    #map {
         position: absolute !important;
         height: 100%;
         width: auto;
         left: 0;
         right: 15px;
     }
+
     .ci-content {
         position: absolute;
         top: 50%;
@@ -620,28 +651,30 @@ buton, button:hover, button:focus, button:active {
     }
 }
 
-#closeMenu{
+#closeMenu {
     display: none;
 }
 
 @media(max-width:1200px) {
-    .ci-content{
+    .ci-content {
         padding: 20px;
     }
 }
 
-@media (max-width: 768px){
+@media (max-width: 768px) {
     .navbar-nav .nav-item.active:after,
     .navbar-nav .nav-item:hover:after,
     .dropdown-menu:before {
         display: none;
     }
-    .navbar-nav .dropdown-menu{
+
+    .navbar-nav .dropdown-menu {
         width: 100%;
         left: 0;
         transform: none;
         text-align: center;
     }
+
     .navbar-collapse {
         background: rgb(1, 1, 1);
         position: fixed;
@@ -653,27 +686,33 @@ buton, button:hover, button:focus, button:active {
         transition: .3s ease-in-out;
         overflow-y: auto;
     }
+
     .navbar-nav .nav-item {
         margin-left: 0;
         border-bottom: 1px solid #585252;
     }
+
     .navbar-nav .nav-link {
         width: 100%;
         color: #ffffff;
         font-size: 25px;
     }
-    .collapse:not(.show){
+
+    .collapse:not(.show) {
         display: block;
     }
+
     #closeMenu {
         display: block;
         color: #fff;
         padding: 15px;
     }
-    .navbar-nav .nav-item:last-child{
+
+    .navbar-nav .nav-item:last-child {
         border-bottom: none;
     }
-    .navbar-nav .dropdown-menu .dropdown-item{
+
+    .navbar-nav .dropdown-menu .dropdown-item {
         border-bottom: none !important;
     }
 }
@@ -682,23 +721,26 @@ buton, button:hover, button:focus, button:active {
     .project-imgs-carousel.owl-carousel .owl-item:first-child {
         display: none;
     }
+
     #video {
         padding-bottom: 56.2%;
         height: 0;
         position: relative;
         overflow: hidden;
     }
-    #video > iframe{
-        position: absolute;
-        width: 100%;
-        height: 100%;
-    }
-    .project-imgs-carousel.owl-carousel .owl-nav{
+
+        #video > iframe {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+        }
+
+    .project-imgs-carousel.owl-carousel .owl-nav {
         opacity: 1;
     }
 }
 
-@media(max-width: 768px){
+@media(max-width: 768px) {
     .project-imgs-carousel.owl-carousel .owl-nav {
         top: auto;
         position: relative;

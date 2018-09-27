@@ -22,7 +22,13 @@ namespace ATAarhitektonskiStudio.Controllers
                     isActive = p.isActive,
                     Name = p.Name,
                     NameEng = p.NameEng
-                }).ToList()
+                }).ToList(),
+                Heading1 = ctx.Global.FirstOrDefault().Heading1Homepage,
+                Heading1Eng = ctx.Global.FirstOrDefault().Heading1HomepageEng,
+                Heading2 = ctx.Global.FirstOrDefault().Heading2Homepage,
+                Heading2Eng = ctx.Global.FirstOrDefault().Heading2HomepageEng,
+                Text = ctx.Global.FirstOrDefault().WritingHomepage,
+                TextEng = ctx.Global.FirstOrDefault().WritingHomepageEng
             };
 
             return View(model);

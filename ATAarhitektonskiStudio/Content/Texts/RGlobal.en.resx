@@ -118,18 +118,18 @@
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="ArchitecturalStudio" xml:space="preserve">
-    <value>Arhitektonski studio</value>
+    <value>Architectural studio</value>
   </data>
   <data name="Contact" xml:space="preserve">
-    <value>Kontakt</value>
+    <value>Contact</value>
   </data>
   <data name="ContactInfo" xml:space="preserve">
-    <value>Kontakt informacije</value>
+    <value>Contact info</value>
   </data>
   <data name="Profile" xml:space="preserve">
-    <value>Profil</value>
+    <value>Profile</value>
   </data>
   <data name="Projects" xml:space="preserve">
-    <value>Projekti</value>
+    <value>Projects</value>
   </data>
 </root>

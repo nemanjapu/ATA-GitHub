@@ -128,6 +128,26 @@
     }
 </div>
 
+<!-- Modal -->
+<div class="modal fade custom-modal" id="LargeFileModal" tabindex="-1" role="dialog" aria-labelledby="LargeFileModalTitle" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="LargeFileModalTitle">Upozorenje!</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                Veličina odabranih fajlova je prevelika. Molimo odaberite manje fajlove.
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-primary" data-dismiss="modal">OK</button>
+            </div>
+        </div>
+    </div>
+</div>
+
 @section scripts{
     @Scripts.Render("~/bundles/jqueryval")
     <script>
@@ -176,5 +196,16 @@
 				}
 			});
 		});
+    </script>
+    <script>
+        var uploadField = document.getElementById("images");
+
+        uploadField.onchange = function () {
+            if (this.files[0].size > 2000000000) {
+                //alert("Odabrali ste prevelike slike. Molimo odaberite manje.");
+                $('#LargeFileModal').modal('show')
+                this.value = "";
+            };
+        };
     </script>
 }

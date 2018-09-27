@@ -19,7 +19,7 @@ namespace ATAarhitektonskiStudio.Controllers
             {
                 if (k.isAdmin == true)
                 {
-                    return RedirectToAction("Index", "Dashboard", new { area = "Admin" });
+                    return RedirectToAction("Index", "ProjectsManager", new { area = "Admin" });
                 }
             }
             LoginViewModel viewModel = new LoginViewModel();
@@ -38,7 +38,7 @@ namespace ATAarhitektonskiStudio.Controllers
                         if (userDB.isAdmin == true)
                         {
                             Authentication.StartSession(userDB, user.isRemember);
-                            return RedirectToAction("Index", "Dashboard", new { area = "Admin" });
+                            return RedirectToAction("Index", "ProjectsManager", new { area = "Admin" });
                         }
                     }
                     else

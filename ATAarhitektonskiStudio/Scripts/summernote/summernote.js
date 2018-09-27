@@ -1530,7 +1530,7 @@
      * @param {Boolean} isStart
      * @return {BoundaryPoint}
      *
-     * @see http://msdn.microsoft.com/en-us/library/ie/ms535872(v=vs.85).aspx
+     * @see http://msdn.microsoft.com/en/library/ie/ms535872(v=vs.85).aspx
      */
     var textRangeToPoint = function (textRange, isStart) {
       var container = textRange.parentElement(), offset;
@@ -2289,7 +2289,7 @@
      * @property {Object} [options.codemirror.mode='text/html']
      * @property {Object} [options.codemirror.htmlMode=true]
      * @property {Object} [options.codemirror.lineNumbers=true]
-     * @property {String} [options.lang=en-US] language 'en-US', 'ko-KR', ...
+     * @property {String} [options.lang=en] language 'en', 'ko-KR', ...
      * @property {String} [options.direction=null] text direction, ex) 'rtl'
      * @property {Array} [options.toolbar]
      * @property {Boolean} [options.airMode=false]
@@ -2393,7 +2393,7 @@
       },
 
       // language
-      lang: 'en-US',                // language 'en-US', 'ko-KR', ...
+      lang: 'en',                // language 'en', 'ko-KR', ...
       direction: null,              // text direction, ex) 'rtl'
 
       // toolbar
@@ -2564,9 +2564,9 @@
       }
     },
 
-    // default language: en-US
+    // default language: en
     lang: {
-      'en-US': {
+      'en': {
         font: {
           bold: 'Bold',
           italic: 'Italic',
@@ -6961,8 +6961,8 @@
       options.icons = $.extend({}, $.summernote.options.icons, options.icons);
 
       // Include langInfo in options for later use, e.g. for image drag-n-drop
-      // Setup language info with en-US as default
-      options.langInfo = $.extend(true, {}, $.summernote.lang['en-US'], $.summernote.lang[options.lang]);
+      // Setup language info with en as default
+      options.langInfo = $.extend(true, {}, $.summernote.lang['en'], $.summernote.lang[options.lang]);
 
       // override plugin options
       if (!isExternalAPICalled && hasInitOptions) {

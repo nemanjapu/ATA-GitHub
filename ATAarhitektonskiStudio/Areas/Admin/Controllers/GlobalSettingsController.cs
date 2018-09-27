@@ -33,7 +33,13 @@ namespace ATAarhitektonskiStudio.Areas.Admin.Controllers
                 OfficePhone = gs.OfficePhone,
                 PinterestLink = gs.PinterestLink,
                 TwitterLink = gs.TwitterLink,
-                YoutubeLink = gs.YoutubeLink
+                YoutubeLink = gs.YoutubeLink,
+                Heading1Homepage = gs.Heading1Homepage,
+                Heading1HomepageEng = gs.Heading1HomepageEng,
+                Heading2Homepage = gs.Heading2Homepage,
+                Heading2HomepageEng = gs.Heading2HomepageEng,
+                WritingHomepage = gs.WritingHomepage,
+                WritingHomepageEng = gs.WritingHomepageEng
             };
 
             return View(model);
@@ -57,7 +63,12 @@ namespace ATAarhitektonskiStudio.Areas.Admin.Controllers
             gsDB.PinterestLink = gs.PinterestLink;
             gsDB.TwitterLink = gs.TwitterLink;
             gsDB.YoutubeLink = gs.YoutubeLink;
-
+            gsDB.Heading1Homepage = gs.Heading1Homepage;
+            gsDB.Heading1HomepageEng = gs.Heading1HomepageEng;
+            gsDB.Heading2Homepage = gs.Heading2Homepage;
+            gsDB.Heading2HomepageEng = gs.Heading2HomepageEng;
+            gsDB.WritingHomepage = gs.WritingHomepage;
+            gsDB.WritingHomepageEng = gs.WritingHomepageEng;
             ctx.SaveChanges();
 
             return RedirectToAction("Index");

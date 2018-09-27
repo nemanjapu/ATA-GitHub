@@ -1,9 +1,16 @@
 ﻿@model ATAarhitektonskiStudio.ViewModels.ProfileViewModel
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "Profil -";
 }
 
 <div class="container small pt-4 pb-3 mb-5">
-    <h1>ATA Arhitektonski Studio</h1>
-    <div class="about-ata">@Html.Raw(Model.AboutWriteUp)</div>
+    <h1>ATA @RGlobal.ArchitecturalStudio</h1>
+    @if (GlobalHelper.CurrentCulture == "en")
+    {
+        <div class="about-ata">@Html.Raw(Model.AboutWriteUpEng)</div>
+    }
+    else
+    {
+        <div class="about-ata">@Html.Raw(Model.AboutWriteUp)</div>
+    }
 </div>

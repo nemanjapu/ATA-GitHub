@@ -23,9 +23,9 @@ namespace ATAarhitektonskiStudio.App_code
         public void SetCurrentCulture(string lang)
         {
             _currentCulture = lang;
-            ICollection<string> arViewLocationFormats =
+            IList<string> arViewLocationFormats =
                 new string[] { "~/Views/{1}/" + lang + "/{0}.cshtml" };
-            ICollection<string> arBaseViewLocationFormats = new string[] {
+            IList<string> arBaseViewLocationFormats = new string[] {
                 @"~/Views/{1}/{0}.cshtml",
                 @"~/Views/Shared/{0}.cshtml"};
             this.ViewLocationFormats = arViewLocationFormats.Concat(arBaseViewLocationFormats).ToArray();

@@ -22,5 +22,11 @@ namespace ATAarhitektonskiStudio.Models
         public string GooglePlusLink { get; set; }
         public string LinkedinLink { get; set; }
         public string YoutubeLink { get; set; }
+        public string Heading1Homepage { get; set; }
+        public string Heading1HomepageEng { get; set; }
+        public string Heading2Homepage { get; set; }
+        public string Heading2HomepageEng { get; set; }
+        public string WritingHomepage { get; set; }
+        public string WritingHomepageEng { get; set; }
     }
 }

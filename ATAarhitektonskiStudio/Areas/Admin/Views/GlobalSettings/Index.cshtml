@@ -7,72 +7,140 @@
 @using (Html.BeginForm("SaveSettings", "GlobalSettings", FormMethod.Post, new { enctype = "multipart/form-data" }))
 {
     @Html.ValidationSummary()
+    <h4>Kontakt informacije</h4>
     <div class="row">
-        <div class="col-sm-6">
+        <div class="col-xl-3 col-sm-6">
             @Html.HiddenFor(m => m.Id)
             <div class="form-group">
                 <label>E-mail adresa:</label>
                 @Html.TextBoxFor(m => m.Email, new { @class = "form-control" })
                 @Html.ValidationMessageFor(m => m.Email)
             </div>
+        </div>
+        <div class="col-xl-3 col-sm-6">
             <div class="form-group">
                 <label>Broj mobilnog telefona:</label>
                 @Html.TextBoxFor(m => m.CellPhone, new { @class = "form-control" })
                 @Html.ValidationMessageFor(m => m.CellPhone)
             </div>
+        </div>
+        <div class="col-xl-3 col-sm-6">
             <div class="form-group">
                 <label>Broj telefona u kancelariji:</label>
                 @Html.TextBoxFor(m => m.OfficePhone, new { @class = "form-control" })
                 @Html.ValidationMessageFor(m => m.OfficePhone)
             </div>
+        </div>
+        <div class="col-xl-3 col-sm-6">
             <div class="form-group">
                 <label>Fax:</label>
                 @Html.TextBoxFor(m => m.Fax, new { @class = "form-control" })
                 @Html.ValidationMessageFor(m => m.Fax)
             </div>
+        </div>
+        <div class="col-xl-3 col-sm-6">
             <div class="form-group">
                 <label>Adresa:</label>
                 @Html.TextBoxFor(m => m.Location, new { @class = "form-control" })
                 @Html.ValidationMessageFor(m => m.Location)
             </div>
         </div>
-        <div class="col-sm-6">
+    </div>
+    <hr />
+    <h4>Socijalne mreže:</h4>
+    <div class="row">
+        <div class="col-xl-3 col-sm-6">
             <div class="form-group">
                 <label>Facebook link:</label>
                 @Html.TextBoxFor(m => m.FacebookLink, new { @class = "form-control" })
                 @Html.ValidationMessageFor(m => m.FacebookLink)
             </div>
+        </div>
+        <div class="col-xl-3 col-sm-6">
             <div class="form-group">
                 <label>Instagram link:</label>
                 @Html.TextBoxFor(m => m.InstagramLink, new { @class = "form-control" })
                 @Html.ValidationMessageFor(m => m.InstagramLink)
             </div>
+        </div>
+        <div class="col-xl-3 col-sm-6">
             <div class="form-group">
                 <label>Twitter link:</label>
                 @Html.TextBoxFor(m => m.TwitterLink, new { @class = "form-control" })
                 @Html.ValidationMessageFor(m => m.TwitterLink)
             </div>
+        </div>
+        <div class="col-xl-3 col-sm-6">
             <div class="form-group">
                 <label>Pinterest link:</label>
                 @Html.TextBoxFor(m => m.PinterestLink, new { @class = "form-control" })
                 @Html.ValidationMessageFor(m => m.PinterestLink)
             </div>
+        </div>
+        <div class="col-xl-3 col-sm-6">
             <div class="form-group">
                 <label>Google plus link:</label>
                 @Html.TextBoxFor(m => m.GooglePlusLink, new { @class = "form-control" })
                 @Html.ValidationMessageFor(m => m.GooglePlusLink)
             </div>
+        </div>
+        <div class="col-xl-3 col-sm-6">
             <div class="form-group">
                 <label>Linkedin link:</label>
                 @Html.TextBoxFor(m => m.LinkedinLink, new { @class = "form-control" })
                 @Html.ValidationMessageFor(m => m.LinkedinLink)
             </div>
+        </div>
+        <div class="col-xl-3 col-sm-6">
             <div class="form-group">
                 <label>Youtube link:</label>
                 @Html.TextBoxFor(m => m.YoutubeLink, new { @class = "form-control" })
                 @Html.ValidationMessageFor(m => m.YoutubeLink)
             </div>
         </div>
+    </div>
+    <hr />
+    <h4>Text na početnoj stranici</h4>
+    <div class="row">
+        <div class="col-xl-4 col-sm-6">
+            <div class="form-group">
+                <label>Naslov 1:</label>
+                @Html.TextAreaFor(m => m.Heading1Homepage, new { @class = "form-control" })
+                @Html.ValidationMessageFor(m => m.Heading1Homepage)
+            </div>
+            <div class="form-group">
+                <label>Naslov 1 eng:</label>
+                @Html.TextAreaFor(m => m.Heading1HomepageEng, new { @class = "form-control" })
+                @Html.ValidationMessageFor(m => m.Heading1HomepageEng)
+            </div>
+        </div>
+        <div class="col-xl-4 col-sm-6">
+            <div class="form-group">
+                <label>Naslov 2:</label>
+                @Html.TextAreaFor(m => m.Heading2Homepage, new { @class = "form-control" })
+                @Html.ValidationMessageFor(m => m.Heading2Homepage)
+            </div>
+            <div class="form-group">
+                <label>Naslov 2 eng:</label>
+                @Html.TextAreaFor(m => m.Heading2HomepageEng, new { @class = "form-control" })
+                @Html.ValidationMessageFor(m => m.Heading2HomepageEng)
+            </div>
+        </div>
+        <div class="col-xl-4 col-sm-6">
+            <div class="form-group">
+                <label>Text:</label>
+                @Html.TextAreaFor(m => m.WritingHomepage, new { @class = "form-control" })
+                @Html.ValidationMessageFor(m => m.WritingHomepage)
+            </div>
+            <div class="form-group">
+                <label>Text eng:</label>
+                @Html.TextAreaFor(m => m.WritingHomepageEng, new { @class = "form-control" })
+                @Html.ValidationMessageFor(m => m.WritingHomepageEng)
+            </div>
+        </div>
+    </div>
+    <hr />
+    <div class="row">
         <div class="col-12">
             <div class="row">
                 <div class="col-xl-6">
@@ -159,5 +227,67 @@
                 }
             });
         }
+    </script>
+    <script>
+        $('#Heading1Homepage').summernote({
+            height: 100,
+            toolbar: [
+                // [groupName, [list of button]]
+                ['style', ['bold', 'italic', 'underline', 'clear']],
+                ['font', ['strikethrough', 'superscript', 'subscript']],
+                ['undo', ['undo']],
+                ['redo', ['redo']]
+            ],
+        });
+        $('#Heading1HomepageEng').summernote({
+            height: 100,
+            toolbar: [
+                // [groupName, [list of button]]
+                ['style', ['bold', 'italic', 'underline', 'clear']],
+                ['font', ['strikethrough', 'superscript', 'subscript']],
+                ['undo', ['undo']],
+                ['redo', ['redo']]
+            ],
+        });
+        $('#Heading2Homepage').summernote({
+            height: 100,
+            toolbar: [
+                // [groupName, [list of button]]
+                ['style', ['bold', 'italic', 'underline', 'clear']],
+                ['font', ['strikethrough', 'superscript', 'subscript']],
+                ['undo', ['undo']],
+                ['redo', ['redo']]
+            ],
+        });
+        $('#Heading2HomepageEng').summernote({
+            height: 100,
+            toolbar: [
+                // [groupName, [list of button]]
+                ['style', ['bold', 'italic', 'underline', 'clear']],
+                ['font', ['strikethrough', 'superscript', 'subscript']],
+                ['undo', ['undo']],
+                ['redo', ['redo']]
+            ],
+        });
+        $('#WritingHomepage').summernote({
+            height: 100,
+            toolbar: [
+                // [groupName, [list of button]]
+                ['style', ['bold', 'italic', 'underline', 'clear']],
+                ['font', ['strikethrough', 'superscript', 'subscript']],
+                ['undo', ['undo']],
+                ['redo', ['redo']]
+            ],
+        });
+        $('#WritingHomepageEng').summernote({
+            height: 100,
+            toolbar: [
+                // [groupName, [list of button]]
+                ['style', ['bold', 'italic', 'underline', 'clear']],
+                ['font', ['strikethrough', 'superscript', 'subscript']],
+                ['undo', ['undo']],
+                ['redo', ['redo']]
+            ],
+        });
     </script>
 }

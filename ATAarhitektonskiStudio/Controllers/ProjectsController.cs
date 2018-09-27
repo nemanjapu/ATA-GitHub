@@ -16,17 +16,6 @@ namespace ATAarhitektonskiStudio.Controllers
             return View();
         }
 
-        public PartialViewResult ProjectsListMenu()
-        {
-            var model = ctx.Project.Select(pm => new ProjectListMenuViewModel() {
-                Id = pm.Id,
-                Name = pm.Name,
-                NameEng = pm.NameEng
-            }).ToList();
-
-            return PartialView(model);
-        }
-
         public ActionResult Project(int id)
         {
             var model = ctx.Project.Where(p => p.Id == id).Select(p => new ProjectViewModel {

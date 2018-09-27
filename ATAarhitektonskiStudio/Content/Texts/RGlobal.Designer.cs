@@ -61,6 +61,15 @@ namespace ATAarhitektonskiStudio.Content.Texts {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Arhitektonski studio.
+        /// </summary>
+        public static string ArchitecturalStudio {
+            get {
+                return ResourceManager.GetString("ArchitecturalStudio", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Kontakt.
         /// </summary>
         public static string Contact {

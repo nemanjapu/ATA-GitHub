@@ -3,12 +3,20 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>@ViewBag.Title - ATA</title>
+    <title>@ViewBag.Title ATA Arhitektonski studio Sarajevo</title>
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+    <link rel="manifest" href="/site.webmanifest">
+    <meta name="msapplication-TileColor" content="#da532c">
+    <meta name="theme-color" content="#ffffff">
+    <meta property="og:image" content="http://atastruix-001-site1.btempurl.com/Content/images/logo.png">
+    <meta property="og:image:type" content="image/png">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css" integrity="sha384-DNOHZ68U8hZfKXOrtjWvjxusGo9WQnrNx2sqG0tfsghAvtVlRW3tvkXWZh58N9jp"
           crossorigin="anonymous">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.0/animate.min.css" />
     @RenderSection("styles", required: false)
-    <link href="~/Content/bootstrap.min.css" rel="stylesheet" />
+    @Styles.Render("~/Content/bootstrapCss")
     @Styles.Render("~/Content/userCss")
 </head>
 <body>
@@ -58,11 +66,11 @@
                     </a>
                 }
                 <a href="" class="setLang" data-lang="bs"><img src="~/Content/images/bosnia-and-herzegovina.png" /></a>
-                <a href="" class="setLang" data-lang="en-US"><img src="~/Content/images/united-kingdom.png" /></a>
+                <a href="" class="setLang" data-lang="en"><img src="~/Content/images/united-kingdom.png" /></a>
             </div>
         </div>
         <nav class="navbar navbar-expand-md">
-            <a class="navbar-brand" href="@Url.Action("index", "home")">
+            <a class="navbar-brand" href="@Url.Action("Index", "Home")">
                 <img src="~/Content/images/logo.png">
             </a>
             <button class="navbar-toggler" type="button" aria-label="Toggle navigation" id="openMenu">
@@ -87,10 +95,10 @@
                         </div>
                     </li>
                     <li class="nav-item @(ViewContext.RouteData.Values["Controller"].ToString() == "Profile"  ? "active" : "")">
-                        <a class="nav-link" href="@Url.Action("index", "profile")">@RGlobal.Profile</a>
+                        <a class="nav-link" href="@Url.Action("Index", "Profile")">@RGlobal.Profile</a>
                     </li>
                     <li class="nav-item @(ViewContext.RouteData.Values["Controller"].ToString() == "Contact"  ? "active" : "")">
-                        <a href="@Url.Action("index", "contact")" class="nav-link">@RGlobal.Contact</a>
+                        <a href="@Url.Action("Index", "Contact")" class="nav-link">@RGlobal.Contact</a>
                     </li>
                 </ul>
             </div>
@@ -120,7 +128,7 @@
     @{
         string cc = GlobalHelper.CurrentCulture;
     }
-    @if (cc != "en-US")
+    @if (cc != "en")
     {
         <script>
             $(function () {
@@ -172,6 +180,5 @@
             })
         </script>
     }
-
 </body>
 </html>

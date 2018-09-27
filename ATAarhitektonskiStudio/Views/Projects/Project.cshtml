@@ -1,6 +1,6 @@
 ﻿@model ATAarhitektonskiStudio.ViewModels.ProjectViewModel
 @{
-    ViewBag.Title = "Project";
+    ViewBag.Title = Model.Name + "-";
 }
 @section styles{
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css" />
@@ -8,11 +8,82 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.10.0/css/lightbox.min.css" />
 }
 
-<div class="container-fluid">
+@if (GlobalHelper.CurrentCulture == "en")
+{
     <div class="container-fluid">
-        <div class="owl-carousel project-imgs-carousel">
-            <div class="project-img">
-                <div class="project-text px-3">
+        <div class="container-fluid">
+            <div class="owl-carousel project-imgs-carousel">
+                <div class="project-img">
+                    <div class="project-text px-3">
+                        <h3><b>@Model.NameEng</b></h3>
+                        <p class="mb-2">Location: <b>@Model.LocationEng</b></p>
+                        <p class="mb-2">Type: <b>@Model.TypeEng</b></p>
+                        <p class="mb-2">Year built: <b>@Model.YearBuiltEng</b></p>
+                        <p class="mb-2">m<sup>2</sup>: <b>@Model.SquareMetersEng</b></p>
+                        <p class="mb-2">Investor: <b>@Model.InvestorEng</b></p>
+                        <p class="mb-0">@Html.Raw(Model.TextEng)</p>
+                    </div>
+                </div>
+                @if (!string.IsNullOrEmpty(Model.YoutubeVideoLink))
+                {
+                    <div class="project-img">
+                        <div id="video"></div>
+                    </div>
+                }
+                @foreach (var item in Model.Images)
+                {
+                    <div class="project-img">
+                        <a href="~/@item.FilePath/@item.FileName" data-lightbox="listing-images-lb" class="project-img-plus"><i class="fas fa-plus"></i></a>
+                        <img src="~/@item.FilePath/@item.FileName" alt="@item.FileName" />
+                    </div>
+                }
+            </div>
+            <div class="mb-5 mt-3 pb-3 project-img" id="mobileProjectText">
+                <div class="project-text">
+                    <h3><b>@Model.NameEng</b></h3>
+                    <p class="mb-2">Location: <b>@Model.LocationEng</b></p>
+                    <p class="mb-2">Type: <b>@Model.TypeEng</b></p>
+                    <p class="mb-2">Year built: <b>@Model.YearBuiltEng</b></p>
+                    <p class="mb-2">m<sup>2</sup>: <b>@Model.SquareMetersEng</b></p>
+                    <p class="mb-2">Investor: <b>@Model.InvestorEng</b></p>
+                    <p class="mb-0">@Html.Raw(Model.TextEng)</p>
+                </div>
+            </div>
+        </div>
+    </div>
+}
+else
+{
+    <div class="container-fluid">
+        <div class="container-fluid">
+            <div class="owl-carousel project-imgs-carousel">
+                <div class="project-img">
+                    <div class="project-text px-3">
+                        <h3><b>@Model.Name</b></h3>
+                        <p class="mb-2">Lokacija: <b>@Model.Location</b></p>
+                        <p class="mb-2">Tip: <b>@Model.Type</b></p>
+                        <p class="mb-2">Godina izgradnje: <b>@Model.YearBuilt</b></p>
+                        <p class="mb-2">m<sup>2</sup>: <b>@Model.SquareMeters</b></p>
+                        <p class="mb-2">Investitor: <b>@Model.Investor</b></p>
+                        <p class="mb-0">@Html.Raw(Model.Text)</p>
+                    </div>
+                </div>
+                @if (!string.IsNullOrEmpty(Model.YoutubeVideoLink))
+                {
+                    <div class="project-img">
+                        <div id="video"></div>
+                    </div>
+                }
+                @foreach (var item in Model.Images)
+                {
+                    <div class="project-img">
+                        <a href="~/@item.FilePath/@item.FileName" data-lightbox="listing-images-lb" class="project-img-plus"><i class="fas fa-plus"></i></a>
+                        <img src="~/@item.FilePath/@item.FileName" alt="@item.FileName" />
+                    </div>
+                }
+            </div>
+            <div class="mb-5 mt-3 pb-3 project-img" id="mobileProjectText">
+                <div class="project-text">
                     <h3><b>@Model.Name</b></h3>
                     <p class="mb-2">Lokacija: <b>@Model.Location</b></p>
                     <p class="mb-2">Tip: <b>@Model.Type</b></p>
@@ -22,35 +93,9 @@
                     <p class="mb-0">@Html.Raw(Model.Text)</p>
                 </div>
             </div>
-            @if (!string.IsNullOrEmpty(Model.YoutubeVideoLink))
-            {
-                <div class="project-img"> 
-                    <div id="video"></div>
-                </div>
-            }
-            @foreach (var item in Model.Images)
-            {
-                <div class="project-img">
-                    <a href="~/@item.FilePath/@item.FileName" data-lightbox="listing-images-lb" class="project-img-plus"><i class="fas fa-plus"></i></a>
-                    <img src="~/@item.FilePath/@item.FileName" alt="@item.FileName" />
-                </div>
-            }
-        </div>
-        <div class="mb-5 mt-3 pb-3 project-img" id="mobileProjectText">
-            <div class="project-text">
-                <h3><b>@Model.Name</b></h3>
-                <p class="mb-2">Lokacija: <b>@Model.Location</b></p>
-                <p class="mb-2">Tip: <b>@Model.Type</b></p>
-                <p class="mb-2">Godina izgradnje: <b>@Model.YearBuilt</b></p>
-                <p class="mb-2">m<sup>2</sup>: <b>@Model.SquareMeters</b></p>
-                <p class="mb-2">Investitor: <b>@Model.Investor</b></p>
-                <p class="mb-0">@Html.Raw(Model.Text)</p>
-            </div>
         </div>
     </div>
-</div>
-
-<div class="col-xl-3 col-md-6 col-sm-12"></div>
+}
 
 @section scripts{
     <script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js"></script>
