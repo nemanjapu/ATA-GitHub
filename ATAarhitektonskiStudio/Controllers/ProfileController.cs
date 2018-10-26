@@ -12,7 +12,7 @@ namespace ATAarhitektonskiStudio.Controllers
         // GET: Profile
         public ActionResult Index()
         {
-            var model = ctx.Global.Select(x => new ProfileViewModel
+            var model = ctx.Global.AsNoTracking().Select(x => new ProfileViewModel
             {
                 AboutWriteUp = x.About,
                 AboutWriteUpEng = x.AboutEng

@@ -1,33 +1,13 @@
 ﻿var height = $(window).height();
 $('.projects-carousel img').css('height', height);
+$('.img-bottom').height(height - ($('.menu-container').height() + $('.banner-text').height()) - 20);
 window.onresize = function () {
     var height = $(window).height();
     $('.projects-carousel img').css('height', height);
-}
+    $('.img-bottom').height(height - ($('.menu-container').height() + $('.banner-text').height()) - 20);
+};
 
-$(".projects-carousel").owlCarousel({
-    items: 1,
-    loop: true,
-    nav: true,
-    dots: false,
-    autoplay: true,
-    animateOut: 'fadeOut',
-    animateIn: 'fadeIn',
-    navText: ["", ""],
-    mouseDrag: false,
-    stagePadding: 0,
-    margin: 0
+$('#logo-start').on('click', function () {
+    $('.loader-container').fadeOut();
 });
 
-$('.projects-carousel').trigger('refresh.owl.carousel');
-
-$(window).bind('load', function () {
-    setTimeout(
-        function () {
-            $('.loader-container').fadeOut();
-        }, 2000);
-});
-
-new TypeIt('#loader-text', {
-    speed: 40
-});

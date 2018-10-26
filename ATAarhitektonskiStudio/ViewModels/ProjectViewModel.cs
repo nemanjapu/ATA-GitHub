@@ -23,7 +23,7 @@ namespace ATAarhitektonskiStudio.ViewModels
         public string TypeEng { get; set; }
         public string Text { get; set; }
         public string TextEng { get; set; }
-        public virtual List<ProjectImages> Images { get; set; }
+        public virtual IEnumerable<ProjectImages> Images { get; set; }
         public bool isActive { get; set; }
         public ProjectImages PreviewImage { get; set; }
         public string YoutubeVideoLink { get; set; }

@@ -30,6 +30,7 @@ namespace ATAarhitektonskiStudio
             /*USER BUNDLES*/
             bundles.Add(new StyleBundle("~/Content/bootstrapCss").Include(
                       "~/Content/bootstrap.css"));
+
             bundles.Add(new StyleBundle("~/Content/userCss").Include(
                       "~/Content/style.css"));
 
@@ -44,7 +45,18 @@ namespace ATAarhitektonskiStudio
                       "~/Content/Scripts/contact.js"));
 
             bundles.Add(new ScriptBundle("~/bundles/projectScript").Include(
+                     "~/Content/Scripts/owl-carousel.js",
+                     "~/Content/Scripts/lightbox.js",
                      "~/Content/Scripts/projects.js"));
+
+            bundles.Add(new StyleBundle("~/Content/projectCss").Include(
+                      "~/Content/owl-carousel.css",
+                      "~/Content/owl-carousel-theme.css",
+                      "~/Content/lightbox.css"));
+
+            bundles.Add(new StyleBundle("~/Content/fontAwesome").Include(
+                       "~/Content/font-awesome5.css", new CssRewriteUrlTransform()
+                       ));
 
             /*ADMIN BUNDLES*/
 

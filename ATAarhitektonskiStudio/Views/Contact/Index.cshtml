@@ -15,7 +15,7 @@
                         <p><i class="fas fa-phone"></i> @Model.OfficePhone</p>
                         <p><i class="fas fa-fax"></i> @Model.Fax</p>
                         <p class="mb-4"><i class="fas fa-map-pin"></i> @Model.Location</p>
-                        <div class="top-bar-items">
+                        <div class="top-bar-items clearfix">
                             @if (!string.IsNullOrEmpty(Model.FacebookLink))
                             {
                                 <a class="social" target="_blank" href="@Model.FacebookLink">

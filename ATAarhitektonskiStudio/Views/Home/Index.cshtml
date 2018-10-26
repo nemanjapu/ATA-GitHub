@@ -1,62 +1,36 @@
 ﻿@model ATAarhitektonskiStudio.ViewModels.HomepageViewModel
 @using ATAarhitektonskiStudio.ViewModels
 
-@section styles{
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css" />
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.theme.default.min.css" />
-    <style>
-        .menu-container {
-            position: fixed !important;
-            top: 0;
-            right: 0;
-            left: 0;
-        }
-    </style>
-}
-
-<div class="owl-carousel projects-carousel">
-    @foreach (var item in Model.hpProjects)
-    {
-    <div class="banner-project">
-        <img src="~/@item.PreviewImage.FilePath/@item.PreviewImage.FileName">
+<div class="container">
+    <div class="row banner-text">
         @if (GlobalHelper.CurrentCulture == "en")
         {
-            <div class="project-name text-uppercase">@item.NameEng</div>
+            <div class="col-sm-5">
+                <div class="we-are">WE ARE</div>
+            </div>
+            <div class="col-sm-7 writup-cont">
+                <div class="writup">@Html.Raw(Model.TextEng)</div>
+            </div>
         }
         else
         {
-            <div class="project-name text-uppercase">@item.Name</div>
+            <div class="col-sm-5">
+                <div class="we-are">MI SMO</div>
+            </div>
+            <div class="col-sm-7 writup-cont">
+                <div class="writup">@Html.Raw(Model.Text)</div>
+            </div>
         }
     </div>
-    }
 </div>
-
-@if (GlobalHelper.CurrentCulture == "en")
-{
-    <div class="banner-text">
-        <h1>@Html.Raw(Model.Heading1Eng)</h1>
-        <h2>@Html.Raw(Model.Heading2Eng)</h2>
-        <div class="writup">@Html.Raw(Model.TextEng)</div>
-    </div>
-}
-else
-{
-    <div class="banner-text">
-        <h1>@Html.Raw(Model.Heading1)</h1>
-        <h2>@Html.Raw(Model.Heading2)</h2>
-        <div class="writup">@Html.Raw(Model.Text)</div>
-    </div>
-}
+<img class="img-bottom" src="~/Content/images/hp-bottom-img.jpg" alt="Ata Arhitektonski Studio" />
 
 <div class="loader-container">
     <div class="loader-content">
-        <img class="animate-flicker" src="~/Content/images/logo-white.png" />
-        <h1 id="loader-text" class="text-center text-uppercase text-white mt-3"><b>ATA</b> @RGlobal.ArchitecturalStudio</h1>
+        <img id="logo-start" src="~/Content/images/logo2-black.png" />
     </div>
 </div>
 
 @section scripts{
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/typeit/5.10.6/typeit.min.js"></script>
     @Scripts.Render("~/bundles/homeScript")
 }

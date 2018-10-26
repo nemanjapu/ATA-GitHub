@@ -36,29 +36,43 @@ lightbox.option({
     'resizeDuration': 200,
     'wrapAround': true,
     'showImageNumberLabel': false
-})
+});
 
 if ($(window).width() > 1200) {
-    var imgsHeight = $('.project-text').height();
+    var imgsHeight = $(window).height() / 2;
     $('.project-img > img').height(imgsHeight);
     $(document).ready(function () {
         $('#video > iframe').height(imgsHeight);
-    })
+    });
+    $('#projectText').height($(window).height() / 2 - $('.menu-container').height() - 70);
+    $('#projectText').mouseover(function () {
+        $(this).height($('.project-text').height() + 40);
+    });
+    $('#projectText').mouseleave(function () {
+        $(this).height($(window).height() / 2 - $('.menu-container').height() - 70);
+    });
 }
 
 window.onresize = function () {
     if ($(window).width() > 1200) {
-        imgsHeight = $('.project-text').height();
+        var imgsHeight = $(window).height() / 2;
         $('.project-img > img').height(imgsHeight);
         $('#video > iframe').height(imgsHeight);
+        $('#projectText').height($(window).height() / 2 - $('.menu-container').height() - 70);
+        $('#projectText').mouseover(function () {
+            $(this).height($('.project-text').height() + 40);
+        });
+        $('#projectText').mouseleave(function () {
+            $(this).height($(window).height() / 2 - $('.menu-container').height() - 70);
+        });
     }
     else {
-        $('.project-img > img').height('auto');
+        $('.project-img > img').height('300px');
     }
-}
+};
 
 $(document).ready(function () {
     if ($('.project-imgs-carousel .owl-item:first-child').hasClass('active')) {
         $('.owl-prev').hide();
     }
-})
+});

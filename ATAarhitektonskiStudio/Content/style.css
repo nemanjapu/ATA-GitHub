@@ -1,4 +1,4 @@
-@font-face {
+﻿@font-face {
     font-family: 'futura';
     src: url('fonts/FuturaPTBook.otf');
 }
@@ -8,8 +8,66 @@
     src: url('fonts/FuturaPTBold.otf');
 }
 
+@font-face {
+    font-family: "Swis721 Lt BT Light";
+    src: url('../fonts/ff21985e04861bb8d9745440ee1e2e7d.eot'); /* IE9*/
+    src: url('../fonts/ff21985e04861bb8d9745440ee1e2e7d.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
+    url('../fonts/ff21985e04861bb8d9745440ee1e2e7d.woff2') format('woff2'), /* chrome、firefox */
+    url('../fonts/ff21985e04861bb8d9745440ee1e2e7d.woff') format('woff'), /* chrome、firefox */
+    url('../fonts/ff21985e04861bb8d9745440ee1e2e7d.ttf') format('truetype'), /* chrome、firefox、opera、Safari, Android, iOS 4.2+*/
+    url('../fonts/ff21985e04861bb8d9745440ee1e2e7d.svg#Swis721 Lt BT Light') format('svg'); /* iOS 4.1- */
+}
+
+@font-face {
+    font-family: "Swis721 Blk BT";
+    src: url("../fonts/da49b3dd89c30591ad7a2bbb93e11bcb.eot"); /* IE9*/
+    src: url("../fonts/da49b3dd89c30591ad7a2bbb93e11bcb.eot?#iefix") format("embedded-opentype"), /* IE6-IE8 */
+    url("../fonts/da49b3dd89c30591ad7a2bbb93e11bcb.woff2") format("woff2"), /* chrome、firefox */
+    url("../fonts/da49b3dd89c30591ad7a2bbb93e11bcb.woff") format("woff"), /* chrome、firefox */
+    url("../fonts/da49b3dd89c30591ad7a2bbb93e11bcb.ttf") format("truetype"), /* chrome、firefox、opera、Safari, Android, iOS 4.2+*/
+    url("../fonts/da49b3dd89c30591ad7a2bbb93e11bcb.svg#Swis721 Blk BT Black") format("svg"); /* iOS 4.1- */
+}
+
+/* montserrat-regular - latin */
+@font-face {
+    font-family: 'Montserrat';
+    font-style: normal;
+    font-weight: 400;
+    src: url('../fonts/montserrat-v12-latin-regular.eot'); /* IE9 Compat Modes */
+    src: local('Montserrat Regular'), local('Montserrat-Regular'), url('../fonts/montserrat-v12-latin-regular.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
+    url('../fonts/montserrat-v12-latin-regular.woff2') format('woff2'), /* Super Modern Browsers */
+    url('../fonts/montserrat-v12-latin-regular.woff') format('woff'), /* Modern Browsers */
+    url('../fonts/montserrat-v12-latin-regular.ttf') format('truetype'), /* Safari, Android, iOS */
+    url('../fonts/montserrat-v12-latin-regular.svg#Montserrat') format('svg'); /* Legacy iOS */
+}
+/* montserrat-800 - latin */
+@font-face {
+    font-family: 'Montserrat';
+    font-style: normal;
+    font-weight: 800;
+    src: url('../fonts/montserrat-v12-latin-800.eot'); /* IE9 Compat Modes */
+    src: local('Montserrat ExtraBold'), local('Montserrat-ExtraBold'), url('../fonts/montserrat-v12-latin-800.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
+    url('../fonts/montserrat-v12-latin-800.woff2') format('woff2'), /* Super Modern Browsers */
+    url('../fonts/montserrat-v12-latin-800.woff') format('woff'), /* Modern Browsers */
+    url('../fonts/montserrat-v12-latin-800.ttf') format('truetype'), /* Safari, Android, iOS */
+    url('../fonts/montserrat-v12-latin-800.svg#Montserrat') format('svg'); /* Legacy iOS */
+}
+/* montserrat-900 - latin */
+@font-face {
+    font-family: 'Montserrat';
+    font-style: normal;
+    font-weight: 900;
+    src: url('../fonts/montserrat-v12-latin-900.eot'); /* IE9 Compat Modes */
+    src: local('Montserrat Black'), local('Montserrat-Black'), url('../fonts/montserrat-v12-latin-900.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
+    url('../fonts/montserrat-v12-latin-900.woff2') format('woff2'), /* Super Modern Browsers */
+    url('../fonts/montserrat-v12-latin-900.woff') format('woff'), /* Modern Browsers */
+    url('../fonts/montserrat-v12-latin-900.ttf') format('truetype'), /* Safari, Android, iOS */
+    url('../fonts/montserrat-v12-latin-900.svg#Montserrat') format('svg'); /* Legacy iOS */
+}
+
 body {
-    font-family: 'futura';
+    /*font-family: 'futura';*/
+    font-family: "Swis721 Lt BT Light"
 }
 
     body::-webkit-scrollbar-track {
@@ -44,7 +102,7 @@ buton, button:hover, button:focus, button:active {
     width: 100%;
     height: 100%;
     z-index: 1100;
-    background: #000;
+    background: #fff;
 }
 
     .loader-container .loader-content {
@@ -52,15 +110,15 @@ buton, button:hover, button:focus, button:active {
         top: 50%;
         left: 50%;
         transform: translate(-50%,-50%);
-        width: 500px;
-        max-width: 100%;
+        width: 1000px;
+        max-width: 33.333%;
         text-align: center;
     }
 
     .loader-container img {
         display: inline-block;
         padding-top: 20px;
-        width: 80%;
+        width: 100%;
     }
 
 .loader-content h1 {
@@ -130,6 +188,10 @@ buton, button:hover, button:focus, button:active {
     animation: flickerAnimation 3s infinite;
 }
 
+#logo-start{
+    cursor: pointer;
+}
+
 /*LOADER*/
 
 .menu-container {
@@ -140,23 +202,24 @@ buton, button:hover, button:focus, button:active {
 }
 
 .navbar-brand {
-    width: 250px;
+    width: 180px;
     padding-top: 0;
     position: absolute;
-    top: -40px;
+    top: -30px;
 }
 
-@media(min-width:64em) {
+@media(min-width:1200px) {
     ul.navbar-nav {
-        padding-top: 15px;
+        padding-top: 0;
     }
 }
 
 .navbar-nav .nav-link {
     color: #010101;
-    font-size: 18px;
+    font-size: 15px;
     display: inline-block;
     position: relative;
+    font-family: "Swis721 Lt BT Light";
 }
 
 .navbar-nav .nav-item {
@@ -222,11 +285,17 @@ buton, button:hover, button:focus, button:active {
     padding: 0;
 }
 
-    .navbar-nav .dropdown-menu .dropdown-item {
-        color: #fff;
-        white-space: unset;
-        padding: 0.40rem 1.5rem;
-    }
+.nav-item.dropdown:hover .dropdown-menu {
+    display: block;
+}
+
+.navbar-nav .dropdown-menu .dropdown-item {
+    color: #fff;
+    white-space: unset;
+    padding: 0.40rem 1.5rem;
+    font-family: "Swis721 Lt BT Light";
+    font-size: 13px;
+}
 
         .navbar-nav .dropdown-menu .dropdown-item:not(:last-child) {
             border-bottom: 1px solid #585252;
@@ -329,12 +398,16 @@ buton, button:hover, button:focus, button:active {
 }
 
 .banner-text {
-    position: absolute;
-    left: calc(15vw + 30px);
-    top: 50%;
-    transform: translateY(-50%);
-    z-index: 13;
+    padding-bottom: 20px;
 }
+
+    .banner-text .we-are {
+        font-family: 'Swis721 Blk BT';
+        font-weight: 800;
+        font-size: 105px;
+        color: rgb(238, 43, 116);
+        line-height: 1;
+    }
 
     .banner-text img {
         width: 170px;
@@ -343,7 +416,9 @@ buton, button:hover, button:focus, button:active {
     .banner-text h1,
     .banner-text h1 span,
     .banner-text h1 p {
-        font-family: 'futura bold' !important;
+        /*font-family: 'futura bold' !important;*/
+        font-family: "Swis721 Lt BT Light" !important;
+        font-weight: bold;
         font-size: 50px !important;
         text-shadow: 2px 2px 2px #3e3838;
     }
@@ -351,17 +426,28 @@ buton, button:hover, button:focus, button:active {
     .banner-text h2,
     .banner-text h2 span,
     .banner-text h2 p {
-        font-family: 'futura bold' !important;
+        font-family: "Swis721 Lt BT Light" !important;
+        font-weight: bold;
         font-size: 40px !important;
         text-shadow: 2px 2px 2px #3e3838;
+    }
+
+    .banner-text .writup-cont {
+        padding-top: 60px;
     }
 
     .banner-text .writup,
     .banner-text .writup p,
     .banner-text .writup span {
-        max-width: 600px;
-        font-size: 20px !important;
+        /*max-width: 600px;*/
+        font-size: 18px !important;
+        font-family: "Swis721 Lt BT Light" !important;
     }
+
+.img-bottom {
+    width: 100%;
+    object-fit: cover;
+}
 
 .top-bar {
     padding: 10px 20px;
@@ -372,13 +458,18 @@ buton, button:hover, button:focus, button:active {
     width: 30px;
     height: 30px;
     background: #000;
-    border-radius: 50%;
     color: #fff;
     line-height: 31px;
-    display: inline-block;
-    margin: 0 6px;
     text-align: center;
     font-size: 16px;
+    vertical-align: middle;
+    display: block;
+    float: left;
+}
+
+.social-box {
+    margin-right: 10px;
+    display: inline-block;
     vertical-align: middle;
 }
 
@@ -406,7 +497,7 @@ buton, button:hover, button:focus, button:active {
         width: 30px;
     }
 
-@media (max-width:64em) {
+@media (max-width:1199px) {
     .banner-text {
         left: 60px;
         right: 60px;
@@ -429,11 +520,11 @@ buton, button:hover, button:focus, button:active {
     }
 
     .navbar-brand {
-        width: 200px;
+        width: 140px;
     }
 }
 
-@media (max-width: 40em) {
+@media (max-width: 767px) {
     .loader-content h1 {
         font-size: 20px;
     }
@@ -515,8 +606,9 @@ buton, button:hover, button:focus, button:active {
 }
 
 .project-img .project-text, .project-img .project-text span, .project-img .project-text p {
-    font-family: 'futura' !important;
-    font-size: 2vh !important;
+    /*font-family: 'futura' !important;*/
+    font-family: "Swis721 Lt BT Light" !important;
+    font-size: 15px !important;
 }
 
 .project-imgs-carousel.owl-carousel .owl-nav {
@@ -580,9 +672,9 @@ buton, button:hover, button:focus, button:active {
         width: 90vh;
     }
 
-    #mobileProjectText {
+    /*#mobileProjectText {
         display: none;
-    }
+    }*/
 }
 
 .lightbox {
@@ -604,7 +696,8 @@ buton, button:hover, button:focus, button:active {
 .about-ata p,
 .about-ata span {
     font-size: 18px !important;
-    font-family: 'futura' !important;
+    /*font-family: 'futura' !important;*/
+    font-family: "Swis721 Lt BT Light" !important;
 }
 
 .contact-info {
@@ -622,6 +715,8 @@ buton, button:hover, button:focus, button:active {
     height: 40px;
     line-height: 41px;
     font-size: 20px;
+    float: none;
+    display: inline-block;
 }
 
 #map {
@@ -655,13 +750,13 @@ buton, button:hover, button:focus, button:active {
     display: none;
 }
 
-@media(max-width:1200px) {
+@media(max-width:1199px) {
     .ci-content {
         padding: 20px;
     }
 }
 
-@media (max-width: 768px) {
+@media (max-width: 767px) {
     .navbar-nav .nav-item.active:after,
     .navbar-nav .nav-item:hover:after,
     .dropdown-menu:before {
@@ -717,10 +812,10 @@ buton, button:hover, button:focus, button:active {
     }
 }
 
-@media(max-width:1200px) {
-    .project-imgs-carousel.owl-carousel .owl-item:first-child {
+@media(max-width:1199px) {
+    /*.project-imgs-carousel.owl-carousel .owl-item:first-child {
         display: none;
-    }
+    }*/
 
     #video {
         padding-bottom: 56.2%;
@@ -740,10 +835,58 @@ buton, button:hover, button:focus, button:active {
     }
 }
 
-@media(max-width: 768px) {
+.project-img.text {
+    margin-top: 0;
+    position: absolute;
+    bottom: 20px;
+    z-index: 1000;
+    background: #fff;
+    transition: .4s ease-in-out;
+    overflow: auto;
+    padding: 20px 0;
+    padding-right: 20px;
+    max-height: 80%;
+}
+
+#projectText::-webkit-scrollbar-track {
+    -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
+    background-color: #F5F5F5;
+}
+
+#projectText::-webkit-scrollbar {
+    width: 3px;
+    background-color: #F5F5F5;
+}
+
+#projectText::-webkit-scrollbar-thumb {
+    background-color: #000000;
+}
+
+@media(max-width:1199px) {
+    .loader-container .loader-content {
+        max-width: 70%;
+    }
+
+    .project-img.text {
+        position: static;
+    }
+
+    .banner-text .we-are {
+        font-size: 65px;
+    }
+
+    .banner-text .writup-cont {
+        padding-top: 40px;
+    }
+}
+
+@media(max-width: 767px) {
     .project-imgs-carousel.owl-carousel .owl-nav {
         top: auto;
         position: relative;
         padding-top: 60px;
+    }
+    .banner-text .writup-cont {
+        padding-top: 20px;
     }
 }

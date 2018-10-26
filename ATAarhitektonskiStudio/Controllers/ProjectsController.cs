@@ -18,10 +18,10 @@ namespace ATAarhitektonskiStudio.Controllers
 
         public ActionResult Project(int id)
         {
-            var model = ctx.Project.Where(p => p.Id == id).Select(p => new ProjectViewModel {
+            var model = ctx.Project.AsNoTracking().Where(p => p.Id == id).Select(p => new ProjectViewModel {
                 Id = p.Id,
                 Name = p.Name,
-                Images = ctx.ProjectImages.Where(pimg => pimg.ProjectId == p.Id).ToList(),
+                Images = ctx.ProjectImages.Where(pimg => pimg.ProjectId == p.Id).AsEnumerable(),
                 Investor = p.Investor,
                 InvestorEng = p.InvestorEng,
                 isActive = p.isActive,

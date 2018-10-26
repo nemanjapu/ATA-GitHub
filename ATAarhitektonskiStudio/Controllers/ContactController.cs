@@ -12,7 +12,7 @@ namespace ATAarhitektonskiStudio.Controllers
         // GET: Contact
         public ActionResult Index()
         {
-            var model = ctx.Global.Select(g => new ContactViewModel()
+            var model = ctx.Global.AsNoTracking().Select(g => new ContactViewModel()
             {
                 CellPhone = g.CellPhone,
                 Email = g.Email,

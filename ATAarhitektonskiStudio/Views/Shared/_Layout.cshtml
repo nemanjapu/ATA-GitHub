@@ -12,9 +12,7 @@
     <meta name="theme-color" content="#ffffff">
     <meta property="og:image" content="http://atastruix-001-site1.btempurl.com/Content/images/logo.png">
     <meta property="og:image:type" content="image/png">
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.13/css/all.css" integrity="sha384-DNOHZ68U8hZfKXOrtjWvjxusGo9WQnrNx2sqG0tfsghAvtVlRW3tvkXWZh58N9jp"
-          crossorigin="anonymous">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.0/animate.min.css" />
+    @Styles.Render("~/Content/fontAwesome")
     @RenderSection("styles", required: false)
     @Styles.Render("~/Content/bootstrapCss")
     @Styles.Render("~/Content/userCss")
@@ -23,55 +21,57 @@
     <div class="container-fluid menu-container fixed-top">
         <div class="top-bar clearfix">
             <div class="top-bar-items float-right">
-                @if (!string.IsNullOrEmpty(ATAarhitektonskiStudio.Helpers.GlobalHelper.GetFacebook()))
-                {
-                    <a class="social" target="_blank" href="@ATAarhitektonskiStudio.Helpers.GlobalHelper.GetFacebook()">
-                        <i class="fab fa-facebook-f"></i>
-                    </a>
-                }
-                @if (!string.IsNullOrEmpty(ATAarhitektonskiStudio.Helpers.GlobalHelper.GetTwitter()))
-                {
-                    <a class="social" target="_blank" href="@ATAarhitektonskiStudio.Helpers.GlobalHelper.GetTwitter()">
-                        <i class="fab fa-twitter"></i>
-                    </a>
-                }
-                @if (!string.IsNullOrEmpty(ATAarhitektonskiStudio.Helpers.GlobalHelper.GetInstagram()))
-                {
-                    <a class="social" target="_blank" href="@ATAarhitektonskiStudio.Helpers.GlobalHelper.GetInstagram()">
-                        <i class="fab fa-instagram"></i>
-                    </a>
-                }
-                @if (!string.IsNullOrEmpty(ATAarhitektonskiStudio.Helpers.GlobalHelper.GetYoutube()))
-                {
-                    <a class="social" target="_blank" href="@ATAarhitektonskiStudio.Helpers.GlobalHelper.GetYoutube()">
-                        <i class="fab fa-youtube"></i>
-                    </a>
-                }
-                @if (!string.IsNullOrEmpty(ATAarhitektonskiStudio.Helpers.GlobalHelper.GetPinterest()))
-                {
-                    <a class="social" target="_blank" href="@ATAarhitektonskiStudio.Helpers.GlobalHelper.GetPinterest()">
-                        <i class="fab fa-pinterest-p"></i>
-                    </a>
-                }
-                @if (!string.IsNullOrEmpty(ATAarhitektonskiStudio.Helpers.GlobalHelper.GetLinkedin()))
-                {
-                    <a class="social" target="_blank" href="@ATAarhitektonskiStudio.Helpers.GlobalHelper.GetLinkedin()">
-                        <i class="fab fa-linkedin"></i>
-                    </a>
-                }
-                @if (!string.IsNullOrEmpty(ATAarhitektonskiStudio.Helpers.GlobalHelper.GetGooglePlus()))
-                {
-                    <a class="social" target="_blank" href="@ATAarhitektonskiStudio.Helpers.GlobalHelper.GetGooglePlus()">
-                        <i class="fab fa-google-plus"></i>
-                    </a>
-                }
+                <div class="social-box clearfix">
+                    @if (!string.IsNullOrEmpty(ATAarhitektonskiStudio.Helpers.GlobalHelper.GetFacebook()))
+                    {
+                        <a class="social" target="_blank" href="@ATAarhitektonskiStudio.Helpers.GlobalHelper.GetFacebook()">
+                            <i class="fab fa-facebook-f"></i>
+                        </a>
+                    }
+                    @if (!string.IsNullOrEmpty(ATAarhitektonskiStudio.Helpers.GlobalHelper.GetTwitter()))
+                    {
+                        <a class="social" target="_blank" href="@ATAarhitektonskiStudio.Helpers.GlobalHelper.GetTwitter()">
+                            <i class="fab fa-twitter"></i>
+                        </a>
+                    }
+                    @if (!string.IsNullOrEmpty(ATAarhitektonskiStudio.Helpers.GlobalHelper.GetInstagram()))
+                    {
+                        <a class="social" target="_blank" href="@ATAarhitektonskiStudio.Helpers.GlobalHelper.GetInstagram()">
+                            <i class="fab fa-instagram"></i>
+                        </a>
+                    }
+                    @if (!string.IsNullOrEmpty(ATAarhitektonskiStudio.Helpers.GlobalHelper.GetYoutube()))
+                    {
+                        <a class="social" target="_blank" href="@ATAarhitektonskiStudio.Helpers.GlobalHelper.GetYoutube()">
+                            <i class="fab fa-youtube"></i>
+                        </a>
+                    }
+                    @if (!string.IsNullOrEmpty(ATAarhitektonskiStudio.Helpers.GlobalHelper.GetPinterest()))
+                    {
+                        <a class="social" target="_blank" href="@ATAarhitektonskiStudio.Helpers.GlobalHelper.GetPinterest()">
+                            <i class="fab fa-pinterest-p"></i>
+                        </a>
+                    }
+                    @if (!string.IsNullOrEmpty(ATAarhitektonskiStudio.Helpers.GlobalHelper.GetLinkedin()))
+                    {
+                        <a class="social" target="_blank" href="@ATAarhitektonskiStudio.Helpers.GlobalHelper.GetLinkedin()">
+                            <i class="fab fa-linkedin"></i>
+                        </a>
+                    }
+                    @if (!string.IsNullOrEmpty(ATAarhitektonskiStudio.Helpers.GlobalHelper.GetGooglePlus()))
+                    {
+                        <a class="social" target="_blank" href="@ATAarhitektonskiStudio.Helpers.GlobalHelper.GetGooglePlus()">
+                            <i class="fab fa-google-plus"></i>
+                        </a>
+                    }
+                </div>
                 <a href="" class="setLang" data-lang="bs"><img src="~/Content/images/bosnia-and-herzegovina.png" /></a>
                 <a href="" class="setLang" data-lang="en"><img src="~/Content/images/united-kingdom.png" /></a>
             </div>
         </div>
-        <nav class="navbar navbar-expand-md">
+        <nav class="navbar navbar-expand-sm">
             <a class="navbar-brand" href="@Url.Action("Index", "Home")">
-                <img src="~/Content/images/logo.png">
+                <img src="~/Content/images/logo-black.png">
             </a>
             <button class="navbar-toggler" type="button" aria-label="Toggle navigation" id="openMenu">
                 <span class="navbar-toggler-icon">

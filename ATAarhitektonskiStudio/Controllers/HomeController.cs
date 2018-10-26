@@ -14,21 +14,12 @@ namespace ATAarhitektonskiStudio.Controllers
         {
             var model = new HomepageViewModel
             {
-                hpProjects = ctx.Project.Include(pimg => pimg.Images).Where(p => p.isActive == true).OrderByDescending(p => p.DatePublished).Take(5)
-                .Select(p => new ProjectViewModel()
-                {
-                    Id = p.Id,
-                    PreviewImage = p.Images.FirstOrDefault(),
-                    isActive = p.isActive,
-                    Name = p.Name,
-                    NameEng = p.NameEng
-                }).ToList(),
-                Heading1 = ctx.Global.FirstOrDefault().Heading1Homepage,
-                Heading1Eng = ctx.Global.FirstOrDefault().Heading1HomepageEng,
-                Heading2 = ctx.Global.FirstOrDefault().Heading2Homepage,
-                Heading2Eng = ctx.Global.FirstOrDefault().Heading2HomepageEng,
-                Text = ctx.Global.FirstOrDefault().WritingHomepage,
-                TextEng = ctx.Global.FirstOrDefault().WritingHomepageEng
+                Heading1 = ctx.Global.AsNoTracking().FirstOrDefault().Heading1Homepage,
+                Heading1Eng = ctx.Global.AsNoTracking().FirstOrDefault().Heading1HomepageEng,
+                Heading2 = ctx.Global.AsNoTracking().FirstOrDefault().Heading2Homepage,
+                Heading2Eng = ctx.Global.AsNoTracking().FirstOrDefault().Heading2HomepageEng,
+                Text = ctx.Global.AsNoTracking().FirstOrDefault().WritingHomepage,
+                TextEng = ctx.Global.AsNoTracking().FirstOrDefault().WritingHomepageEng
             };
 
             return View(model);
