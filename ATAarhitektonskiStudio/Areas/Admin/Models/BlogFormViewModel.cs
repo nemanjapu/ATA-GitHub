@@ -14,13 +14,21 @@ namespace ATAarhitektonskiStudio.Areas.Admin.Models
         [Required]
         public string Caption { get; set; }
         [Required]
+        public string CaptionEng { get; set; }
+        [Required]
         [AllowHtml]
         public string Text { get; set; }
+        [Required]
+        [AllowHtml]
+        public string TextEng { get; set; }
         public DateTime DatePublished { get; set; }
         public User User { get; set; }
         public int UserId { get; set; }
         public HttpPostedFileBase File { get; set; }
         public string imageName { get; set; }
         public bool Active { get; set; }
+        public string MetaKeywords { get; set; }
+        public string MetaDescription { get; set; }
+
     }
 }

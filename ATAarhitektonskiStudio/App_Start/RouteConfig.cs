@@ -16,6 +16,12 @@ namespace ATAarhitektonskiStudio
             routes.LowercaseUrls = true;
 
             routes.MapRoute(
+              "Sitemap",
+              "sitemap.xml",
+              new { controller = "Home", action = "SitemapXml", id = UrlParameter.Optional, lang = "bs" }
+           );
+
+            routes.MapRoute(
                 name: "LocalizedDefault",
                 url: "{lang}/{controller}/{action}/{id}",
                 defaults: new { controller = "Home", action = "Index", id = UrlParameter.Optional },

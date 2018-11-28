@@ -1,9 +1,28 @@
-﻿@model ATAarhitektonskiStudio.ViewModels.ProjectViewModel
+﻿@using System.Text.RegularExpressions
+@model ATAarhitektonskiStudio.ViewModels.ProjectViewModel
 @{
     ViewBag.Title = Model.Name + "-";
 }
 @section styles{
     @Styles.Render("~/Content/projectCss")
+}
+
+@{
+    var imageNameNoSpaces = Regex.Replace(Model.Images.FirstOrDefault().FileName, " ", "%20");
+    var imagePathNoSpaces = Regex.Replace(Model.Images.FirstOrDefault().FilePath, " ", "%20");
+}
+
+@section metatags{
+    <link href="http://www.ata.ba/projects/project/@Model.Id" rel="canonical" />
+    <meta name="keywords" content="@Model.MetaKeywords" />
+    <meta name="description" content="@Model.MetaDescription" />
+    <meta property="og:url" content="http://www.ata.ba/projects/project/@Model.Id" />
+    <meta property="og:title" content="@Model.Name - ATA Arhitektonski Studio" />
+    <meta property="og:description" content="@Model.MetaDescription" />
+    <meta property="og:image" content="http://www.ata.ba/@imagePathNoSpaces/@imageNameNoSpaces" />
+    <meta property="og:image:alt" content="@Model.Name - ATA Arhitektonski Studio" />
+    <meta property="og:type" content="website" />
+    @*<meta property="fb:app_id" content="238576326796686" />*@
 }
 
 @if (GlobalHelper.CurrentCulture == "en")
@@ -20,19 +39,23 @@
                 @foreach (var item in Model.Images)
                 {
                     <div class="project-img">
-                        <a href="~/@item.FilePath/@item.FileName" data-lightbox="listing-images-lb" class="project-img-plus"><i class="fas fa-plus"></i></a>
+                        <a href="~/@item.FilePath/@item.FileName" data-title="@RegexHelper.RemoveDashesFromImagesNames(item.FileNameNoExt)" data-lightbox="listing-images-lb" class="project-img-plus"><i class="fas fa-plus"></i></a>
                         <img src="~/@item.FilePath/@item.FileName" alt="@item.FileName" />
                     </div>
                 }
             </div>
             <div class="project-img text" id="projectText">
                 <div class="project-text">
-                    <h5><b>@Model.NameEng</b></h5>
-                    <p class="mb-2">Location: <b>@Model.LocationEng</b></p>
-                    <p class="mb-2">Type: <b>@Model.TypeEng</b></p>
-                    <p class="mb-2">Year built: <b>@Model.YearBuiltEng</b></p>
-                    <p class="mb-2">m<sup>2</sup>: <b>@Model.SquareMetersEng</b></p>
-                    <p class="mb-2">Investor: <b>@Model.InvestorEng</b></p>
+                    <h5><span class="text-uppercase">@Model.NameEng</span></h5>
+                    <p class="mb-2"><span class="text-uppercase">L o c a t i o n:</span> @Model.LocationEng</p>
+                    <p class="mb-2"><span class="text-uppercase">Q u a d r a t u r e:</span> @Model.SquareMetersEng</p>
+                    <p class="mb-2"><span class="text-uppercase">Y e a r:</span> @Model.YearBuiltEng</p>
+                    <p class="mb-2"><span class="text-uppercase">I n v e s t o r:</span> @Model.InvestorEng</p>
+                    <p class="mb-2"><span class="text-uppercase">T y p e:</span> @Model.TypeEng</p>
+                    @if (!String.IsNullOrEmpty(Model.LevelEng))
+                    {
+                        <p class="mb-2"><span class="text-uppercase">L e v e l:</span> @Model.LevelEng</p>
+                    }
                     <p class="mb-0">@Html.Raw(Model.TextEng)</p>
                 </div>
             </div>
@@ -53,19 +76,23 @@ else
                 @foreach (var item in Model.Images)
                 {
                     <div class="project-img">
-                        <a href="~/@item.FilePath/@item.FileName" data-lightbox="listing-images-lb" class="project-img-plus"><i class="fas fa-plus"></i></a>
+                        <a href="~/@item.FilePath/@item.FileName" data-title="@RegexHelper.RemoveDashesFromImagesNames(item.FileNameNoExt)" data-lightbox="listing-images-lb" class="project-img-plus"><i class="fas fa-plus"></i></a>
                         <img src="~/@item.FilePath/@item.FileName" alt="@item.FileName" />
                     </div>
                 }
             </div>
             <div class="project-img text" id="projectText">
                 <div class="project-text">
-                    <h5><b>@Model.Name</b></h5>
-                    <p class="mb-2">Lokacija: <b>@Model.Location</b></p>
-                    <p class="mb-2">Tip: <b>@Model.Type</b></p>
-                    <p class="mb-2">Godina izgradnje: <b>@Model.YearBuilt</b></p>
-                    <p class="mb-2">m<sup>2</sup>: <b>@Model.SquareMeters</b></p>
-                    <p class="mb-2">Investitor: <b>@Model.Investor</b></p>
+                    <h5><span class="text-uppercase">@Model.Name</span></h5>
+                    <p class="mb-2"><span class="text-uppercase">L O K A C I J A:</span> @Model.Location</p>
+                    <p class="mb-2"><span class="text-uppercase">K V A D R A T U R A:</span> @Model.SquareMeters</p>
+                    <p class="mb-2"><span class="text-uppercase">G O D I N A:</span> @Model.YearBuilt</p>
+                    <p class="mb-2"><span class="text-uppercase">I N V E S T I T O R:</span> @Model.Investor</p>
+                    <p class="mb-2"><span class="text-uppercase">T I P:</span> @Model.Type</p>
+                    @if (!String.IsNullOrEmpty(Model.Level))
+                    {
+                        <p class="mb-2"><span class="text-uppercase">N I V O:</span> @Model.Level</p>
+                    }
                     <p class="mb-0">@Html.Raw(Model.Text)</p>
                 </div>
             </div>
@@ -77,7 +104,7 @@ else
     @Scripts.Render("~/bundles/projectScript")
     @if (!string.IsNullOrEmpty(Model.YoutubeVideoLink))
     {
-    <script>
+        <script>
         function youtube_parser() {
             var url = "@Model.YoutubeVideoLink";
             var regExp = /^.*(?:(?:youtu\.be\/|v\/|vi\/|u\/\w\/|embed\/)|(?:(?:watch)?\?v(?:i)?=|\&v(?:i)?=))([^#\&\?]*).*/;
@@ -85,6 +112,6 @@ else
             return match[1];
         }
         $('#video').html('<iframe width="100%" src="https://www.youtube.com/embed/' + youtube_parser() + '"></iframe>');
-    </script>
+        </script>
     }
 }

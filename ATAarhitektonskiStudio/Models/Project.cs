@@ -26,5 +26,9 @@ namespace ATAarhitektonskiStudio.Models
         public virtual ICollection<ProjectImages> Images { get; set; }
         public bool isActive { get; set; }
         public string YoutubeVideoLink { get; set; }
+        public string Level { get; set; }
+        public string LevelEng { get; set; }
+        public string MetaKeywords { get; set; }
+        public string MetaDescription { get; set; }
     }
 }

@@ -1,5 +1,115 @@
 ﻿@import url("https://fonts.googleapis.com/css?family=Roboto:400,500,700,300");
 
+@font-face {
+    font-family: "Swis721LtBTLight";
+    src: url('../fonts/ff21985e04861bb8d9745440ee1e2e7d.eot'); /* IE9*/
+    src: url('../fonts/ff21985e04861bb8d9745440ee1e2e7d.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
+    url('../fonts/ff21985e04861bb8d9745440ee1e2e7d.woff2') format('woff2'), /* chrome、firefox */
+    url('../fonts/ff21985e04861bb8d9745440ee1e2e7d.woff') format('woff'), /* chrome、firefox */
+    url('../fonts/ff21985e04861bb8d9745440ee1e2e7d.ttf') format('truetype'), /* chrome、firefox、opera、Safari, Android, iOS 4.2+*/
+    url('../fonts/ff21985e04861bb8d9745440ee1e2e7d.svg#Swis721 Lt BT Light') format('svg'); /* iOS 4.1- */
+}
+
+@font-face {
+    font-family: "Swis721BlkBT";
+    src: url('../fonts/da49b3dd89c30591ad7a2bbb93e11bcb.eot'); /* IE9*/
+    src: url('../fonts/da49b3dd89c30591ad7a2bbb93e11bcb.eot?#iefix') format('embedded-opentype'), /* IE6-IE8 */
+    /*url('../fonts/da49b3dd89c30591ad7a2bbb93e11bcb.woff2') format('woff2'), /* chrome、firefox */
+    url('../fonts/da49b3dd89c30591ad7a2bbb93e11bcb.woff') format('woff'), /* chrome、firefox */
+    url('../fonts/da49b3dd89c30591ad7a2bbb93e11bcb.ttf') format('truetype'), /* chrome、firefox、opera、Safari, Android, iOS 4.2+*/
+    url('../fonts/da49b3dd89c30591ad7a2bbb93e11bcb.svg#Swis721 Blk BT Black') format('svg'); /* iOS 4.1- */
+}
+
+@font-face {
+    font-family: "Swiss721LightBT";
+    src: url("../fonts/7f33f727cde087e7f988eec2045ea4c2.eot"); /* IE9*/
+    src: url("../fonts/7f33f727cde087e7f988eec2045ea4c2.eot?#iefix") format("embedded-opentype"), /* IE6-IE8 */
+    url("../fonts/7f33f727cde087e7f988eec2045ea4c2.woff2") format("woff2"), /* chrome、firefox */
+    url("../fonts/7f33f727cde087e7f988eec2045ea4c2.woff") format("woff"), /* chrome、firefox */
+    url("../fonts/7f33f727cde087e7f988eec2045ea4c2.ttf") format("truetype"), /* chrome、firefox、opera、Safari, Android, iOS 4.2+*/
+    url("../fonts/7f33f727cde087e7f988eec2045ea4c2.svg#Swiss 721 Light BT") format("svg"); /* iOS 4.1- */
+}
+
+@font-face {
+    font-family: "Swiss721MediumBT";
+    src: url("../fonts/47d4a7722f4ba0f249fe9b5ae8470f33.eot"); /* IE9*/
+    src: url("../fonts/47d4a7722f4ba0f249fe9b5ae8470f33.eot?#iefix") format("embedded-opentype"), /* IE6-IE8 */
+    url("../fonts/47d4a7722f4ba0f249fe9b5ae8470f33.woff2") format("woff2"), /* chrome、firefox */
+    url("../fonts/47d4a7722f4ba0f249fe9b5ae8470f33.woff") format("woff"), /* chrome、firefox */
+    url("../fonts/47d4a7722f4ba0f249fe9b5ae8470f33.ttf") format("truetype"), /* chrome、firefox、opera、Safari, Android, iOS 4.2+*/
+    url("../fonts/47d4a7722f4ba0f249fe9b5ae8470f33.svg#Swiss 721 Medium BT") format("svg"); /* iOS 4.1- */
+}
+
+@font-face {
+    font-family: "Swiss721HeavyBT";
+    src: url("../fonts/4f59e76bd73ba849bd2ddef7bf5349f9.eot"); /* IE9*/
+    src: url("../fonts/4f59e76bd73ba849bd2ddef7bf5349f9.eot?#iefix") format("embedded-opentype"), /* IE6-IE8 */
+    url("../fonts/4f59e76bd73ba849bd2ddef7bf5349f9.woff2") format("woff2"), /* chrome、firefox */
+    url("../fonts/4f59e76bd73ba849bd2ddef7bf5349f9.woff") format("woff"), /* chrome、firefox */
+    url("../fonts/4f59e76bd73ba849bd2ddef7bf5349f9.ttf") format("truetype"), /* chrome、firefox、opera、Safari, Android, iOS 4.2+*/
+    url("../fonts/4f59e76bd73ba849bd2ddef7bf5349f9.svg#Swiss 721 Heavy BT") format("svg"); /* iOS 4.1- */
+}
+
+@font-face {
+    font-family: "Swiss721BT";
+    src: url("../fonts/80a364979527a38a5af7ae662a106fae.eot"); /* IE9*/
+    src: url("../fonts/80a364979527a38a5af7ae662a106fae.eot?#iefix") format("embedded-opentype"), /* IE6-IE8 */
+    url("../fonts/80a364979527a38a5af7ae662a106fae.woff2") format("woff2"), /* chrome、firefox */
+    url("../fonts/80a364979527a38a5af7ae662a106fae.woff") format("woff"), /* chrome、firefox */
+    url("../fonts/80a364979527a38a5af7ae662a106fae.ttf") format("truetype"), /* chrome、firefox、opera、Safari, Android, iOS 4.2+*/
+    url("../fonts/80a364979527a38a5af7ae662a106fae.svg#Swiss 721 BT V1") format("svg"); /* iOS 4.1- */
+}
+
+@font-face {
+    font-family: "Swiss721CondensedBT";
+    src: url("../fonts/80f213b8a30f391ec4d45836fae58663.eot"); /* IE9*/
+    src: url("../fonts/80f213b8a30f391ec4d45836fae58663.eot?#iefix") format("embedded-opentype"), /* IE6-IE8 */
+    url("../fonts/80f213b8a30f391ec4d45836fae58663.woff2") format("woff2"), /* chrome、firefox */
+    url("../fonts/80f213b8a30f391ec4d45836fae58663.woff") format("woff"), /* chrome、firefox */
+    url("../fonts/80f213b8a30f391ec4d45836fae58663.ttf") format("truetype"), /* chrome、firefox、opera、Safari, Android, iOS 4.2+*/
+    url("../fonts/80f213b8a30f391ec4d45836fae58663.svg#Swiss 721 Condensed BT") format("svg"); /* iOS 4.1- */
+}
+
+@font-face {
+    font-family: "Swiss721BoldBT";
+    src: url("../fonts/b0ff35c4fe28bbe6f85c40d736a0aa69.eot"); /* IE9*/
+    src: url("../fonts/b0ff35c4fe28bbe6f85c40d736a0aa69.eot?#iefix") format("embedded-opentype"), /* IE6-IE8 */
+    url("../fonts/b0ff35c4fe28bbe6f85c40d736a0aa69.woff2") format("woff2"), /* chrome、firefox */
+    url("../fonts/b0ff35c4fe28bbe6f85c40d736a0aa69.woff") format("woff"), /* chrome、firefox */
+    url("../fonts/b0ff35c4fe28bbe6f85c40d736a0aa69.ttf") format("truetype"), /* chrome、firefox、opera、Safari, Android, iOS 4.2+*/
+    url("../fonts/b0ff35c4fe28bbe6f85c40d736a0aa69.svg#Swiss 721 Bold BT") format("svg"); /* iOS 4.1- */
+}
+
+@font-face {
+    font-family: "Swiss721LightBTV1";
+    src: url("../fonts/1d258cb7cf971de371d49ba818027553.eot"); /* IE9*/
+    src: url("../fonts/1d258cb7cf971de371d49ba818027553.eot?#iefix") format("embedded-opentype"), /* IE6-IE8 */
+    url("../fonts/1d258cb7cf971de371d49ba818027553.woff2") format("woff2"), /* chrome、firefox */
+    url("../fonts/1d258cb7cf971de371d49ba818027553.woff") format("woff"), /* chrome、firefox */
+    url("../fonts/1d258cb7cf971de371d49ba818027553.ttf") format("truetype"), /* chrome、firefox、opera、Safari, Android, iOS 4.2+*/
+    url("../fonts/1d258cb7cf971de371d49ba818027553.svg#Swiss 721 Light BT V1") format("svg"); /* iOS 4.1- */
+}
+
+@font-face {
+    font-family: "Swiss721BoldCondensedBT";
+    src: url("../fonts/28ce029aa488ec6feda976ca3e33ccb5.eot"); /* IE9*/
+    src: url("../fonts/28ce029aa488ec6feda976ca3e33ccb5.eot?#iefix") format("embedded-opentype"), /* IE6-IE8 */
+    url("../fonts/28ce029aa488ec6feda976ca3e33ccb5.woff2") format("woff2"), /* chrome、firefox */
+    url("../fonts/28ce029aa488ec6feda976ca3e33ccb5.woff") format("woff"), /* chrome、firefox */
+    url("../fonts/28ce029aa488ec6feda976ca3e33ccb5.ttf") format("truetype"), /* chrome、firefox、opera、Safari, Android, iOS 4.2+*/
+    url("../fonts/28ce029aa488ec6feda976ca3e33ccb5.svg#Swiss 721 Bold Condensed BT") format("svg"); /* iOS 4.1- */
+}
+
+@font-face {
+    font-family: "Swiss721BlackCondensedBTV1";
+    src: url("../fonts/1b2ac505fa5583af17f0bffacf522ac7.eot"); /* IE9*/
+    src: url("../fonts/1b2ac505fa5583af17f0bffacf522ac7.eot?#iefix") format("embedded-opentype"), /* IE6-IE8 */
+    url("../fonts/1b2ac505fa5583af17f0bffacf522ac7.woff2") format("woff2"), /* chrome、firefox */
+    url("../fonts/1b2ac505fa5583af17f0bffacf522ac7.woff") format("woff"), /* chrome、firefox */
+    url("../fonts/1b2ac505fa5583af17f0bffacf522ac7.ttf") format("truetype"), /* chrome、firefox、opera、Safari, Android, iOS 4.2+*/
+    url("../fonts/1b2ac505fa5583af17f0bffacf522ac7.svg#Swiss 721 Black Condensed BT V1") format("svg"); /* iOS 4.1- */
+}
+
 html {
     position: relative;
     min-height: 100%;
@@ -1625,4 +1735,31 @@ a.btn:focus {
 
 .note-image-dialog input{
     width: 100%;
+}
+
+.imagesPlaceholder {
+    overflow: auto;
+    max-height: 750px;
+}
+
+.ui-helper-hidden-accessible {
+    display: none;
+}
+
+.img-name {
+    position: absolute;
+    bottom: 0;
+    text-align: center;
+    width: 100%;
+    background: rgba(0,0,0,0.7);
+    color: #fff;
+    padding: 3px 0;
+}
+
+.note-toolbar .dropdown-menu {
+    width: 300px;
+}
+
+textarea.form-control {
+    min-height: 140px;
 }

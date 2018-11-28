@@ -12,6 +12,23 @@
     @using (Html.BeginForm("SaveEditedProject", "ProjectsManager", FormMethod.Post, new { enctype = "multipart/form-data" }))
     {
         <div class="row">
+            <div class="col-sm-6">
+                <div class="form-group">
+                    <label>Meta keywords:</label>
+                    @Html.TextBoxFor(m => m.MetaKeywords, new { @class = "form-control" })
+                    @Html.ValidationMessageFor(m => m.MetaKeywords)
+                </div>
+            </div>
+            <div class="col-sm-6">
+                <div class="form-group">
+                    <label>Meta description:</label>
+                    @Html.TextBoxFor(m => m.MetaDescription, new { @class = "form-control" })
+                    @Html.ValidationMessageFor(m => m.MetaDescription)
+                </div>
+            </div>
+        </div>
+        <hr />
+        <div class="row">
             <div class="col-sm-4">
                 <div class="form-group">
                     <label>Naziv projekta:</label>
@@ -42,6 +59,11 @@
                     <label>Tip:</label>
                     @Html.TextBoxFor(m => m.Type, new { @class = "form-control" })
                     @Html.ValidationMessageFor(m => m.Type)
+                </div>
+                <div class="form-group">
+                    <label>Nivo:</label>
+                    @Html.TextBoxFor(m => m.Level, new { @class = "form-control" })
+                    @Html.ValidationMessageFor(m => m.Level)
                 </div>
                 <div class="form-group">
                     <label>Tekst:</label>
@@ -81,6 +103,11 @@
                     @Html.ValidationMessageFor(m => m.TypeEng)
                 </div>
                 <div class="form-group">
+                    <label>Nivo (eng):</label>
+                    @Html.TextBoxFor(m => m.LevelEng, new { @class = "form-control" })
+                    @Html.ValidationMessageFor(m => m.LevelEng)
+                </div>
+                <div class="form-group">
                     <label>Tekst (eng):</label>
                     @Html.TextAreaFor(m => m.TextEng, new { @class = "form-control" })
                     @Html.ValidationMessageFor(m => m.TextEng)
@@ -103,18 +130,19 @@
                     <label>Slike:</label>
                     <input style="padding: 3px;" class="form-control" type="file" name="file" multiple="multiple" accept="image/*" id="images">
                 </div>
-                <div class="container-fluid">
-                    <div class="row">
+                <small class="mb-2 text-center d-block">Za promjenu redoslijeda slika, koristite metodu drag and drop.</small>
+                <div class="container-fluid imagesPlaceholder">
+                    <div class="row dragableImagesContainer" id="ImagesContainer">
                         @foreach (var s in Model.EditImagesList)
                         {
-                            <div class="col-sm-6">
+                            <div class="col-12 sortable-image" id="@s.Id">
                                 <div class="card mb-4">
                                     <a id="DeleteImageButton" role="button" href="javascript: void(0);" class="btn btn-danger delete-image">
                                         <i class="fa fa-times"></i>
                                         <input type="hidden" name="ImageId" class="ImageId" value="@s.Id" />
                                     </a>
-                                    <img class="card-img-top card-img-bottom" src="~/@s.FilePath/@s.FileName" alt="@s.FileName">
-                                    @*<a class="edit-img-order" href="@Url.Action("ChangeImageOrder","ListingsManager", new { @id = s.Id })">Uredi r.b. slike</a>*@
+                                    <img class="card-img-top card-img-bottom draggableHandleImage" src="~/@s.FilePath/@s.FileName" alt="@s.FileName">
+                                    <span class="img-name">@s.FileNameNoExt</span>
                                 </div>
                             </div>
                         }
@@ -150,6 +178,34 @@
 
 @section scripts{
     @Scripts.Render("~/bundles/jqueryval")
+    <script>
+        $('#ImagesContainer').sortable({
+            delay: 150,
+            opacity: 0.5,
+            axis: "y",
+            handle: ".draggableHandleImage",
+            scroll: true,
+            scrollSensitivity: 100,
+            stop: function (event, ui) {
+                var images = [];
+                $(this).children().each(function (index) {
+                    images.push({
+                        'id': $(this).attr("id"),
+                        'SortOrder': index
+                    });
+                });
+                $.ajax({
+                    url: "/api/ProjectImages/SetImagesOrder",
+                    method: "POST",
+                    data: { '': images }
+                }).done(function () {
+                    toastr.success("Redoslijed slika uspješno izmijenjen.");
+                }).fail(function () {
+                    toastr.error("Greška! Novi redoslijed nije spašen.");
+                });
+            }
+        });
+    </script>
     <script>
         $('#Text').summernote({
             height: 350,

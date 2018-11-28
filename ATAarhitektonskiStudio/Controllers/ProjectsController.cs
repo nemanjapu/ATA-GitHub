@@ -5,9 +5,11 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using System.Data.Entity;
+using System.Web.SessionState;
 
 namespace ATAarhitektonskiStudio.Controllers
 {
+    [SessionState(SessionStateBehavior.Disabled)]
     public class ProjectsController : BaseController
     {
         // GET: Projects
@@ -36,7 +38,11 @@ namespace ATAarhitektonskiStudio.Controllers
                 TypeEng = p.TypeEng,
                 YearBuilt = p.YearBuilt,
                 YearBuiltEng = p.YearBuiltEng,
-                YoutubeVideoLink = p.YoutubeVideoLink
+                YoutubeVideoLink = p.YoutubeVideoLink,
+                Level = p.Level,
+                LevelEng = p.LevelEng,
+                MetaDescription = p.MetaDescription,
+                MetaKeywords = p.MetaKeywords
             }).FirstOrDefault();
 
             return View(model);

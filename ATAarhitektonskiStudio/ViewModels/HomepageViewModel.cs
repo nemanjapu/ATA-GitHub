@@ -14,5 +14,7 @@ namespace ATAarhitektonskiStudio.ViewModels
         public string Heading2Eng { get; set; }
         public string Text { get; set; }
         public string TextEng { get; set; }
+        public string MetaKeywords { get; set; }
+        public string MetaDescription { get; set; }
     }
 }

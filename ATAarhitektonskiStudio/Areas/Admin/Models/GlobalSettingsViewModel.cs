@@ -37,5 +37,6 @@ namespace ATAarhitektonskiStudio.Areas.Admin.Models
         public string WritingHomepage { get; set; }
         [AllowHtml]
         public string WritingHomepageEng { get; set; }
+        public bool ShowBlogsOnHomepage { get; set; }
     }
 }

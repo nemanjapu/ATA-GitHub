@@ -27,5 +27,9 @@ namespace ATAarhitektonskiStudio.ViewModels
         public bool isActive { get; set; }
         public ProjectImages PreviewImage { get; set; }
         public string YoutubeVideoLink { get; set; }
+        public string Level { get; set; }
+        public string LevelEng { get; set; }
+        public string MetaKeywords { get; set; }
+        public string MetaDescription { get; set; }
     }
 }

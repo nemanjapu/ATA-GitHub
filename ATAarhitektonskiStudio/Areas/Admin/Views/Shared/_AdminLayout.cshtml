@@ -14,7 +14,7 @@
     <div id="main">
         <div class="headerbar">
             <div class="headerbar-left">
-                <a href="@Url.Action("Index", "Dashboard")" class="logo"><span>Admin</span></a>
+                <a href="@Url.Action("Index", "ProjectsManager")" class="logo">ATA<span></span></a>
             </div>
             <nav class="navbar-custom">
 
@@ -66,6 +66,12 @@
                         <li class="submenu">
                             <a href="@Url.Action("Index", "GlobalSettings")"><i class="fa fa-cogs" aria-hidden="true"></i><span> Globalne postavke </span> </a>
                         </li>
+                        <li class="submenu">
+                            <a href="@Url.Action("Index", "MetaTags")"><i class="fa fa-google" aria-hidden="true"></i><span> Meta tagovi </span> </a>
+                        </li>
+                        <li class="submenu">
+                            <a href="@Url.Action("Index", "UserManager")"><i class="fa fa-key" aria-hidden="true"></i><span> Promjena lozinke </span> </a>
+                        </li>
                         <li class="submenu bg-dark">
                             <a href="@Url.Action("Logout", "Login", new { area = "" })"><i class="fa fa-sign-out" aria-hidden="true"></i><span> Logout </span> </a>
                         </li>
@@ -85,7 +91,7 @@
         </div>
         <footer class="footer">
             <span class="text-right">
-                Copyright <a target="_blank" href="https://www.instagram.com/_struix_/">Struix</a>
+                Copyright <a target="_blank" href="https://www.struix.co/">Struix</a>
             </span>
             <span class="float-right">
                 Powered by <a target="_blank" href="https://www.pikeadmin.com"><b>Pike Admin</b></a>

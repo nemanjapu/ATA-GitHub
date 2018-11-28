@@ -1,4 +1,5 @@
 ﻿using ATAarhitektonskiStudio.Areas.Admin.Models;
+using ATAarhitektonskiStudio.Helpers;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -7,26 +8,36 @@ using System.Web.Mvc;
 
 namespace ATAarhitektonskiStudio.Areas.Admin.Controllers
 {
+    [Authorization(isAdmin: true)]
     public class UserManagerController : BaseAdminController
     {
         // GET: Admin/UserManager
         public ActionResult Index()
         {
-            var userId = Helpers.Authentication.GetUserID();
             var model = new PasswordViewModel();
 
             return View(model);
         }
 
-        public ActionResult SaveNewPassword()
+        [HttpPost]
+        public ActionResult SaveNewPassword(PasswordViewModel model)
         {
             var userId = Helpers.Authentication.GetUserID();
-            var model = ctx.User.Where(u => u.Id == userId).Select(u => new PasswordViewModel
+
+            var user = ctx.User.Find(userId);
+
+            if (PasswordHashing.GenerateHash(model.OldPassword, user.PasswordSalt) == user.PasswordHash)
             {
+                string newHash = PasswordHashing.GenerateHash(model.NewPassword, user.PasswordSalt);
+                user.PasswordHash = newHash;
+                ctx.SaveChanges();
 
-            }).FirstOrDefault();
+                return RedirectToAction("Index", "ProjectsManager");
+            }
 
-            return View();
+            ModelState.AddModelError(String.Empty, "Neispravna stara lozinka. Molimo pokušajte ponovo.");
+
+            return View("Index", model);
         }
     }
 }

@@ -185,9 +185,9 @@
     });
     var defaultBounds = new google.maps.LatLng(43.862805, 18.413278);
     var image = {
-        url: "/Content/images/marker.png",
-        scaledSize: new google.maps.Size(50, 50)
-    }
+        url: "/Content/images/marker-new.png",
+        scaledSize: new google.maps.Size(40, 40)
+    };
 
     var markerForPlace = new google.maps.Marker({
         map: map,

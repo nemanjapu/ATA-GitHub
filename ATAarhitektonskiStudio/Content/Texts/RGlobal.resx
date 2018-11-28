@@ -123,13 +123,19 @@
   <data name="Contact" xml:space="preserve">
     <value>Kontakt</value>
   </data>
+  <data name="ContactDescription" xml:space="preserve">
+    <value>društvo za dizajn, projektovanje i konsalting</value>
+  </data>
   <data name="ContactInfo" xml:space="preserve">
-    <value>Kontakt informacije</value>
+    <value>Kontakt</value>
   </data>
   <data name="Profile" xml:space="preserve">
     <value>Profil</value>
   </data>
   <data name="Projects" xml:space="preserve">
     <value>Projekti</value>
+  </data>
+  <data name="ReadMore" xml:space="preserve">
+    <value>Pročitaj više</value>
   </data>
 </root>

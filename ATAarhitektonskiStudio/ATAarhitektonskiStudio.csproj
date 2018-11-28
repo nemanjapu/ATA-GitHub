@@ -199,9 +199,11 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Areas\Admin\AdminAreaRegistration.cs" />
+    <Compile Include="Areas\Admin\Controllers\ApiControllers\ProjectImagesController.cs" />
     <Compile Include="Areas\Admin\Controllers\BaseAdminController.cs" />
     <Compile Include="Areas\Admin\Controllers\BlogManagerController.cs" />
     <Compile Include="Areas\Admin\Controllers\GlobalSettingsController.cs" />
+    <Compile Include="Areas\Admin\Controllers\MetaTagsController.cs" />
     <Compile Include="Areas\Admin\Controllers\ProjectsManagerController.cs" />
     <Compile Include="Areas\Admin\Controllers\UserManagerController.cs" />
     <Compile Include="Areas\Admin\Models\AddProjectViewModel.cs" />
@@ -220,6 +222,7 @@
       <DependentUpon>RGlobal.en.resx</DependentUpon>
     </Compile>
     <Compile Include="Controllers\API\ProjectsApiController.cs" />
+    <Compile Include="Controllers\BlogsController.cs" />
     <Compile Include="Controllers\ContactController.cs" />
     <Compile Include="Controllers\ProfileController.cs" />
     <Compile Include="Controllers\ProjectsController.cs" />
@@ -236,6 +239,7 @@
     <Compile Include="Helpers\GlobalHelper.cs" />
     <Compile Include="App_code\MultiLanguageViewEngine.cs" />
     <Compile Include="Helpers\PasswordHashing.cs" />
+    <Compile Include="Helpers\RegexHelper.cs" />
     <Compile Include="Migrations\201808191513376_userAdd.cs" />
     <Compile Include="Migrations\201808191513376_userAdd.Designer.cs">
       <DependentUpon>201808191513376_userAdd.cs</DependentUpon>
@@ -272,14 +276,44 @@
     <Compile Include="Migrations\201809132222346_homepageTextsEngAdd.Designer.cs">
       <DependentUpon>201809132222346_homepageTextsEngAdd.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201810281343272_LevelAddProject.cs" />
+    <Compile Include="Migrations\201810281343272_LevelAddProject.Designer.cs">
+      <DependentUpon>201810281343272_LevelAddProject.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201810281347081_LevelAddProjectEng.cs" />
+    <Compile Include="Migrations\201810281347081_LevelAddProjectEng.Designer.cs">
+      <DependentUpon>201810281347081_LevelAddProjectEng.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201811190033225_MetaTags.cs" />
+    <Compile Include="Migrations\201811190033225_MetaTags.Designer.cs">
+      <DependentUpon>201811190033225_MetaTags.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201811262127444_ShowBlogsOnHomepage.cs" />
+    <Compile Include="Migrations\201811262127444_ShowBlogsOnHomepage.Designer.cs">
+      <DependentUpon>201811262127444_ShowBlogsOnHomepage.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201811262145274_BlogMetaAdd.cs" />
+    <Compile Include="Migrations\201811262145274_BlogMetaAdd.Designer.cs">
+      <DependentUpon>201811262145274_BlogMetaAdd.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201811271625469_Last.cs" />
+    <Compile Include="Migrations\201811271625469_Last.Designer.cs">
+      <DependentUpon>201811271625469_Last.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201811271628590_Fix.cs" />
+    <Compile Include="Migrations\201811271628590_Fix.Designer.cs">
+      <DependentUpon>201811271628590_Fix.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Blog.cs" />
     <Compile Include="Models\Contact.cs" />
     <Compile Include="Models\Global.cs" />
+    <Compile Include="Models\MetaTags.cs" />
     <Compile Include="Models\Project.cs" />
     <Compile Include="Models\ProjectImages.cs" />
     <Compile Include="Models\User.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ViewModels\BlogsViewModel.cs" />
     <Compile Include="ViewModels\ContactViewModel.cs" />
     <Compile Include="ViewModels\HomepageViewModel.cs" />
     <Compile Include="ViewModels\LoginViewModel.cs" />
@@ -336,15 +370,37 @@
     <Content Include="Content\images\lightbox\loading.gif" />
     <Content Include="Content\images\lightbox\next.png" />
     <Content Include="Content\images\lightbox\prev.png" />
+    <Content Include="Content\images\marker-new.png" />
+    <Content Include="Content\images\marker-old.png" />
     <Content Include="Content\lightbox.css" />
     <Content Include="Content\owl-carousel-theme.css" />
     <Content Include="Content\owl-carousel.css" />
     <Content Include="Content\Scripts\lightbox.js" />
     <Content Include="Content\Scripts\owl-carousel.js" />
+    <Content Include="Content\toastr.css" />
+    <Content Include="Content\toastr.min.css" />
     <Content Include="Content\webfonts\fa-brands-400.svg" />
     <Content Include="Content\webfonts\fa-regular-400.svg" />
     <Content Include="Content\webfonts\fa-solid-900.svg" />
+    <Content Include="fonts\1b2ac505fa5583af17f0bffacf522ac7.svg" />
+    <Content Include="fonts\1d258cb7cf971de371d49ba818027553.svg" />
+    <Content Include="fonts\1d2e51b71b63d0e48d4fe9f24ea5635c.svg" />
+    <Content Include="fonts\28ce029aa488ec6feda976ca3e33ccb5.svg" />
+    <Content Include="fonts\42c617b72c7d3b026ef2ecc923b3cc5c.svg" />
+    <Content Include="fonts\47d4a7722f4ba0f249fe9b5ae8470f33.svg" />
+    <Content Include="fonts\4ef99d479141f19df5b695fd2c988d49.svg" />
+    <Content Include="fonts\4f59e76bd73ba849bd2ddef7bf5349f9.svg" />
+    <Content Include="fonts\7f33f727cde087e7f988eec2045ea4c2.svg" />
+    <Content Include="fonts\80a364979527a38a5af7ae662a106fae.svg" />
+    <Content Include="fonts\80f213b8a30f391ec4d45836fae58663.svg" />
+    <Content Include="fonts\8979d21bff80c959d6dcba98d1e32bb8.svg" />
+    <Content Include="fonts\937cc8420553d2c374db977e3c1e5d49.svg" />
+    <Content Include="fonts\b0ff35c4fe28bbe6f85c40d736a0aa69.svg" />
+    <Content Include="fonts\b7b09232cefefacd74fdedd163289bfa.svg" />
+    <Content Include="fonts\b96d45d3a75b7b1da302b573cae869f1.svg" />
+    <Content Include="fonts\bdf741435fcf51ae940fe1d0641ed465.svg" />
     <Content Include="fonts\da49b3dd89c30591ad7a2bbb93e11bcb.svg" />
+    <Content Include="fonts\fc52800c028576206a421f0613ca2285.svg" />
     <Content Include="fonts\ff21985e04861bb8d9745440ee1e2e7d.svg" />
     <Content Include="fonts\montserrat-v12-latin-800.svg" />
     <Content Include="fonts\montserrat-v12-latin-900.svg" />
@@ -416,6 +472,7 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <Content Include="mstile-150x150.png" />
+    <Content Include="robots.txt" />
     <Content Include="Scripts\bootstrap.bundle.js" />
     <Content Include="Scripts\bootstrap.bundle.min.js" />
     <Content Include="Scripts\bootstrap.js" />
@@ -492,6 +549,82 @@
     <Content Include="Content\webfonts\fa-solid-900.ttf" />
     <Content Include="Content\webfonts\fa-solid-900.woff" />
     <Content Include="Content\webfonts\fa-solid-900.woff2" />
+    <Content Include="Content\toastr.scss" />
+    <Content Include="Content\toastr.less" />
+    <Content Include="fonts\42c617b72c7d3b026ef2ecc923b3cc5c.eot" />
+    <Content Include="fonts\42c617b72c7d3b026ef2ecc923b3cc5c.ttf" />
+    <Content Include="fonts\42c617b72c7d3b026ef2ecc923b3cc5c.woff" />
+    <Content Include="fonts\42c617b72c7d3b026ef2ecc923b3cc5c.woff2" />
+    <Content Include="fonts\8979d21bff80c959d6dcba98d1e32bb8.eot" />
+    <Content Include="fonts\8979d21bff80c959d6dcba98d1e32bb8.ttf" />
+    <Content Include="fonts\8979d21bff80c959d6dcba98d1e32bb8.woff" />
+    <Content Include="fonts\8979d21bff80c959d6dcba98d1e32bb8.woff2" />
+    <Content Include="fonts\7f33f727cde087e7f988eec2045ea4c2.eot" />
+    <Content Include="fonts\7f33f727cde087e7f988eec2045ea4c2.ttf" />
+    <Content Include="fonts\7f33f727cde087e7f988eec2045ea4c2.woff" />
+    <Content Include="fonts\7f33f727cde087e7f988eec2045ea4c2.woff2" />
+    <Content Include="fonts\b7b09232cefefacd74fdedd163289bfa.eot" />
+    <Content Include="fonts\b7b09232cefefacd74fdedd163289bfa.ttf" />
+    <Content Include="fonts\b7b09232cefefacd74fdedd163289bfa.woff" />
+    <Content Include="fonts\b7b09232cefefacd74fdedd163289bfa.woff2" />
+    <Content Include="fonts\47d4a7722f4ba0f249fe9b5ae8470f33.eot" />
+    <Content Include="fonts\47d4a7722f4ba0f249fe9b5ae8470f33.ttf" />
+    <Content Include="fonts\47d4a7722f4ba0f249fe9b5ae8470f33.woff" />
+    <Content Include="fonts\47d4a7722f4ba0f249fe9b5ae8470f33.woff2" />
+    <Content Include="fonts\1d2e51b71b63d0e48d4fe9f24ea5635c.eot" />
+    <Content Include="fonts\1d2e51b71b63d0e48d4fe9f24ea5635c.ttf" />
+    <Content Include="fonts\1d2e51b71b63d0e48d4fe9f24ea5635c.woff" />
+    <Content Include="fonts\1d2e51b71b63d0e48d4fe9f24ea5635c.woff2" />
+    <Content Include="fonts\937cc8420553d2c374db977e3c1e5d49.eot" />
+    <Content Include="fonts\937cc8420553d2c374db977e3c1e5d49.ttf" />
+    <Content Include="fonts\937cc8420553d2c374db977e3c1e5d49.woff" />
+    <Content Include="fonts\937cc8420553d2c374db977e3c1e5d49.woff2" />
+    <Content Include="fonts\bdf741435fcf51ae940fe1d0641ed465.eot" />
+    <Content Include="fonts\bdf741435fcf51ae940fe1d0641ed465.ttf" />
+    <Content Include="fonts\bdf741435fcf51ae940fe1d0641ed465.woff" />
+    <Content Include="fonts\bdf741435fcf51ae940fe1d0641ed465.woff2" />
+    <Content Include="fonts\b96d45d3a75b7b1da302b573cae869f1.eot" />
+    <Content Include="fonts\b96d45d3a75b7b1da302b573cae869f1.ttf" />
+    <Content Include="fonts\b96d45d3a75b7b1da302b573cae869f1.woff" />
+    <Content Include="fonts\b96d45d3a75b7b1da302b573cae869f1.woff2" />
+    <Content Include="fonts\4f59e76bd73ba849bd2ddef7bf5349f9.eot" />
+    <Content Include="fonts\4f59e76bd73ba849bd2ddef7bf5349f9.ttf" />
+    <Content Include="fonts\4f59e76bd73ba849bd2ddef7bf5349f9.woff" />
+    <Content Include="fonts\4f59e76bd73ba849bd2ddef7bf5349f9.woff2" />
+    <Content Include="fonts\80a364979527a38a5af7ae662a106fae.eot" />
+    <Content Include="fonts\80a364979527a38a5af7ae662a106fae.ttf" />
+    <Content Include="fonts\80a364979527a38a5af7ae662a106fae.woff" />
+    <Content Include="fonts\80a364979527a38a5af7ae662a106fae.woff2" />
+    <Content Include="fonts\4ef99d479141f19df5b695fd2c988d49.eot" />
+    <Content Include="fonts\4ef99d479141f19df5b695fd2c988d49.ttf" />
+    <Content Include="fonts\4ef99d479141f19df5b695fd2c988d49.woff" />
+    <Content Include="fonts\4ef99d479141f19df5b695fd2c988d49.woff2" />
+    <Content Include="fonts\80f213b8a30f391ec4d45836fae58663.eot" />
+    <Content Include="fonts\80f213b8a30f391ec4d45836fae58663.ttf" />
+    <Content Include="fonts\80f213b8a30f391ec4d45836fae58663.woff" />
+    <Content Include="fonts\80f213b8a30f391ec4d45836fae58663.woff2" />
+    <Content Include="fonts\fc52800c028576206a421f0613ca2285.eot" />
+    <Content Include="fonts\fc52800c028576206a421f0613ca2285.ttf" />
+    <Content Include="fonts\fc52800c028576206a421f0613ca2285.woff" />
+    <Content Include="fonts\fc52800c028576206a421f0613ca2285.woff2" />
+    <Content Include="fonts\b0ff35c4fe28bbe6f85c40d736a0aa69.eot" />
+    <Content Include="fonts\b0ff35c4fe28bbe6f85c40d736a0aa69.ttf" />
+    <Content Include="fonts\b0ff35c4fe28bbe6f85c40d736a0aa69.woff" />
+    <Content Include="fonts\b0ff35c4fe28bbe6f85c40d736a0aa69.woff2" />
+    <Content Include="fonts\1d258cb7cf971de371d49ba818027553.eot" />
+    <Content Include="fonts\1d258cb7cf971de371d49ba818027553.ttf" />
+    <Content Include="fonts\1d258cb7cf971de371d49ba818027553.woff" />
+    <Content Include="fonts\1d258cb7cf971de371d49ba818027553.woff2" />
+    <Content Include="fonts\28ce029aa488ec6feda976ca3e33ccb5.eot" />
+    <Content Include="fonts\28ce029aa488ec6feda976ca3e33ccb5.ttf" />
+    <Content Include="fonts\28ce029aa488ec6feda976ca3e33ccb5.woff" />
+    <Content Include="fonts\28ce029aa488ec6feda976ca3e33ccb5.woff2" />
+    <Content Include="fonts\1b2ac505fa5583af17f0bffacf522ac7.eot" />
+    <Content Include="fonts\1b2ac505fa5583af17f0bffacf522ac7.ttf" />
+    <Content Include="fonts\1b2ac505fa5583af17f0bffacf522ac7.woff" />
+    <Content Include="fonts\1b2ac505fa5583af17f0bffacf522ac7.woff2" />
+    <Content Include="fonts\fontawesome-webfont.woff2" />
+    <Content Include="Areas\Admin\Views\MetaTags\Index.cshtml" />
     <None Include="Properties\PublishProfiles\CustomProfile.pubxml" />
     <None Include="Scripts\jquery-3.3.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.3.1.js" />
@@ -509,6 +642,7 @@
     <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
     <Content Include="Scripts\modernizr-2.8.3.js" />
     <Content Include="Content\Scripts\multiLanguajeDemo.js" />
+    <Content Include="Scripts\packery.pkgd.min.js" />
     <Content Include="Scripts\popper-utils.js" />
     <Content Include="Scripts\popper-utils.min.js" />
     <Content Include="Scripts\popper.js" />
@@ -520,6 +654,8 @@
     <Content Include="Content\summernote.css" />
     <Content Include="Scripts\summernote\summernote.js" />
     <Content Include="Scripts\summernote\summernote.min.js" />
+    <Content Include="Scripts\toastr.js" />
+    <Content Include="Scripts\toastr.min.js" />
     <Content Include="Scripts\umd\popper-utils.js" />
     <Content Include="Scripts\umd\popper-utils.min.js" />
     <Content Include="Scripts\umd\popper.js" />
@@ -553,6 +689,7 @@
     <Content Include="Views\Projects\Project.cshtml" />
     <Content Include="Views\Profile\Index.cshtml" />
     <Content Include="site.webmanifest" />
+    <Content Include="Views\Blogs\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -606,6 +743,27 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201809132222346_homepageTextsEngAdd.resx">
       <DependentUpon>201809132222346_homepageTextsEngAdd.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201810281343272_LevelAddProject.resx">
+      <DependentUpon>201810281343272_LevelAddProject.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201810281347081_LevelAddProjectEng.resx">
+      <DependentUpon>201810281347081_LevelAddProjectEng.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201811190033225_MetaTags.resx">
+      <DependentUpon>201811190033225_MetaTags.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201811262127444_ShowBlogsOnHomepage.resx">
+      <DependentUpon>201811262127444_ShowBlogsOnHomepage.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201811262145274_BlogMetaAdd.resx">
+      <DependentUpon>201811262145274_BlogMetaAdd.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201811271625469_Last.resx">
+      <DependentUpon>201811271625469_Last.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201811271628590_Fix.resx">
+      <DependentUpon>201811271628590_Fix.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

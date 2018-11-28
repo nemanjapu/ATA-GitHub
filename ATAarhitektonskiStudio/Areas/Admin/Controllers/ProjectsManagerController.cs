@@ -51,7 +51,11 @@ namespace ATAarhitektonskiStudio.Areas.Admin.Controllers
                     TypeEng = model.TypeEng,
                     YearBuilt = model.YearBuilt,
                     YearBuiltEng = model.YearBuiltEng,
-                    YoutubeVideoLink = model.YoutubeVideoLink
+                    YoutubeVideoLink = model.YoutubeVideoLink,
+                    Level = model.Level,
+                    LevelEng = model.LevelEng,
+                    MetaDescription = model.MetaDescription,
+                    MetaKeywords = model.MetaKeywords
                 };
 
                 return View("NewProject", errorModel);
@@ -104,7 +108,11 @@ namespace ATAarhitektonskiStudio.Areas.Admin.Controllers
                     Type = model.Type,
                     TypeEng = model.TypeEng,
                     YearBuilt = model.YearBuilt,
-                    YoutubeVideoLink = model.YoutubeVideoLink
+                    YoutubeVideoLink = model.YoutubeVideoLink,
+                    Level = model.Level,
+                    LevelEng = model.LevelEng,
+                    MetaDescription = model.MetaDescription,
+                    MetaKeywords = model.MetaKeywords
                 };
 
                 ctx.Project.Add(dbProject);
@@ -135,7 +143,11 @@ namespace ATAarhitektonskiStudio.Areas.Admin.Controllers
                 Type = p.Type,
                 TypeEng = p.TypeEng,
                 YearBuilt = p.YearBuilt,
-                YoutubeVideoLink = p.YoutubeVideoLink
+                YoutubeVideoLink = p.YoutubeVideoLink,
+                Level = p.Level,
+                LevelEng = p.LevelEng,
+                MetaDescription = p.MetaDescription,
+                MetaKeywords = p.MetaKeywords
             }).FirstOrDefault();
 
             return View(model);
@@ -165,7 +177,11 @@ namespace ATAarhitektonskiStudio.Areas.Admin.Controllers
                     TypeEng = model.TypeEng,
                     YearBuilt = model.YearBuilt,
                     YearBuiltEng = model.YearBuiltEng,
-                    YoutubeVideoLink = model.YoutubeVideoLink
+                    YoutubeVideoLink = model.YoutubeVideoLink,
+                    Level = model.Level,
+                    LevelEng = model.LevelEng,
+                    MetaDescription = model.MetaDescription,
+                    MetaKeywords = model.MetaKeywords
                 };
 
                 return View("EditProject", errorModel);
@@ -216,6 +232,10 @@ namespace ATAarhitektonskiStudio.Areas.Admin.Controllers
                 proDB.YearBuilt = model.YearBuilt;
                 proDB.YearBuiltEng = model.YearBuiltEng;
                 proDB.YoutubeVideoLink = model.YoutubeVideoLink;
+                proDB.Level = model.Level;
+                proDB.LevelEng = model.LevelEng;
+                proDB.MetaDescription = model.MetaDescription;
+                proDB.MetaKeywords = model.MetaKeywords;
 
                 ctx.SaveChanges();
             }

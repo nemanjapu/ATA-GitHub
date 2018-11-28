@@ -3,8 +3,15 @@
     ViewBag.Title = "Profil -";
 }
 
+@section metatags{
+    <link href="http://www.ata.ba/profile" rel="canonical" />
+    <meta property="og:image" content="http://ata.ba/Content/images/logo-black.png">
+    <meta name="keywords" content="@Model.ProfileMetaKeywords" />
+    <meta name="description" content="@Model.ProfileMetaDescription" />
+}
+
 <div class="container small pt-4 pb-3 mb-5">
-    <h1>ATA @RGlobal.ArchitecturalStudio</h1>
+    @*<h1>ATA @RGlobal.ArchitecturalStudio</h1>*@
     @if (GlobalHelper.CurrentCulture == "en")
     {
         <div class="about-ata">@Html.Raw(Model.AboutWriteUpEng)</div>

@@ -1,0 +1,39 @@
+﻿@model PagedList.IPagedList<ATAarhitektonskiStudio.ViewModels.BlogsViewModel>
+@using PagedList.Mvc;
+@{
+    ViewBag.Title = "Blog - ";
+}
+
+<div class="container small pt-4 pb-3 mb-5">
+    <h1 class="heading">Blog</h1>
+    <div class="grid">
+        @foreach (var blogPost in Model)
+        {
+            <div class="grid-item blog-inner">
+                <img src="~/DynamicContent/BlogImages/@blogPost.ImageName" alt="@blogPost.ImageName" />
+                <h3>@blogPost.Caption</h3>
+                <p class="date-published">@blogPost.DatePublished.ToString("dd. MMMM yyyy. - HH:MM")</p>
+                <p class="blog-text">
+                    @Html.Raw(blogPost.Text.Substring(0, 300) + "...")
+                </p>
+                <a class="button" href="@Url.Action("BlogPost","Blogs", new { id = blogPost.Id})">
+                    <span>Read More</span>
+                </a>
+            </div>
+        }
+    </div>
+
+    @Html.PagedListPager(Model, page => Url.Action("Index", new { page, sortOrder = ViewBag.CurrentSort, currentFilter = ViewBag.CurrentFilter }))
+</div>
+
+@section scripts{
+    @Scripts.Render("~/bundles/blogScript")
+    <script>
+        $('.grid').packery({
+            itemSelector: '.grid-item',
+            percentPosition: true,
+            transitionDuration: '0.5s',
+            initLayout: true
+        });
+    </script>
+}

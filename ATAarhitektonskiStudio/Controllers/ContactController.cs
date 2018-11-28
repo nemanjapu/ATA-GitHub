@@ -4,9 +4,11 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using System.Web.SessionState;
 
 namespace ATAarhitektonskiStudio.Controllers
 {
+    [SessionState(SessionStateBehavior.Disabled)]
     public class ContactController : BaseController
     {
         // GET: Contact
@@ -25,7 +27,9 @@ namespace ATAarhitektonskiStudio.Controllers
                 OfficePhone = g.OfficePhone,
                 PinterestLink = g.PinterestLink,
                 TwitterLink = g.TwitterLink,
-                YoutubeLink = g.YoutubeLink
+                YoutubeLink = g.YoutubeLink,
+                ContactMetaDescription = ctx.MetaTags.FirstOrDefault().ContactMetaDescription,
+                ContactMetaKeywords = ctx.MetaTags.FirstOrDefault().ContactMetaKeywords
             }).FirstOrDefault();
 
             return View(model);

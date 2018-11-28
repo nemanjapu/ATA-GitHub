@@ -57,7 +57,9 @@ namespace ATAarhitektonskiStudio.Areas.Admin.Controllers
                     Caption = blog.Caption,
                     Text = blog.Text,
                     Active = blog.Active,
-                    imageName = "/Content/Images/upload-icon.png"
+                    imageName = "/Content/Images/upload-icon.png",
+                    MetaKeywords = blog.MetaKeywords,
+                    MetaDescription = blog.MetaDescription
                 };
                 return View("AddBlog", errorModel);
             }
@@ -75,7 +77,9 @@ namespace ATAarhitektonskiStudio.Areas.Admin.Controllers
                         DatePublished = DateTime.Now,
                         UserId = Helpers.Authentication.GetLoggedInUser().Id,
                         ImageName = blog.File.FileName,
-                        ImagePath = Path.Combine(Server.MapPath(path), blog.File.FileName)
+                        ImagePath = Path.Combine(Server.MapPath(path), blog.File.FileName),
+                        MetaKeywords = blog.MetaKeywords,
+                        MetaDescription = blog.MetaDescription
                     };
                     ctx.Blog.Add(blogDB);
                     blog.File.SaveAs(blogDB.ImagePath);
@@ -87,7 +91,9 @@ namespace ATAarhitektonskiStudio.Areas.Admin.Controllers
                         Caption = blog.Caption,
                         Text = blog.Text,
                         Active = blog.Active,
-                        imageName = "/Content/Images/upload-icon.png"
+                        imageName = "/Content/Images/upload-icon.png",
+                        MetaKeywords = blog.MetaKeywords,
+                        MetaDescription = blog.MetaDescription
                     };
                     ModelState.AddModelError("", "Glavna slika je obavezna, molimo odaberite sliku.");
                     return View("AddBlog", errorModel);
@@ -102,6 +108,8 @@ namespace ATAarhitektonskiStudio.Areas.Admin.Controllers
                 blogDB.Caption = blog.Caption;
                 blogDB.Text = blog.Text;
                 blogDB.isActive = blog.Active;
+                blogDB.MetaKeywords = blog.MetaKeywords;
+                blogDB.MetaDescription = blog.MetaDescription;
                 if (blog.File != null)
                 {
                     blogDB.ImageName = blog.File.FileName;
@@ -124,7 +132,9 @@ namespace ATAarhitektonskiStudio.Areas.Admin.Controllers
                 Caption = blog.Caption,
                 Text = blog.Text,
                 Active = blog.isActive,
-                imageName = "/DynamicContent/BlogImages/" + blog.ImageName
+                imageName = "/DynamicContent/BlogImages/" + blog.ImageName,
+                MetaKeywords = blog.MetaKeywords,
+                MetaDescription = blog.MetaDescription
             };
 
             return View("EditBlog", model);

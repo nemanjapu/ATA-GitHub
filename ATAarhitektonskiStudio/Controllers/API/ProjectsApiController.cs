@@ -31,5 +31,14 @@ namespace ATAarhitektonskiStudio.Controllers.API
 
             return model;
         }
+
+        protected override void Dispose(bool disposing)
+        {
+            if (disposing)
+            {
+                ctx.Dispose();
+            }
+            base.Dispose(disposing);
+        }
     }
 }

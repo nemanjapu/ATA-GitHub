@@ -100,41 +100,53 @@
         </div>
     </div>
     <hr />
+    <h4>Blog</h4>
+    <div class="row">
+        <div class="col-xl-3 col-sm-6">
+            <div class="inputGroup">
+                @Html.CheckBoxFor(m => m.ShowBlogsOnHomepage)
+                <label for="ShowBlogsOnHomepage">Prikaži blog na stranici</label>
+            </div>
+        </div>
+    </div>
+    <hr />
     <h4>Text na početnoj stranici</h4>
     <div class="row">
-        <div class="col-xl-4 col-sm-6">
-            <div class="form-group">
-                <label>Naslov 1:</label>
-                @Html.TextAreaFor(m => m.Heading1Homepage, new { @class = "form-control" })
-                @Html.ValidationMessageFor(m => m.Heading1Homepage)
+        @*<div class="col-xl-4 col-sm-6">
+                <div class="form-group">
+                    <label>Naslov 1:</label>
+                    @Html.TextAreaFor(m => m.Heading1Homepage, new { @class = "form-control" })
+                    @Html.ValidationMessageFor(m => m.Heading1Homepage)
+                </div>
+                <div class="form-group">
+                    <label>Naslov 1 eng:</label>
+                    @Html.TextAreaFor(m => m.Heading1HomepageEng, new { @class = "form-control" })
+                    @Html.ValidationMessageFor(m => m.Heading1HomepageEng)
+                </div>
             </div>
-            <div class="form-group">
-                <label>Naslov 1 eng:</label>
-                @Html.TextAreaFor(m => m.Heading1HomepageEng, new { @class = "form-control" })
-                @Html.ValidationMessageFor(m => m.Heading1HomepageEng)
-            </div>
-        </div>
-        <div class="col-xl-4 col-sm-6">
-            <div class="form-group">
-                <label>Naslov 2:</label>
-                @Html.TextAreaFor(m => m.Heading2Homepage, new { @class = "form-control" })
-                @Html.ValidationMessageFor(m => m.Heading2Homepage)
-            </div>
-            <div class="form-group">
-                <label>Naslov 2 eng:</label>
-                @Html.TextAreaFor(m => m.Heading2HomepageEng, new { @class = "form-control" })
-                @Html.ValidationMessageFor(m => m.Heading2HomepageEng)
-            </div>
-        </div>
-        <div class="col-xl-4 col-sm-6">
+            <div class="col-xl-4 col-sm-6">
+                <div class="form-group">
+                    <label>Naslov 2:</label>
+                    @Html.TextAreaFor(m => m.Heading2Homepage, new { @class = "form-control" })
+                    @Html.ValidationMessageFor(m => m.Heading2Homepage)
+                </div>
+                <div class="form-group">
+                    <label>Naslov 2 eng:</label>
+                    @Html.TextAreaFor(m => m.Heading2HomepageEng, new { @class = "form-control" })
+                    @Html.ValidationMessageFor(m => m.Heading2HomepageEng)
+                </div>
+            </div>*@
+        <div class="col-sm-6">
             <div class="form-group">
                 <label>Text:</label>
-                @Html.TextAreaFor(m => m.WritingHomepage, new { @class = "form-control" })
+                @Html.TextAreaFor(m => m.WritingHomepage, new { @class = "form-control writeup-homepage-summernote" })
                 @Html.ValidationMessageFor(m => m.WritingHomepage)
             </div>
+        </div>
+        <div class="col-sm-6">
             <div class="form-group">
                 <label>Text eng:</label>
-                @Html.TextAreaFor(m => m.WritingHomepageEng, new { @class = "form-control" })
+                @Html.TextAreaFor(m => m.WritingHomepageEng, new { @class = "form-control writeup-homepage-summernote" })
                 @Html.ValidationMessageFor(m => m.WritingHomepageEng)
             </div>
         </div>
@@ -178,7 +190,9 @@
                             sendFile(files[i], this);
                         }
                     }
-                }
+                },
+                fontNamesIgnoreCheck: ['Swis721 Lt BT Light', 'Swis721 Blk BT', 'Swiss721LightBT', 'Swiss721MediumBT', 'Swiss721HeavyBT', 'Swiss721BT', 'Swiss721CondensedBT', 'Swiss721BoldBT', 'Swiss721LightBTV1', 'Swiss721BoldCondensedBT', 'Swiss721BlackCondensedBTV1'],
+                fontNames: ['Helvetica', 'sans-serif', 'Arial', 'Arial Black', 'Comic Sans MS', 'Courier New', 'Swis721 Lt BT Light', 'Swis721 Blk BT', 'Swiss721LightBT', 'Swiss721MediumBT', 'Swiss721HeavyBT', 'Swiss721BT', 'Swiss721CondensedBT', 'Swiss721BoldBT', 'Swiss721LightBTV1', 'Swiss721BoldCondensedBT', 'Swiss721BlackCondensedBTV1']
             });
         });
         function sendFile(file, el) {
@@ -209,7 +223,9 @@
                             sendFile(files[i], this);
                         }
                     }
-                }
+                },
+                fontNamesIgnoreCheck: ['Swis721 Lt BT Light', 'Swis721 Blk BT', 'Swiss721LightBT', 'Swiss721MediumBT', 'Swiss721HeavyBT', 'Swiss721BT', 'Swiss721CondensedBT', 'Swiss721BoldBT', 'Swiss721LightBTV1', 'Swiss721BoldCondensedBT', 'Swiss721BlackCondensedBTV1'],
+                fontNames: ['Helvetica', 'sans-serif', 'Arial', 'Arial Black', 'Comic Sans MS', 'Courier New', 'Swis721 Lt BT Light', 'Swis721 Blk BT', 'Swiss721LightBT', 'Swiss721MediumBT', 'Swiss721HeavyBT', 'Swiss721BT', 'Swiss721CondensedBT', 'Swiss721BoldBT', 'Swiss721LightBTV1', 'Swiss721BoldCondensedBT', 'Swiss721BlackCondensedBTV1']
             });
         });
         function sendFile(file, el) {
@@ -229,65 +245,16 @@
         }
     </script>
     <script>
-        $('#Heading1Homepage').summernote({
-            height: 100,
-            toolbar: [
-                // [groupName, [list of button]]
-                ['style', ['bold', 'italic', 'underline', 'clear']],
-                ['font', ['strikethrough', 'superscript', 'subscript']],
-                ['undo', ['undo']],
-                ['redo', ['redo']]
-            ],
+        $('.writeup-homepage-summernote').summernote({
+            height: 300,
+            dialogsInBody: true,
+            fontSizes: ['10', '11', '12', '13', '14', '15', '16', '17', '18', '19', '20', '21', '22', '23', '24', '25', '26', '27', '28', '29', '30'],
+            disableDragAndDrop: true,
+            fontNamesIgnoreCheck: ['Swis721LtBTLight', 'Swis721BlkBT', 'Swiss721LightBT', 'Swiss721MediumBT', 'Swiss721HeavyBT', 'Swiss721BT', 'Swiss721CondensedBT', 'Swiss721BoldBT', 'Swiss721LightBTV1', 'Swiss721BoldCondensedBT', 'Swiss721BlackCondensedBTV1'],
+            fontNames: ['Helvetica', 'sans-serif', 'Arial', 'Arial Black', 'Comic Sans MS', 'Courier New', 'Swis721LtBTLight', 'Swis721BlkBT', 'Swiss721LightBT', 'Swiss721MediumBT', 'Swiss721HeavyBT', 'Swiss721BT', 'Swiss721CondensedBT', 'Swiss721BoldBT', 'Swiss721LightBTV1', 'Swiss721BoldCondensedBT', 'Swiss721BlackCondensedBTV1']
         });
-        $('#Heading1HomepageEng').summernote({
-            height: 100,
-            toolbar: [
-                // [groupName, [list of button]]
-                ['style', ['bold', 'italic', 'underline', 'clear']],
-                ['font', ['strikethrough', 'superscript', 'subscript']],
-                ['undo', ['undo']],
-                ['redo', ['redo']]
-            ],
-        });
-        $('#Heading2Homepage').summernote({
-            height: 100,
-            toolbar: [
-                // [groupName, [list of button]]
-                ['style', ['bold', 'italic', 'underline', 'clear']],
-                ['font', ['strikethrough', 'superscript', 'subscript']],
-                ['undo', ['undo']],
-                ['redo', ['redo']]
-            ],
-        });
-        $('#Heading2HomepageEng').summernote({
-            height: 100,
-            toolbar: [
-                // [groupName, [list of button]]
-                ['style', ['bold', 'italic', 'underline', 'clear']],
-                ['font', ['strikethrough', 'superscript', 'subscript']],
-                ['undo', ['undo']],
-                ['redo', ['redo']]
-            ],
-        });
-        $('#WritingHomepage').summernote({
-            height: 100,
-            toolbar: [
-                // [groupName, [list of button]]
-                ['style', ['bold', 'italic', 'underline', 'clear']],
-                ['font', ['strikethrough', 'superscript', 'subscript']],
-                ['undo', ['undo']],
-                ['redo', ['redo']]
-            ],
-        });
-        $('#WritingHomepageEng').summernote({
-            height: 100,
-            toolbar: [
-                // [groupName, [list of button]]
-                ['style', ['bold', 'italic', 'underline', 'clear']],
-                ['font', ['strikethrough', 'superscript', 'subscript']],
-                ['undo', ['undo']],
-                ['redo', ['redo']]
-            ],
-        });
+        $('.note-height ul.dropdown-menu').append('<li><a data-event="lineHeight" href="#" data-value="2.1"><i class="fa fa-check"></i> 2.1</a></li>');
+        $('.note-height ul.dropdown-menu').append('<li><a data-event="lineHeight" href="#" data-value="2.2"><i class="fa fa-check"></i> 2.2</a></li>');
+        $('.note-height ul.dropdown-menu').append('<li><a data-event="lineHeight" href="#" data-value="2.3"><i class="fa fa-check"></i> 2.3</a></li>');
     </script>
 }

@@ -123,13 +123,19 @@
   <data name="Contact" xml:space="preserve">
     <value>Contact</value>
   </data>
+  <data name="ContactDescription" xml:space="preserve">
+    <value>architectural design and consulting office</value>
+  </data>
   <data name="ContactInfo" xml:space="preserve">
-    <value>Contact info</value>
+    <value>Contact</value>
   </data>
   <data name="Profile" xml:space="preserve">
     <value>Profile</value>
   </data>
   <data name="Projects" xml:space="preserve">
     <value>Projects</value>
+  </data>
+  <data name="ReadMore" xml:space="preserve">
+    <value>Read more</value>
   </data>
 </root>

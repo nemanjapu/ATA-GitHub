@@ -3,17 +3,26 @@
     ViewBag.Title = "Kontakt -";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
+@section metatags{
+    <link href="http://www.ata.ba/contact" rel="canonical" />
+    <meta property="og:image" content="http://ata.ba/Content/images/logo-black.png">
+    <meta name="keywords" content="@Model.ContactMetaKeywords" />
+    <meta name="description" content="@Model.ContactMetaDescription" />
+}
+
 <div class="container-fluid">
     <div class="container-fluid mb-5 pb-3">
         <div class="row">
             <div class="col-xl-6 pr-xl-0">
                 <div class="contact-info px-3">
                     <div class="ci-content">
-                        <h1 class="mb-3">@RGlobal.ContactInfo</h1>
-                        <p><i class="far fa-envelope"></i> @Model.Email</p>
-                        <p><i class="fas fa-mobile-alt"></i> @Model.CellPhone</p>
-                        <p><i class="fas fa-phone"></i> @Model.OfficePhone</p>
-                        <p><i class="fas fa-fax"></i> @Model.Fax</p>
+                        <h3 class="mb-3 blk text-uppercase contact-heading">@RGlobal.ContactInfo</h3>
+                        <p><a href="mailto:@Model.Email"> <i class="far fa-envelope"></i> @Model.Email</a></p>
+                        <p><a href="tel:@Model.CellPhone"><i class="fas fa-mobile-alt"></i> @Model.CellPhone</a></p>
+                        <p><a href="tel:@Model.OfficePhone"><i class="fas fa-phone"></i> @Model.OfficePhone</a></p>
+                        <p><a href="tel:@Model.Fax"><i class="fas fa-fax"></i> @Model.Fax</a></p>
+                        <h5 class="mb-0 mt-5">A T A arhitektonski studio d.o.o.</h5>
+                        <p class="about-p">@RGlobal.ContactDescription</p>
                         <p class="mb-4"><i class="fas fa-map-pin"></i> @Model.Location</p>
                         <div class="top-bar-items clearfix">
                             @if (!string.IsNullOrEmpty(Model.FacebookLink))

@@ -12,7 +12,7 @@ namespace ATAarhitektonskiStudio.DAL
     {
         public databaseContext() : base("name=conString")
         {
-            Database.SetInitializer(new MigrateDatabaseToLatestVersion<databaseContext, Migrations.Configuration>());
+            //Database.SetInitializer(new MigrateDatabaseToLatestVersion<databaseContext, Migrations.Configuration>());
         }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
@@ -26,5 +26,6 @@ namespace ATAarhitektonskiStudio.DAL
         public DbSet<Global> Global { get; set; }
         public DbSet<Project> Project { get; set; }
         public DbSet<ProjectImages> ProjectImages { get; set; }
+        public DbSet<MetaTags> MetaTags { get; set; }
     }
 }

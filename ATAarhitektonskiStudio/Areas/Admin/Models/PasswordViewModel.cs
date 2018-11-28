@@ -8,12 +8,12 @@ namespace ATAarhitektonskiStudio.Areas.Admin.Models
 {
     public class PasswordViewModel
     {
-        [Required]
+        [Required(ErrorMessage = "Stara lozinka je obavezno polje.")]
         public string OldPassword { get; set; }
-        [Required]
+        [Required(ErrorMessage = "Nova lozinka je obavezno polje.")]
         public string NewPassword { get; set; }
-        [Compare("NewPassword")]
-        [Required]
+        [Compare("NewPassword", ErrorMessage = "Lozinke se ne poklapaju.")]
+        [Required(ErrorMessage = "Molimo ponovite novu lozinku.")]
         public string RepeatNewPassword { get; set; }
     }
 }

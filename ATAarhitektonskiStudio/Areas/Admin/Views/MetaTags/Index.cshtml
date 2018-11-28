@@ -1,0 +1,82 @@
+﻿@model ATAarhitektonskiStudio.Models.MetaTags
+
+@{
+                /**/
+
+                ViewBag.Title = "Index";
+                Layout = "~/Areas/Admin/Views/Shared/_AdminLayout.cshtml";
+}
+
+<h2 class="mb-3">Meta tagovi</h2>
+
+@using (Html.BeginForm("SaveMetaTags", "MetaTags"))
+{
+    @Html.AntiForgeryToken()
+    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+    @Html.HiddenFor(model => model.Id)
+    <h4>Početna</h4>
+    <hr />
+
+    <div class="row">
+        <div class="col-sm-6">
+            <div class="form-group">
+                <label>Početna stranica - keywords:</label>
+                @Html.TextAreaFor(model => model.HomeMetaKeywords, new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.HomeMetaKeywords, "", new { @class = "text-danger" })
+            </div>
+        </div>
+        <div class="col-sm-6">
+            <div class="form-group">
+                <label>Početna stranica - description:</label>
+                @Html.TextAreaFor(model => model.HomeMetaDescription, new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.HomeMetaDescription, "", new { @class = "text-danger" })
+            </div>
+        </div>
+    </div>
+    <h4>Profil</h4>
+    <hr />
+    <div class="row">
+        <div class="col-sm-6">
+            <div class="form-group">
+                <label>Profil - keywords:</label>
+                @Html.TextAreaFor(model => model.ProfileMetaKeywords, new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.ProfileMetaKeywords, "", new { @class = "text-danger" })
+            </div>
+        </div>
+        <div class="col-sm-6">
+            <div class="form-group">
+                <label>Profil - description:</label>
+                @Html.TextAreaFor(model => model.ProfileMetaDescription, new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.ProfileMetaDescription, "", new { @class = "text-danger" })
+            </div>
+        </div>
+    </div>
+    
+    <h4>Kontakt</h4>
+    <hr />
+    <div class="row">
+        <div class="col-sm-6">
+            <div class="form-group">
+                <label>Kontakt - keywords:</label>
+                @Html.TextAreaFor(model => model.ContactMetaKeywords, new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.ContactMetaKeywords, "", new { @class = "text-danger" })
+            </div>
+        </div>
+        <div class="col-sm-6">
+            <div class="form-group">
+                <label>Kontakt - description:</label>
+                @Html.TextAreaFor(model => model.ContactMetaDescription, new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.ContactMetaDescription, "", new { @class = "text-danger" })
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-12">
+            <div class="form-group">
+                 <input type="submit" value="Save" class="btn btn-primary w-100" />
+            </div>
+        </div>
+    </div>
+    
+}

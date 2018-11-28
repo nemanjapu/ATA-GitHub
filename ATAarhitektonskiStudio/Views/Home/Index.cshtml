@@ -1,23 +1,31 @@
 ﻿@model ATAarhitektonskiStudio.ViewModels.HomepageViewModel
 @using ATAarhitektonskiStudio.ViewModels
 
-<div class="container">
+@section metatags{
+    <link href="http://www.ata.ba" rel="canonical" />
+    <meta property="og:image" content="http://ata.ba/Content/images/logo-black.png">
+    <meta name="keywords" content="@Model.MetaKeywords" />
+    <meta name="description" content="@Model.MetaDescription" />
+    <meta name="google-site-verification" content="ueO_MahbLf06N9dUMhwqHR-mhnjeAhVyg5ra-sT69O0" />
+}
+
+<div class="container-fluid">
     <div class="row banner-text">
         @if (GlobalHelper.CurrentCulture == "en")
         {
-            <div class="col-sm-5">
-                <div class="we-are">WE ARE</div>
+            <div class="col-lg-6">
+                <h1 class="we-are">WE ARE</h1>
             </div>
-            <div class="col-sm-7 writup-cont">
+            <div class="col-lg-6 writup-cont">
                 <div class="writup">@Html.Raw(Model.TextEng)</div>
             </div>
         }
         else
         {
-            <div class="col-sm-5">
-                <div class="we-are">MI SMO</div>
+            <div class="col-lg-6">
+                <h1 class="we-are">MI SMO</h1>
             </div>
-            <div class="col-sm-7 writup-cont">
+            <div class="col-lg-6 writup-cont">
                 <div class="writup">@Html.Raw(Model.Text)</div>
             </div>
         }
@@ -25,11 +33,7 @@
 </div>
 <img class="img-bottom" src="~/Content/images/hp-bottom-img.jpg" alt="Ata Arhitektonski Studio" />
 
-<div class="loader-container">
-    <div class="loader-content">
-        <img id="logo-start" src="~/Content/images/logo2-black.png" />
-    </div>
-</div>
+@*<div class="loader-container"><div class="loader-content"><img id="logo-start" src="~/Content/images/logo2-black.png" alt="Ata Arhitektonski Studio d.o.o" /></div></div>*@
 
 @section scripts{
     @Scripts.Render("~/bundles/homeScript")

@@ -6,3 +6,34 @@
 
 <h2>Promjena lozinke</h2>
 
+@Html.ValidationSummary()
+
+@using (Html.BeginForm("SaveNewPassword", "UserManager", FormMethod.Post))
+{
+    <div class="row">
+        <div class="col-sm-4">
+            <div class="form-group">
+                <label for="Caption">Stara lozinka:</label>
+                @Html.PasswordFor(m => m.OldPassword, new { @class = "form-control" })
+                @Html.ValidationMessageFor(m => m.OldPassword)
+            </div>
+            <div class="form-group">
+                <label for="Caption">Nova lozinka:</label>
+                @Html.PasswordFor(m => m.NewPassword, new { @class = "form-control" })
+                @Html.ValidationMessageFor(m => m.NewPassword)
+            </div>
+            <div class="form-group">
+                <label for="Caption">Ponovite novu lozinku:</label>
+                @Html.PasswordFor(m => m.RepeatNewPassword, new { @class = "form-control" })
+                @Html.ValidationMessageFor(m => m.RepeatNewPassword)
+            </div>
+
+            @Html.AntiForgeryToken()
+            <button type="submit" class="btn btn-success">Spasi</button>
+        </div>
+    </div>
+}
+
+@section scripts{
+    @Scripts.Render("~/bundles/jqueryval")
+}

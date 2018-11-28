@@ -20,5 +20,7 @@ namespace ATAarhitektonskiStudio.Models
         public User User { get; set; }
         public int UserId { get; set; }
         public bool isActive { get; set; }
+        public string MetaKeywords { get; set; }
+        public string MetaDescription { get; set; }
     }
 }

@@ -49,6 +49,9 @@ namespace ATAarhitektonskiStudio
                      "~/Content/Scripts/lightbox.js",
                      "~/Content/Scripts/projects.js"));
 
+            bundles.Add(new ScriptBundle("~/bundles/blogScript").Include(
+                        "~/Scripts/packery.pkgd.min.js"));
+
             bundles.Add(new StyleBundle("~/Content/projectCss").Include(
                       "~/Content/owl-carousel.css",
                       "~/Content/owl-carousel-theme.css",
@@ -65,9 +68,11 @@ namespace ATAarhitektonskiStudio
                       "~/Areas/Admin/Content/css/style.css",
                       "~/Areas/Admin/Content/css/font-awesome.css",
                       "~/Content/summernote.css",
-                      "~/Areas/Admin/Content/css/jquery.filer-dragdropbox-theme.css"));
+                      "~/Areas/Admin/Content/css/jquery.filer-dragdropbox-theme.css",
+                      "~/Content/toastr.css"));
 
             bundles.Add(new ScriptBundle("~/bundles/adminScripts").Include(
+                        "~/Scripts/jquery-ui-1.12.1.js",
                         "~/Areas/Admin/Content/js/popper.min.js",
                         "~/Areas/Admin/Content/js/tether.min.js",
                         "~/Areas/Admin/Content/js/bootstrap.js",
@@ -80,7 +85,7 @@ namespace ATAarhitektonskiStudio
                         "~/Areas/Admin/Content/js/switchery.min.js",
                         "~/Scripts/summernote/summernote.js",
                         "~/Scripts/summernote/summernote-ext-specialchars.js",
-                        "~/Scripts/jquery-ui-1.12.1.js"));
+                        "~/Scripts/toastr.js"));
 
             BundleTable.EnableOptimizations = true;
         }

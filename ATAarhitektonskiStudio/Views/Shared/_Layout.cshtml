@@ -1,17 +1,20 @@
 ﻿<!DOCTYPE html>
-<html>
+<html prefix="og: http://ogp.me/ns#">
 <head>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>@ViewBag.Title ATA Arhitektonski studio Sarajevo</title>
     <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
     <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
     <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
     <link rel="manifest" href="/site.webmanifest">
     <meta name="msapplication-TileColor" content="#da532c">
     <meta name="theme-color" content="#ffffff">
-    <meta property="og:image" content="http://atastruix-001-site1.btempurl.com/Content/images/logo.png">
     <meta property="og:image:type" content="image/png">
+    <meta name="robots" content="index, follow">
+    @RenderSection("metatags", required: false)
+    <title>@ViewBag.Title A T A arhitektonski studio Sarajevo</title>
+    @*<meta property="og:image" content="http://struixteam-002-site2.gtempurl.com/Content/images/logo-black.png">*@
     @Styles.Render("~/Content/fontAwesome")
     @RenderSection("styles", required: false)
     @Styles.Render("~/Content/bootstrapCss")
@@ -55,7 +58,7 @@
                     @if (!string.IsNullOrEmpty(ATAarhitektonskiStudio.Helpers.GlobalHelper.GetLinkedin()))
                     {
                         <a class="social" target="_blank" href="@ATAarhitektonskiStudio.Helpers.GlobalHelper.GetLinkedin()">
-                            <i class="fab fa-linkedin"></i>
+                            <i class="fab fa-linkedin-in"></i>
                         </a>
                     }
                     @if (!string.IsNullOrEmpty(ATAarhitektonskiStudio.Helpers.GlobalHelper.GetGooglePlus()))
@@ -65,13 +68,13 @@
                         </a>
                     }
                 </div>
-                <a href="" class="setLang" data-lang="bs"><img src="~/Content/images/bosnia-and-herzegovina.png" /></a>
-                <a href="" class="setLang" data-lang="en"><img src="~/Content/images/united-kingdom.png" /></a>
+                <a href="" class="setLang" data-lang="bs"><img src="~/Content/images/bosnia-and-herzegovina.png" alt="Ata Arhitektonski Studio - Bosanski jezik" /></a>
+                <a href="" class="setLang" data-lang="en"><img src="~/Content/images/united-kingdom.png" alt="Ata Arhitektonski Studio - Engleski jezik" /></a>
             </div>
         </div>
-        <nav class="navbar navbar-expand-sm">
+        <nav class="navbar navbar-expand-md">
             <a class="navbar-brand" href="@Url.Action("Index", "Home")">
-                <img src="~/Content/images/logo-black.png">
+                <img src="~/Content/images/logo-black.png" alt="Ata Arhitektonski Studio d.o.o">
             </a>
             <button class="navbar-toggler" type="button" aria-label="Toggle navigation" id="openMenu">
                 <span class="navbar-toggler-icon">
@@ -107,7 +110,7 @@
     <div class="body-content">
         @RenderBody()
     </div>
-    <div class="powered">Powered by <a target="_blank" href="https://www.instagram.com/_struix_/"><img src="~/Content/images/struix.png" alt="Struix" /></a></div>
+    <div class="powered">Powered by <a target="_blank" href="https://www.struix.co/"><img src="~/Content/images/struix.png" alt="Struix" /></a></div>
 
     @Scripts.Render("~/bundles/jquery")
     @Scripts.Render("~/bundles/bootstrap")
@@ -135,7 +138,7 @@
                 $(document).ready(function () {
                     $.ajax({
                         type: "GET",
-                        url: "/api/ProjectsApi",
+                        url: "/api/ProjectsApi/GetProject",
                         dataType: "json",
                         success: function (data) {
                             var textOutput = "";
@@ -161,7 +164,7 @@
                 $(document).ready(function () {
                     $.ajax({
                         type: "GET",
-                        url: "/api/ProjectsApi",
+                        url: "/api/ProjectsApi/GetProject",
                         dataType: "json",
                         success: function (data) {
                             var textOutput = "";
@@ -180,5 +183,49 @@
             })
         </script>
     }
+    <script type="application/ld+json">
+        {
+        "@@context": "http://schema.org",
+        "@@type": "HomeAndConstructionBusiness",
+        "name": "ATA Arhitektonski Studio",
+        "image": "http://www.ata.ba/Content/images/logo-black.png",
+        "@@id": "",
+        "url": "http://www.ata.ba/",
+        "telephone": "+38761265001",
+        "priceRange": "0-1000000",
+        "address": {
+        "@@type": "PostalAddress",
+        "streetAddress": "Sarajevo-Centar, Sarajevo, ul. Koševo br.32",
+        "addressLocality": "Sarajevo",
+        "postalCode": "71000",
+        "addressCountry": "BA"
+        },
+        "geo": {
+        "@@type": "GeoCoordinates",
+        "latitude": 43.8627439,
+        "longitude": 18.413103399999954
+        },
+        "openingHoursSpecification": {
+        "@@type": "OpeningHoursSpecification",
+        "dayOfWeek": [
+        "Monday",
+        "Tuesday",
+        "Wednesday",
+        "Thursday",
+        "Friday"
+        ],
+        "opens": "09:00",
+        "closes": "17:00"
+        },
+        "sameAs": [
+        "@(String.IsNullOrEmpty(ATAarhitektonskiStudio.Helpers.GlobalHelper.GetFacebook()) ? "" : ATAarhitektonskiStudio.Helpers.GlobalHelper.GetFacebook())",
+        "@(String.IsNullOrEmpty(ATAarhitektonskiStudio.Helpers.GlobalHelper.GetInstagram()) ? "" : ATAarhitektonskiStudio.Helpers.GlobalHelper.GetInstagram())",
+        "@(String.IsNullOrEmpty(ATAarhitektonskiStudio.Helpers.GlobalHelper.GetTwitter()) ? "" : ATAarhitektonskiStudio.Helpers.GlobalHelper.GetTwitter())",
+        "@(String.IsNullOrEmpty(ATAarhitektonskiStudio.Helpers.GlobalHelper.GetLinkedin()) ? "" : ATAarhitektonskiStudio.Helpers.GlobalHelper.GetLinkedin())",
+        "@(String.IsNullOrEmpty(ATAarhitektonskiStudio.Helpers.GlobalHelper.GetPinterest()) ? "" : ATAarhitektonskiStudio.Helpers.GlobalHelper.GetPinterest())",
+        "@(String.IsNullOrEmpty(ATAarhitektonskiStudio.Helpers.GlobalHelper.GetYoutube()) ? "" : ATAarhitektonskiStudio.Helpers.GlobalHelper.GetYoutube())"
+        ]
+        }
+    </script>
 </body>
 </html>

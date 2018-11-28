@@ -79,7 +79,16 @@ namespace ATAarhitektonskiStudio.Content.Texts {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Kontakt informacije.
+        ///   Looks up a localized string similar to društvo za dizajn, projektovanje i konsalting.
+        /// </summary>
+        public static string ContactDescription {
+            get {
+                return ResourceManager.GetString("ContactDescription", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Kontakt.
         /// </summary>
         public static string ContactInfo {
             get {
@@ -102,6 +111,15 @@ namespace ATAarhitektonskiStudio.Content.Texts {
         public static string Projects {
             get {
                 return ResourceManager.GetString("Projects", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Pročitaj više.
+        /// </summary>
+        public static string ReadMore {
+            get {
+                return ResourceManager.GetString("ReadMore", resourceCulture);
             }
         }
     }

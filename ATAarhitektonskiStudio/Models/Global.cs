@@ -28,5 +28,6 @@ namespace ATAarhitektonskiStudio.Models
         public string Heading2HomepageEng { get; set; }
         public string WritingHomepage { get; set; }
         public string WritingHomepageEng { get; set; }
+        public bool ShowBlogsOnHomepage { get; set; }
     }
 }

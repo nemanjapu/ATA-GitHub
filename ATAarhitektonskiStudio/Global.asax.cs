@@ -23,8 +23,8 @@ namespace ATAarhitektonskiStudio
             ViewEngines.Engines.Clear();
             ViewEngines.Engines.Add(new MultiLanguageViewEngine());
 
-            RouteConfig.RegisterRoutes(RouteTable.Routes);
             BundleConfig.RegisterBundles(BundleTable.Bundles);
+            RouteConfig.RegisterRoutes(RouteTable.Routes);
         }
     }
 }

@@ -9,5 +9,7 @@ namespace ATAarhitektonskiStudio.ViewModels
     {
         public string AboutWriteUp { get; set; }
         public string AboutWriteUpEng { get; set; }
+        public string ProfileMetaKeywords { get; set; }
+        public string ProfileMetaDescription { get; set; }
     }
 }

@@ -19,5 +19,7 @@ namespace ATAarhitektonskiStudio.ViewModels
         public string GooglePlusLink { get; set; }
         public string LinkedinLink { get; set; }
         public string YoutubeLink { get; set; }
+        public string ContactMetaKeywords { get; set; }
+        public string ContactMetaDescription { get; set; }
     }
 }
